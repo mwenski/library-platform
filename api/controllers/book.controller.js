@@ -19,7 +19,7 @@ class BookController{
 
     async deleteBook(bookId){
 
-        return await bookService.deleteBook(book);
+        return await bookService.deleteBook(bookId);
     }
 
 }
