@@ -1,25 +1,26 @@
-const copyRepository = require('../repositories/copy.repository');
+const copyService = require('../services/copy.service');
 
-class CopyService{
-
-    constructor(){}
-
+class CopyController{
     async getCopies(){
-        return await copyRepository.getCopies();
+
+        return await copyService.getCopies();
     }
 
     async createCopy(copy){
-        return await copyRepository.createCopy(copy);
+
+        return await copyService.createCopy(copy);
     }
 
     async updateCopy(copy){
-        return await copyRepository.updateCopy(copy);
+
+        return await copyService.updateCopy(copy);
     }
 
     async deleteCopy(copyId){
-        return await copyRepository.deleteCopy(copyId);
+
+        return await copyService.deleteCopy(copyId);
     }
 
 }
 
-module.exports=new CopyService();
+module.exports = new CopyController();
