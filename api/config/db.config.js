@@ -23,6 +23,7 @@ const connect = () => {
     db.Sequelize = Sequelize;
     db.sequelize = sequelize;
     db.books = require('../models/book.model')(sequelize, DataTypes, Model);
+    //db.copies = require('../models/copy.model')(sequelize, DataTypes, Model);
 
     return db;
 }
