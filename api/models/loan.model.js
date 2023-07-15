@@ -2,23 +2,36 @@ module.exports = (sequelize, DataTypes, Model) => {
     class Loans extends Model {}
 
     Loans.init({
-        copyid: {
-            type: DataTypes.STRING,
-            allowNull: false
+        id: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true
         },
-        borrowerid: {
-            type: DataTypes.STRING,
-            allowNull: false
+        copyId: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'copies',
+                key: 'id'
+            }
         },
-        dateborrowed: {
+        borrowerId: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'borrowers',
+                key: 'id'
+            }
+        },
+        dateBorrowed: {
             type: DataTypes.DATE,
             allowNull: false
         },
-        duedate: {
+        dueDate: {
             type: DataTypes.DATE,
             allowNull: false
         },
-        datereturned: {
+        dateReturned: {
             type: DataTypes.DATE
         },
         status: {

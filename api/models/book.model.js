@@ -2,6 +2,11 @@ module.exports = (sequelize, DataTypes, Model) => {
     class Books extends Model {}
 
     Books.init({
+        id: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true
+        },
         title: {
             type: DataTypes.STRING,
             allowNull: false
@@ -10,7 +15,7 @@ module.exports = (sequelize, DataTypes, Model) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        coverurl: {
+        coverUrl: {
             type: DataTypes.STRING
         },
         description: {
@@ -24,26 +29,26 @@ module.exports = (sequelize, DataTypes, Model) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        publicationyear: {
+        publicationYear: {
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        numberofpages: {
+        numberOfPages: {
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        createdate: {
+        createDate: {
             type: DataTypes.DATE,
             allowNull: false
         },
-        updatedate: {
+        updateDate: {
             type: DataTypes.DATE
         },
-        createdby: {
+        createdBy: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        updatedby: {
+        updatedBy: {
             type: DataTypes.STRING
         },
     },{

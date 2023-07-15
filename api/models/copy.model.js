@@ -2,16 +2,27 @@ module.exports = (sequelize, DataTypes, Model) => {
     class Copies extends Model {}
 
     Copies.init({
-        bookid: {
-            type: DataTypes.STRING,
-            allowNull: false
+        id: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true
+        },
+        bookId: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'books',
+                key: 'id'
+            }
         },
         signature: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        loanid: {
-            type: DataTypes.STRING
+        loanStatus: {
+            type: DataTypes.ENUM('available', 'borrowed'),
+            allowNull: false,
+            defaultValue: 'available'
         }
     }, {
         sequelize,
