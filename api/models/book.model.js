@@ -36,21 +36,7 @@ module.exports = (sequelize, DataTypes, Model) => {
         numberOfPages: {
             type: DataTypes.INTEGER,
             allowNull: false
-        },
-        createDate: {
-            type: DataTypes.DATE,
-            allowNull: false
-        },
-        updateDate: {
-            type: DataTypes.DATE
-        },
-        createdBy: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        updatedBy: {
-            type: DataTypes.STRING
-        },
+        }
     },{
         sequelize,
         modelName: 'books'

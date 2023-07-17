@@ -4,7 +4,7 @@ class CopyRepository {
     db = {};
 
     constructor(){
-        this.db = connect;
+        this.db = connect();
         this.db.sequelize.sync({ force: true }).then(() => {
             console.log("Drop and re-sync db");
         });

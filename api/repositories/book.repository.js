@@ -4,9 +4,10 @@ class BookRepository {
     db = {};
 
     constructor(){
-        this.db = connect;
+        this.db = connect();
+
         this.db.sequelize.sync({ force: true }).then(() => {
-            console.log("Drop and re-sync db");
+                console.log("DB is working!");
         });
     }
 
@@ -25,7 +26,7 @@ class BookRepository {
         let data = {};
 
         try{
-            book.createdate = new Date().toISOString();
+            // book.createdate = new Date().toISOString();
             data = await this.db.books.create(book);
         }catch(err){
             console.log("Error: ", err);
@@ -38,7 +39,7 @@ class BookRepository {
         let data = {};
 
         try{
-            book.updatedate = new Date().toISOString();
+            // book.updatedate = new Date().toISOString();
             data = await this.db.books.update({...book}, {
                 where: {
                     id: book.id

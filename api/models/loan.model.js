@@ -40,6 +40,7 @@ module.exports = (sequelize, DataTypes, Model) => {
         }
     }, {
         sequelize,
+        timestamps: false,
         modelName: 'loans'
     });
 
