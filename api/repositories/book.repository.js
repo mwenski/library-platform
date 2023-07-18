@@ -6,7 +6,7 @@ class BookRepository {
     constructor(){
         this.db = connect();
 
-        this.db.sequelize.sync({ force: true }).then(() => {
+        this.db.sequelize.sync().then(() => {
                 console.log("DB is working!");
         });
     }

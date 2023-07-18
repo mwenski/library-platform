@@ -2,7 +2,7 @@ module.exports = (sequelize, DataTypes, Model) => {
     class Copies extends Model {}
 
     Copies.init({
-        id: {
+        copyId: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true
@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes, Model) => {
             allowNull: false,
             references: {
                 model: 'books',
-                key: 'id'
+                key: 'bookId'
             }
         },
         signature: {

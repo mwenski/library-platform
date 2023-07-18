@@ -2,7 +2,7 @@ module.exports = (sequelize, DataTypes, Model) => {
     class Books extends Model {}
 
     Books.init({
-        id: {
+        bookId: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true
