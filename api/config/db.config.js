@@ -1,5 +1,7 @@
 const { Sequelize, Model, DataTypes } = require('sequelize');
 
+db = {}
+
 const connect = () => {
     const hostName = process.env.HOST;
     const userName = process.env.USER;
@@ -28,4 +30,9 @@ const connect = () => {
     return db;
 }
 
-module.exports = { connect };
+db = connect();
+db.sequelize.sync({ force: true }).then(() => {
+    console.log('Everything is fine with DB!');
+});
+
+module.exports = { db };

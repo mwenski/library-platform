@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 9000;
 app.use(bodyParser.json);
 
 app.use(require('./routers/book.router'));
-//app.use(require('./routers/copy.router'));
+app.use(require('./routers/copy.router'));
 
 app.get("/", (req, res) => {
     res.send("Server is working!");

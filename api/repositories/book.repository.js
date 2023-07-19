@@ -1,19 +1,12 @@
-const { connect } = require('../config/db.config');
+const { db } = require('../config/db.config');
 
 class BookRepository {
-    db = {};
 
-    constructor(){
-        this.db = connect();
-
-        this.db.sequelize.sync().then(() => {
-                console.log("DB is working!");
-        });
-    }
+    constructor(){}
 
     async getBooks(){
         try{
-            const books = await this.db.books.findAll();
+            const books = await db.books.findAll();
             console.log("books: ", books);
             return books;
         }catch(err){
@@ -27,7 +20,7 @@ class BookRepository {
 
         try{
             // book.createdate = new Date().toISOString();
-            data = await this.db.books.create(book);
+            data = await db.books.create(book);
         }catch(err){
             console.log("Error: ", err);
         }
@@ -40,9 +33,9 @@ class BookRepository {
 
         try{
             // book.updatedate = new Date().toISOString();
-            data = await this.db.books.update({...book}, {
+            data = await db.books.update({...book}, {
                 where: {
-                    id: book.id
+                    bookId: book.id
                 }
             });
         }catch(err){
@@ -56,9 +49,9 @@ class BookRepository {
         let data = {}
 
         try{
-            data = await this.db.books.destroy({
+            data = await db.books.destroy({
                 where: {
-                    id: bookId
+                    bookId: bookId
                 }
             });
         }catch(err){

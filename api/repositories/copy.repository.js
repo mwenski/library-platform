@@ -1,19 +1,12 @@
-const { connect } = require('../config/db.config');
+const { db } = require('../config/db.config');
 
 class CopyRepository {
-    db = {};
 
-    constructor(){
-        this.db = connect();
-        
-        this.db.sequelize.sync({ force: true }).then(() => {
-            console.log("Drop and re-sync db");
-        });
-    }
+    constructor(){}
 
     async getCopies(){
         try{
-            const copies = await this.db.copies.findAll();
+            const copies = await db.copies.findAll();
             console.log("copies: ", copies);
             return copies;
         }catch(err){
@@ -26,7 +19,7 @@ class CopyRepository {
         let data = {};
 
         try{
-            data = await this.db.copies.create(copy);
+            data = await db.copies.create(copy);
         }catch(err){
             console.log("Error: ", err);
         }
@@ -38,9 +31,9 @@ class CopyRepository {
         let data = {};
 
         try{
-            data = await this.db.copies.update({...copy}, {
+            data = await db.copies.update({...copy}, {
                 where: {
-                    id: copy.id
+                    copyId: copy.id
                 }
             });
         }catch(err){
@@ -54,9 +47,9 @@ class CopyRepository {
         let data = {}
 
         try{
-            data = await this.db.copies.destroy({
+            data = await db.copies.destroy({
                 where: {
-                    id: copyId
+                    copyId: copyId
                 }
             });
         }catch(err){

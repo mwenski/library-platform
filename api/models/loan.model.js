@@ -2,7 +2,7 @@ module.exports = (sequelize, DataTypes, Model) => {
     class Loans extends Model {}
 
     Loans.init({
-        id: {
+        loanId: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true
@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes, Model) => {
             allowNull: false,
             references: {
                 model: 'copies',
-                key: 'id'
+                key: 'copyId'
             }
         },
         borrowerId: {
@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes, Model) => {
             allowNull: false,
             references: {
                 model: 'borrowers',
-                key: 'id'
+                key: 'borrowerId'
             }
         },
         dateBorrowed: {
