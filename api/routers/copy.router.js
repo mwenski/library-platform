@@ -9,11 +9,11 @@ copyRouter.get("/copies", (req, res) => {
 });
 
 copyRouter.post("/copy", (req, res) => {
-    copyController.createCopy(req.body.book).then(data => res.json(data));
+    copyController.createCopy(req.body.copy).then(data => res.json(data));
 });
 
 copyRouter.put("/copy", (req, res) => {
-    copyController.updateCopy(req.body.book).then(data => res.json(data));
+    copyController.updateCopy(req.body.copy).then(data => res.json(data));
 });
 
 copyRouter.delete("/copy/:id", (req, res) => {

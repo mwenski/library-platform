@@ -10,6 +10,8 @@ app.use(bodyParser.json);
 
 app.use(require('./routers/book.router'));
 app.use(require('./routers/copy.router'));
+app.use(require('./routers/borrower.router'));
+app.use(require('./routers/loan.router'));
 
 app.get("/", (req, res) => {
     res.send("Server is working!");
