@@ -14,6 +14,16 @@ class LoanRepository {
             return [];
         }
     }
+    
+    async getLoanById(loanId){
+        try{
+            const loan = await db.loans.findByPk(loanId);
+            return loan;
+        }catch(err){
+            console.log(err);
+            return {};
+        }
+    }
 
     async createLoan(loan){
         let data = {};

@@ -6,6 +6,11 @@ class CopyController{
         return await copyService.getCopies();
     }
 
+    async getCopyById(copyId){
+
+        return await copyService.getCopyById(copyId);
+    }
+
     async createCopy(copy){
 
         return await copyService.createCopy(copy);

@@ -8,6 +8,10 @@ class BorrowerService{
         return await borrowerRepository.getBorrowers();
     }
 
+    async getBorrowerById(borrowerId){
+        return await borrowerRepository.getBorrowerById(borrowerId);
+    }
+
     async createBorrower(borrower){
         return await borrowerRepository.createBorrower(borrower);
     }

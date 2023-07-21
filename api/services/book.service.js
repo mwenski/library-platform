@@ -8,6 +8,10 @@ class BookService{
         return await bookRepository.getBooks();
     }
 
+    async getBookById(bookId){
+        return await bookRepository.getBookById(bookId);
+    }
+
     async createBook(book){
         return await bookRepository.createBook(book);
     }

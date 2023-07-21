@@ -6,6 +6,11 @@ class BorrowerController{
         return await borrowerService.getBorrowers();
     }
 
+    async getBorrowerById(borrowerId){
+
+        return await borrowerService.getBorrowerById(borrowerId);
+    }
+
     async createBorrower(borrower){
 
         return await borrowerService.createBorrower(borrower);

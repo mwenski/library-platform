@@ -8,6 +8,10 @@ class LoanService{
         return await loanRepository.getLoans();
     }
 
+    async getLoanById(loanId){
+        return await loanRepository.getLoanById(loanId);
+    }
+
     async createLoan(loan){
         return await loanRepository.createLoan(loan);
     }

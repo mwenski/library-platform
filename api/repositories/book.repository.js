@@ -15,11 +15,20 @@ class BookRepository {
         }
     }
 
+    async getBookById(bookId){
+        try{
+            const book = await db.books.findByPk(bookId);
+            return book;
+        }catch(err){
+            console.log(err);
+            return {};
+        }
+    }
+
     async createBook(book){
         let data = {};
 
         try{
-            // book.createdate = new Date().toISOString();
             data = await db.books.create(book);
         }catch(err){
             console.log("Error: ", err);
@@ -32,7 +41,6 @@ class BookRepository {
         let data = {};
 
         try{
-            // book.updatedate = new Date().toISOString();
             data = await db.books.update({...book}, {
                 where: {
                     bookId: book.id

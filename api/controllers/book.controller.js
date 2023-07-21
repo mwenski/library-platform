@@ -7,6 +7,11 @@ class BookController{
         return await bookService.getBooks();
     }
 
+    async getBookById(bookId){
+
+        return await bookService.getBookById(bookId);
+    }
+
     async createBook(book){
 
         return await bookService.createBook(book);

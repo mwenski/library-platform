@@ -14,6 +14,16 @@ class CopyRepository {
             return [];
         }
     }
+    
+    async getCopyById(copyId){
+        try{
+            const copy = await db.copies.findByPk(copyId);
+            return copy;
+        }catch(err){
+            console.log(err);
+            return {};
+        }
+    }
 
     async createCopy(copy){
         let data = {};

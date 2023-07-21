@@ -6,6 +6,11 @@ class LoanController{
         return await loanService.getLoans();
     }
 
+    async getLoanById(loanId){
+
+        return await loanService.getLoanById(loanId);
+    }
+
     async createLoan(loan){
 
         return await loanService.createLoan(loan);

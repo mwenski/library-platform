@@ -15,6 +15,16 @@ class BorrowerRepository {
         }
     }
 
+    async getBorrowerById(borrowerId){
+        try{
+            const borrower = await db.borrowers.findByPk(borrowerId);
+            return borrower;
+        }catch(err){
+            console.log(err);
+            return {};
+        }
+    }
+
     async createBorrower(borrower){
         let data = {};
 

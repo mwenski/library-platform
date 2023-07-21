@@ -8,6 +8,10 @@ class CopyService{
         return await copyRepository.getCopies();
     }
 
+    async getCopyById(copyId){
+        return await copyRepository.getCopyById(copyId);
+    }
+
     async createCopy(copy){
         return await copyRepository.createCopy(copy);
     }
