@@ -7,6 +7,14 @@ module.exports = (sequelize, DataTypes, Model) => {
             autoIncrement: true,
             primaryKey: true
         },
+        bookId: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'books',
+                key: 'bookId'
+            }
+        },
         copyId: {
             type: DataTypes.INTEGER,
             allowNull: false,
