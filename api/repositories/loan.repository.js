@@ -25,6 +25,20 @@ class LoanRepository {
         }
     }
 
+    async getLoansByBorrowerId(borrowerId){
+        try{
+            const loans = await db.loans.findAll({
+                where: {
+                    borrowerId: borrowerId
+                }
+            });
+            return loans;
+        }catch(err){
+            console.log(err);
+            return [];
+        }
+    }
+
     async createLoan(loan){
         let data = {};
 

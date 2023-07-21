@@ -25,6 +25,20 @@ class CopyRepository {
         }
     }
 
+    async getCopiesByBookId(bookId){
+        try{
+            const copies = await db.copies.findAll({
+                where: {
+                    bookId: bookId
+                }
+            });
+            return copies;
+        }catch(err){
+            console.log(err);
+            return [];
+        }
+    }
+
     async createCopy(copy){
         let data = {};
 
