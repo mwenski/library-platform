@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import '../App.css';
 import { getAllBooks } from "../services/BookService";
+import BookRow from "./books/BookRow";
+
 
 function Home(){
     const [books, setBooks] = useState([]);
@@ -12,9 +15,14 @@ function Home(){
     }, []);
 
     return (
-        <p>
-            {books}
-        </p>
+        <div>
+            <Link to="/createBook">Add a book!</Link>
+            <table>
+                {
+                    books.map(book => <BookRow book={book} />)
+                }
+            </table>
+        </div>
     );
 }
 
