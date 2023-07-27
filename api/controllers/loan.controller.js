@@ -26,7 +26,7 @@ class LoanController{
         return await loanService.updateLoan(loan);
     }
 
-    async deleteCopy(loanId){
+    async deleteLoan(loanId){
 
         return await loanService.deleteLoan(loanId);
     }

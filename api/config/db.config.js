@@ -6,8 +6,8 @@ const connect = () => {
     const hostName = process.env.HOST;
     const userName = process.env.USER;
     const password = process.env.PASSWORD;
-    const database = process.env.DB;
-    const dialect = process.env.DIALECT;
+    const database = 'library';
+    const dialect = 'postgres';
 
     const sequelize = new Sequelize(database, userName, password, {
         host: hostName,

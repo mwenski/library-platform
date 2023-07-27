@@ -4,7 +4,7 @@ const copyController = require('../controllers/copy.controller');
 
 const copyRouter = Router();
 
-copyRouter.get("/copy", (req, res) => {
+copyRouter.get("/copies", (req, res) => {
     copyController.getCopies().then(data => res.json(data));
 });
 

@@ -4,7 +4,7 @@ const loanController = require('../controllers/loan.controller');
 
 const loanRouter = Router();
 
-loanRouter.get("/loan", (req, res) => {
+loanRouter.get("/loans", (req, res) => {
     loanController.getLoans().then(data => res.json(data));
 });
 
