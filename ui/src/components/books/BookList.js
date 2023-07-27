@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function BookList(props){
+
     return(
         <table>
             {
@@ -18,6 +19,9 @@ function BookList(props){
                             </td>
                             <td>
                                 {book.publicationYear}
+                            </td>
+                            <td>
+                                <button type="button" onClick={(e) => props.deleteBook(book.bookId)}>Delete</button>
                             </td>
                         </tr>
                     );

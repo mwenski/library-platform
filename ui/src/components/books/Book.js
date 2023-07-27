@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { getBookById } from "../../services/BookService";
 import BookInfo from "./BookInfo";
 import CopyList from "../copies/CopyList";
-import { getCopiesByBookId } from "../../services/CopyService";
+import { getCopiesByBookId, deleteCopy } from "../../services/CopyService";
 import CreateCopy from "../copies/CreateCopy";
 
 function Book(){
@@ -23,11 +23,17 @@ function Book(){
         });
     }, [id]);
 
+    function delCopy(id){
+        deleteCopy(id).then(res => {
+            console.log(res);
+        })
+    }
+
     return (
         <div>
             <BookInfo book={book} />
             <CreateCopy id={book.bookId}/>
-            <CopyList copies={copies} />
+            <CopyList copies={copies} deleteCopy={delCopy}/>
         </div>
     );
 }

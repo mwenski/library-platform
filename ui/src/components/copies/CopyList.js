@@ -13,6 +13,9 @@ function CopyList(props){
                             <td>
                                 {copy.loanStatus}
                             </td>
+                            <td>
+                                <button type="button" onClick={(e) => props.deleteCopy(copy.copyId)}>Delete</button>
+                            </td>
                         </tr>
                     )
                 })
