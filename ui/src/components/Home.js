@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import '../App.css';
 import { getAllBooks } from "../services/BookService";
-import BookRow from "./books/BookRow";
+import BookList from "./books/BookList";
 
 
 function Home(){
@@ -16,12 +16,8 @@ function Home(){
 
     return (
         <div>
-            <Link to="/createBook">Add a book!</Link>
-            <table>
-                {
-                    books.map(book => <BookRow book={book} />)
-                }
-            </table>
+            <Link to="/create-book">Add a book!</Link>
+            <BookList books={books} />
         </div>
     );
 }

@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import Book from './components/books/Book';
 import CreateBook from './components/books/CreateBook';
+import CreateCopy from './components/copies/CreateCopy';
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/book/:id' element={<Book />} />
-          <Route path='/createBook' element={<CreateBook />} />
+          <Route path='/create-book' element={<CreateBook />} />
+          
         </Routes>
       </div>
     </BrowserRouter>
