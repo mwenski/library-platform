@@ -57,7 +57,7 @@ class CopyRepository {
         try{
             data = await db.copies.update({...copy}, {
                 where: {
-                    copyId: copy.id
+                    copyId: copy.copyId
                 }
             });
         }catch(err){

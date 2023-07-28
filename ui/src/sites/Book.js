@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getBookById } from "../../services/BookService";
-import BookInfo from "./BookInfo";
-import CopyList from "../copies/CopyList";
-import { getCopiesByBookId, deleteCopy } from "../../services/CopyService";
-import CreateCopy from "../copies/CreateCopy";
+import { getBookById } from "../services/BookService";
+import { getCopiesByBookId, deleteCopy } from "../services/CopyService";
+import BookInfo from "../components/books/BookInfo";
+import CopyList from "../components/copies/CopyList";
+import CreateCopy from "../components/copies/CreateCopy";
 
 function Book(){
     const { id } = useParams();

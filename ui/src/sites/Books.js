@@ -1,22 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import '../App.css';
 import { getAllBooks, deleteBook } from "../services/BookService";
-import BookList from "./books/BookList";
+import BookList from "../components/books/BookList";
 
 
-function Home(){
+function Books(){
     const [books, setBooks] = useState([]);
+    const [numberOfBooks, setNumberOfBooks] = useState([]);
 
     useEffect(() => {
         getAllBooks().then(books => {
             setBooks(books);
         })
-    }, []);
+    }, [numberOfBooks]);
 
     function delBook(id){
         deleteBook(id).then(res => {
             console.log(res);
+            setNumberOfBooks(numberOfBooks - 1);
         })
     }
 
@@ -28,4 +29,4 @@ function Home(){
     );
 }
 
-export default Home;
+export default Books;

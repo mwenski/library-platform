@@ -43,7 +43,7 @@ class BorrowerRepository {
         try{
             data = await db.borrowers.update({...borrower}, {
                 where: {
-                    borrowerId: borrower.id
+                    borrowerId: borrower.borrowerId
                 }
             });
         }catch(err){

@@ -43,7 +43,7 @@ class BookRepository {
         try{
             data = await db.books.update({...book}, {
                 where: {
-                    bookId: book.id
+                    bookId: book.bookId
                 }
             });
         }catch(err){

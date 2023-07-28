@@ -1,17 +1,39 @@
-import React, { useState } from "react";
-import { createBook } from "../../services/BookService";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { getBookById, createBook, updateBook } from "../services/BookService";
 
-function CreateBook(){
+function CreateUpdateBook(){
+    const { id } = useParams();
+
+    const [book, setBook] = useState({});
+    useEffect(() => {
+        if(id){
+            getBookById(id).then(book => {
+                setBook(book);
+            });
+        }
+    }, [id]);
+
     const [title, setTitle] = useState("");
     const [author, setAuthor] = useState("");
     const [coverUrl, setCoverUrl] = useState("");
     const [description, setDescription] = useState("");
     const [publisher, setPublisher] = useState("");
     const [isbn, setIsbn] = useState("");
-    const [publicationYear, setPublicationYear] = useState(2000);
-    const [numberOfPages, setNumberOfPages] = useState(100);
+    const [publicationYear, setPublicationYear] = useState(0);
+    const [numberOfPages, setNumberOfPages] = useState(0);
+    useEffect(() => {
+        setTitle(book.title);
+        setAuthor(book.author);
+        setCoverUrl(book.coverUrl);
+        setDescription(book.description);
+        setPublisher(book.publisher);
+        setIsbn(book.isbn);
+        setPublicationYear(book.publicationYear);
+        setNumberOfPages(book.numberOfPages);
+    }, [book]);
 
-    let handleSubmit = (e) => {
+    function addBook(){
         const book = {
             title: title,
             author: author,
@@ -26,12 +48,41 @@ function CreateBook(){
         createBook(book).then((res) => {
             console.log(res);
         })
+    }
 
+    function updBook(){
+        const book = {
+            bookId: id,
+            title: title,
+            author: author,
+            coverUrl: coverUrl,
+            description: description,
+            publisher: publisher,
+            isbn: isbn,
+            publicationYear: publicationYear,
+            numberOfPages: numberOfPages
+        }
+
+        updateBook(book).then((res) => {
+            console.log(res);
+        })
+    }
+
+
+    
+
+    
+    let handleSubmit = (e) => {
+        if(id){
+            updBook();
+        }else{
+            addBook();
+        }
     };
 
     return(
         <div>
-            <h2>Add a book!</h2>
+            <h2>{id ? 'Update a book!' : 'Add a book'}</h2>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>Title</label>
@@ -59,14 +110,14 @@ function CreateBook(){
                 </div>
                 <div>
                     <label>Publication year</label>
-                    <input type="number" value={publicationYear} placeholder="2000" onChange={(e) => setPublicationYear(e.target.value)} />
+                    <input type="number" value={publicationYear} placeholder={publicationYear} onChange={(e) => setPublicationYear(e.target.value)} />
                 </div>
                 <div>
                     <label>Number of pages</label>
-                    <input type="number" value={numberOfPages} placeholder="100" onChange={(e) => setNumberOfPages(e.target.value)} />
+                    <input type="number" value={numberOfPages} placeholder={numberOfPages} onChange={(e) => setNumberOfPages(e.target.value)} />
                 </div>
                 
-                <button type="submit">Create</button>
+                <button type="submit">{id ? 'Update' : 'Create'}</button>
 
                 
             </form>
@@ -74,4 +125,4 @@ function CreateBook(){
     );
 }
 
-export default CreateBook;
+export default CreateUpdateBook

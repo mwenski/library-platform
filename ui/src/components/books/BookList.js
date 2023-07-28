@@ -23,6 +23,9 @@ function BookList(props){
                             <td>
                                 <button type="button" onClick={(e) => props.deleteBook(book.bookId)}>Delete</button>
                             </td>
+                            <td>
+                                <Link to={{ pathname: `/update-book/${book.bookId}`}}>Edit</Link>
+                            </td>
                         </tr>
                     );
                 })
