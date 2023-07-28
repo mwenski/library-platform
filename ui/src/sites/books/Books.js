@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { getAllBooks, deleteBook } from "../services/BookService";
-import BookList from "../components/books/BookList";
+import { getAllBooks, deleteBook } from "../../services/BookService";
+import BookList from "../../components/books/BookList";
 
 
 function Books(){

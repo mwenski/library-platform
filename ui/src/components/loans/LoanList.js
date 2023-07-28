@@ -1,21 +1,24 @@
 import React from "react";
 
-function CopyList(props){
+function LoanList(props){
     return(
         <table>
             <tbody>
                 {
-                    props.copies.map(copy => {
+                    props.loans.map(loan => {
                         return(
-                            <tr key={copy.copyId}>
+                            <tr key={loan.loanId}>
                                 <td>
-                                    {copy.signature}
+                                    {loan.bookId}
                                 </td>
                                 <td>
-                                    {copy.loanStatus}
+                                    {loan.copyId}
                                 </td>
                                 <td>
-                                    <button type="button" onClick={(e) => props.deleteCopy(copy.copyId)}>Delete</button>
+                                    {loan.dateBorrowed}
+                                </td>
+                                <td>
+                                    {loan.dateReturned ?? loan.dueDate}
                                 </td>
                             </tr>
                         )
@@ -26,4 +29,4 @@ function CopyList(props){
     );
 }
 
-export default CopyList;
+export default LoanList;

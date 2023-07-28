@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getBookById, createBook, updateBook } from "../services/BookService";
+import { getBookById, createBook, updateBook } from "../../services/BookService";
 
 function CreateUpdateBook(){
     const { id } = useParams();
