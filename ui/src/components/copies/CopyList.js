@@ -1,4 +1,5 @@
 import React from "react";
+import CreateUpdateCopy from "./CreateUpdateCopy";
 
 function CopyList(props){
     return(
@@ -16,6 +17,9 @@ function CopyList(props){
                                 </td>
                                 <td>
                                     <button type="button" onClick={(e) => props.deleteCopy(copy.copyId)}>Delete</button>
+                                </td>
+                                <td>
+                                    <CreateUpdateCopy copy={copy} />
                                 </td>
                             </tr>
                         )

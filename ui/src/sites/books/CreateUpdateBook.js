@@ -67,10 +67,6 @@ function CreateUpdateBook(){
             console.log(res);
         })
     }
-
-
-    
-
     
     let handleSubmit = (e) => {
         if(id){
