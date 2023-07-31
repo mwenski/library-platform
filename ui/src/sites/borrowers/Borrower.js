@@ -15,6 +15,11 @@ function Borrower(){
         });
     }, [id]);
 
+    const [loanStatus, setLoanStatus] = useState({});
+    function handleLoanStatus(res){
+        setLoanStatus(res)
+    }
+
     const [loansBorrowed, setLoansBorrowed] = useState([]);
     const [loansReturned, setLoansReturned] = useState([]);
     useEffect(() => {
@@ -26,13 +31,13 @@ function Borrower(){
                 loans.filter(loan => loan.status === "returned")
             );
         });
-    }, [id]);
+    }, [id, loanStatus]);
 
     return (
         <div>
             <BorrowerInfo borrower={borrower} />
             <h2>Books borrowed</h2>
-            <LoanList loans={loansBorrowed} />
+            <LoanList loans={loansBorrowed} handleLoanStatus={handleLoanStatus}/>
             <h2>Books returned</h2>
             <LoanList loans={loansReturned} />
         </div>
