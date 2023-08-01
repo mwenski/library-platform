@@ -1,11 +1,15 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const passport = require('passport');
 require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 9000;
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
 
 app.use(require('./routers/book.router'));
 app.use(require('./routers/borrower.router'));

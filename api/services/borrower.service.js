@@ -1,29 +1,87 @@
-const borrowerRepository = require('../repositories/borrower.repository');
+const { db } = require('../config/db.config');
 
 class BorrowerService{
 
     constructor(){}
 
     async getBorrowers(){
-        return await borrowerRepository.getBorrowers();
+        try{
+            const borrowers = await db.borrowers.findAll();
+            console.log("borrowers: ", borrowers);
+            return borrowers;
+        }catch(err){
+            console.log(err);
+            return [];
+        }
+    }
+
+    async getBorrower(borrower){
+        let data = {};
+        console.log(borrower);
+        try{
+            data = await db.borrower.findOne({
+                where: borrower,
+            });
+        }catch(err){
+            console.log(err);
+        }
+
+        return data;
     }
 
     async getBorrowerById(borrowerId){
-        return await borrowerRepository.getBorrowerById(borrowerId);
+        try{
+            const borrower = await db.borrowers.findByPk(borrowerId);
+            return borrower;
+        }catch(err){
+            console.log(err);
+            return {};
+        }
     }
 
     async createBorrower(borrower){
-        return await borrowerRepository.createBorrower(borrower);
+        let data = {};
+
+        try{
+            data = await db.borrowers.create(borrower);
+        }catch(err){
+            console.log("Error: ", err);
+        }
+
+        return data;
     }
 
     async updateBorrower(borrower){
-        return await borrowerRepository.updateBorrower(borrower);
+        let data = {};
+
+        try{
+            data = await db.borrowers.update({...borrower}, {
+                where: {
+                    borrowerId: borrower.borrowerId
+                }
+            });
+        }catch(err){
+            console.log("Error: ", err);
+        }
+
+        return data;
     }
 
     async deleteBorrower(borrowerId){
-        return await borrowerRepository.deleteBorrower(borrowerId);
-    }
+        let data = {}
 
+        try{
+            data = await db.borrowers.destroy({
+                where: {
+                    borrowerId: borrowerId
+                }
+            });
+        }catch(err){
+            console.log("Error: ", err);
+        }
+
+        return data;
+    }
 }
 
-module.exports=new BorrowerService();
+module.exports = new BorrowerService();

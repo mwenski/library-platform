@@ -1,33 +1,87 @@
-const loanRepository = require('../repositories/loan.repository');
+const { db } = require('../config/db.config');
 
 class LoanService{
 
     constructor(){}
 
     async getLoans(){
-        return await loanRepository.getLoans();
+        try{
+            const loans = await db.loans.findAll();
+            console.log("loans: ", loans);
+            return loans;
+        }catch(err){
+            console.log(err);
+            return [];
+        }
     }
-
+    
     async getLoanById(loanId){
-        return await loanRepository.getLoanById(loanId);
+        try{
+            const loan = await db.loans.findByPk(loanId);
+            return loan;
+        }catch(err){
+            console.log(err);
+            return {};
+        }
     }
 
     async getLoansByBorrowerId(borrowerId){
-        return await loanRepository.getLoansByBorrowerId(borrowerId);
+        try{
+            const loans = await db.loans.findAll({
+                where: {
+                    borrowerId: borrowerId
+                }
+            });
+            return loans;
+        }catch(err){
+            console.log(err);
+            return [];
+        }
     }
 
     async createLoan(loan){
-        return await loanRepository.createLoan(loan);
+        let data = {};
+
+        try{
+            data = await db.loans.create(loan);
+        }catch(err){
+            console.log("Error: ", err);
+        }
+
+        return data;
     }
 
     async updateLoan(loan){
-        return await loanRepository.updateLoan(loan);
+        let data = {};
+
+        try{
+            data = await db.loans.update({...loan}, {
+                where: {
+                    loanId: loan.loanId
+                }
+            });
+        }catch(err){
+            console.log("Error: ", err);
+        }
+
+        return data;
     }
 
     async deleteLoan(loanId){
-        return await loanRepository.deleteLoan(loanId);
-    }
+        let data = {}
 
+        try{
+            data = await db.loans.destroy({
+                where: {
+                    loanId: loanId
+                }
+            });
+        }catch(err){
+            console.log("Error: ", err);
+        }
+
+        return data;
+    }
 }
 
-module.exports=new LoanService();
+module.exports = new LoanService();

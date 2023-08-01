@@ -1,33 +1,87 @@
-const copyRepository = require('../repositories/copy.repository');
+const { db } = require('../config/db.config');
 
 class CopyService{
 
     constructor(){}
 
     async getCopies(){
-        return await copyRepository.getCopies();
+        try{
+            const copies = await db.copies.findAll();
+            console.log("copies: ", copies);
+            return copies;
+        }catch(err){
+            console.log(err);
+            return [];
+        }
     }
-
+    
     async getCopyById(copyId){
-        return await copyRepository.getCopyById(copyId);
+        try{
+            const copy = await db.copies.findByPk(copyId);
+            return copy;
+        }catch(err){
+            console.log(err);
+            return {};
+        }
     }
 
     async getCopiesByBookId(bookId){
-        return await copyRepository.getCopiesByBookId(bookId);
+        try{
+            const copies = await db.copies.findAll({
+                where: {
+                    bookId: bookId
+                }
+            });
+            return copies;
+        }catch(err){
+            console.log(err);
+            return [];
+        }
     }
 
     async createCopy(copy){
-        return await copyRepository.createCopy(copy);
+        let data = {};
+
+        try{
+            data = await db.copies.create(copy);
+        }catch(err){
+            console.log("Error: ", err);
+        }
+
+        return data;
     }
 
     async updateCopy(copy){
-        return await copyRepository.updateCopy(copy);
+        let data = {};
+
+        try{
+            data = await db.copies.update({...copy}, {
+                where: {
+                    copyId: copy.copyId
+                }
+            });
+        }catch(err){
+            console.log("Error: ", err);
+        }
+
+        return data;
     }
 
     async deleteCopy(copyId){
-        return await copyRepository.deleteCopy(copyId);
-    }
+        let data = {}
 
+        try{
+            data = await db.copies.destroy({
+                where: {
+                    copyId: copyId
+                }
+            });
+        }catch(err){
+            console.log("Error: ", err);
+        }
+
+        return data;
+    }
 }
 
-module.exports=new CopyService();
+module.exports = new CopyService();

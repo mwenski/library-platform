@@ -29,6 +29,9 @@ const connect = () => {
     db.borrowers = require('../models/borrower.model')(sequelize, DataTypes, Model);
     db.loans = require('../models/loan.model')(sequelize, DataTypes, Model);
 
+    // db.books.belongsTo(db.loans, {foreignKey: 'bookId'});
+    // db.loans.hasOne(db.books, {foreignKey: 'bookId'});
+
     return db;
 }
 

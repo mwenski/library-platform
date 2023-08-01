@@ -8,6 +8,10 @@ borrowerRouter.get("/borrowers", (req, res) => {
     borrowerController.getBorrowers().then(data => res.json(data));
 });
 
+borrowerRouter.get("/borrower", (req, res) => {
+    borrowerController.getBorrower(req.body.borrower).then(data => res.json(data));
+});
+
 borrowerRouter.get("/borrower/id/:id", (req, res) => {
     borrowerController.getBorrowerById(req.params.id).then(data => res.json(data));
 });
