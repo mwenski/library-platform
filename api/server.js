@@ -6,10 +6,12 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 9000;
 
+require('./config/auth.config')(passport);
+app.use(passport.initialize());
+//app.use(passport.session());
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-
 
 app.use(require('./routers/book.router'));
 app.use(require('./routers/borrower.router'));
