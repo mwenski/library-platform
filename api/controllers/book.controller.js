@@ -1,5 +1,4 @@
 const bookService = require('../services/book.service');
-//pipe?
 
 class BookController{
     async getBooks(){
