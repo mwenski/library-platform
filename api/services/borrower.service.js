@@ -15,13 +15,12 @@ class BorrowerService{
         }
     }
 
-    async getBorrower(borrower){
+    async getBorrower(email){
         let data = {};
-        console.log(borrower);
         try{
-            data = await db.borrower.findOne({
+            data = await db.borrowers.findOne({
                 where: {
-                    email: borrower.email
+                    email: email
                 },
             });
         }catch(err){
@@ -45,7 +44,6 @@ class BorrowerService{
         let data = {};
 
         try{
-            //borrower.password = await bcrypt.hash(borrower.password, 10);
             data = await db.borrowers.create(borrower);
         }catch(err){
             console.log("Error: ", err);

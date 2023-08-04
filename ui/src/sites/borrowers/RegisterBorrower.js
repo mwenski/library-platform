@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { createBorrower } from "../../services/BorrowerService";
+import { register } from "../../services/AuthService";
 
 function RegisterBorrower(){
     const [firstName, setFirstName] = useState("");
@@ -19,8 +19,9 @@ function RegisterBorrower(){
             password: password
         }
 
-        createBorrower(borrower).then(
-            console.log("Borrower created!")
+        register(borrower).then((res) => {
+            console.log(res);
+        }
         );
     }
 

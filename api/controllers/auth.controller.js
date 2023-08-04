@@ -8,7 +8,7 @@ class AuthController{
         passport.authenticate('local', (err, borrower, message) => {
             if (err) throw err;
 
-            if(!user){
+            if(!borrower){
                 res.status(400).json({
                     message,
                     data: null
@@ -43,9 +43,9 @@ class AuthController{
     }
 
     async register(req, res){
-        borrower = req.body.borrower;
+        var borrower = req.body.borrower;
         try{
-            borrower.password = bcrypt.hash(borrower.password, 10);
+            borrower.password = await bcrypt.hash(borrower.password, 10);
             await borrowerService.createBorrower(borrower);
             res.status(200).json({
                 message: "Registration success!",

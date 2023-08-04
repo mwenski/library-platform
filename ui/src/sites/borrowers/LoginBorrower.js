@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { login } from "../../services/AuthService";
 
 function LoginBorrower(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     let handleSubmit = (e) => {
-        console.log("You logged in!");
+        login(email, password).then((res) => {
+            console.log(res);
+        });
     }
 
     return(
