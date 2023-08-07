@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { getCopiesByBookId, updateCopy, deleteCopy } from "../../services/CopyService";
-import { createLoan } from "../../services/LoanService";
+import { getCopiesByBookId, deleteCopy } from "../../services/CopyService";
+import { borrowBook } from "../../services/LibraryService";
 import CopyRow from "./CopyRow";
 
-function CopyList({bookId}){
+function CopyList({ bookId }){
     const [copies, setCopies] = useState([]);
     const [numberOfCopies, setNumberOfCopies] = useState([]);
     const [copyBorrowed, setCopyBorrowed] = useState({});
     useEffect(() => {
-        getCopiesByBookId(bookId).then(copies => {
-            setCopies(copies);
+        getCopiesByBookId(bookId).then(res => {
+            setCopies(res.data);
         });
     }, [bookId, numberOfCopies, copyBorrowed]);
 
     function delCopy(copyId){
-        deleteCopy(copyId).then(res => {
-            setNumberOfCopies(numberOfCopies - 1);
-        })
+        deleteCopy(copyId).then(
+            setNumberOfCopies(numberOfCopies - 1)
+        )
     }
 
-    function borrowBook(copyId){
+    function borBook(copyId){
         let copy = {
             copyId: copyId,
             loanStatus: "borrowed"
@@ -34,10 +34,8 @@ function CopyList({bookId}){
             status: "borrowed"
         };
 
-        createLoan(loan).then(
-            updateCopy(copy).then(res => {
-                setCopyBorrowed(res)
-            })
+        borrowBook(loan, copy).then(res =>
+            setCopyBorrowed(res)
         )
     }
     
@@ -46,7 +44,7 @@ function CopyList({bookId}){
             <tbody>
                 {
                     copies.map(copy => 
-                        <CopyRow copy={copy} deleteCopy={delCopy} borrowBook={borrowBook}/>
+                        <CopyRow copy={copy} deleteCopy={delCopy} borrowBook={borBook}/>
                     )
                 }
             </tbody>

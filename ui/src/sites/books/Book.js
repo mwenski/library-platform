@@ -10,8 +10,8 @@ function Book(){
 
     const [book, setBook] = useState({});
     useEffect(() => {
-        getBookById(id).then(book => {
-            setBook(book);
+        getBookById(id).then(res => {
+            setBook(res.data);
         });
     }, [id]);
 

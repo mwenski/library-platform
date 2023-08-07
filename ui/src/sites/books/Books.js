@@ -9,8 +9,8 @@ function Books(){
     const [numberOfBooks, setNumberOfBooks] = useState([]);
 
     useEffect(() => {
-        getAllBooks().then(books => {
-            setBooks(books);
+        getAllBooks().then(res => {
+            setBooks(res.data);
         })
     }, [numberOfBooks]);
 

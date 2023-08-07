@@ -8,15 +8,6 @@ export async function getBorrowerById(borrowerId){
     return await response.json();
 }
 
-export async function createBorrower(data){
-    const response = await fetch('/borrower', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({borrower: data})
-    });
-    return await response.json();
-}
-
 export async function updateBorrower(data){
     const response = await fetch('/borrower', {
         method: 'PUT',

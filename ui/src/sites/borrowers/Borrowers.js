@@ -8,16 +8,15 @@ function Borrowers(){
     const [numberOfBorrowers, setNumberOfBorrowers] = useState([]);
 
     useEffect(() => {
-        getAllBorrowers().then(borrowers => {
-            setBorrowers(borrowers);
+        getAllBorrowers().then(res => {
+            setBorrowers(res.data);
         })
     }, [numberOfBorrowers]);
 
     function delBorrower(id){
-        deleteBorrower(id).then(res => {
-            console.log(res);
-            setNumberOfBorrowers(numberOfBorrowers - 1);
-        })
+        deleteBorrower(id).then(
+            setNumberOfBorrowers(numberOfBorrowers - 1)
+        )
     }
 
     return (

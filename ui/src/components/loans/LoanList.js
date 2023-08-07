@@ -1,11 +1,10 @@
 import React from "react";
-import { updateLoan } from "../../services/LoanService";
-import { updateCopy } from "../../services/CopyService";
+import { returnBook } from "../../services/LibraryService";
 import LoanRow from "./LoanRow";
 
 function LoanList(props){
 
-    function returnBook(loanId, copyId){
+    function retBook(loanId, copyId){
         let loan = {
             loanId: loanId,
             dateReturned: new Date(),
@@ -17,10 +16,8 @@ function LoanList(props){
             loanStatus: "available"
         }
 
-        updateLoan(loan).then(
-            updateCopy(copy).then(res => {
-                props.handleLoanStatus(res);
-            })
+        returnBook(loan, copy).then(res => 
+            props.handleLoanStatus(res)
         )
     }
     
@@ -29,7 +26,7 @@ function LoanList(props){
             <tbody>
                 {
                     props.loans.map(loan => 
-                        <LoanRow loan={loan} returnBook={returnBook} />
+                        <LoanRow loan={loan} returnBook={retBook} />
                     )
                 }
             </tbody>

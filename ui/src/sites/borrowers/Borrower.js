@@ -10,8 +10,8 @@ function Borrower(){
 
     const [borrower, setBorrower] = useState({});
     useEffect(() => {
-        getBorrowerById(id).then(borrower => {
-            setBorrower(borrower);
+        getBorrowerById(id).then(res => {
+            setBorrower(res.data);
         });
     }, [id]);
 
@@ -23,12 +23,12 @@ function Borrower(){
     const [loansBorrowed, setLoansBorrowed] = useState([]);
     const [loansReturned, setLoansReturned] = useState([]);
     useEffect(() => {
-        getLoansByBorrowerId(id).then(loans => {
+        getLoansByBorrowerId(id).then(res => {
             setLoansBorrowed(
-                loans.filter(loan => loan.status === "borrowed")
+                res.data.filter(loan => loan.status === "borrowed")
             );
             setLoansReturned(
-                loans.filter(loan => loan.status === "returned")
+                res.data.filter(loan => loan.status === "returned")
             );
         });
     }, [id, loanStatus]);
