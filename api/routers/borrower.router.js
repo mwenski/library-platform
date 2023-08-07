@@ -4,28 +4,10 @@ const borrowerController = require('../controllers/borrower.controller');
 
 const borrowerRouter = Router();
 
-borrowerRouter.get("/borrowers", (req, res) => {
-    borrowerController.getBorrowers().then(data => res.json(data));
-});
-
-borrowerRouter.get("/borrower", (req, res) => {
-    borrowerController.getBorrower(req.body.borrower).then(data => res.json(data));
-});
-
-borrowerRouter.get("/borrower/id/:id", (req, res) => {
-    borrowerController.getBorrowerById(req.params.id).then(data => res.json(data));
-});
-
-borrowerRouter.post("/borrower", (req, res) => {
-    borrowerController.createBorrower(req.body.borrower).then(data => res.json(data));
-});
-
-borrowerRouter.put("/borrower", (req, res) => {
-    borrowerController.updateBorrower(req.body.borrower).then(data => res.json(data));
-});
-
-borrowerRouter.delete("/borrower/id/:id", (req, res) => {
-    borrowerController.deleteBorrower(req.params.id).then(data => res.json(data));
-});
+borrowerRouter.get("/borrowers", borrowerController.getBorrowers);
+borrowerRouter.get("/borrower", borrowerController.getBorrower);
+borrowerRouter.get("/borrower/id/:id", borrowerController.getBorrowerById);
+borrowerRouter.put("/borrower", borrowerController.updateBorrower);
+borrowerRouter.delete("/borrower/id/:id", borrowerController.deleteBorrower);
 
 module.exports = borrowerRouter;

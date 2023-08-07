@@ -1,29 +1,79 @@
 const bookService = require('../services/book.service');
 
 class BookController{
-    async getBooks(){
-
-        return await bookService.getBooks();
+    async getBooks(req, res){
+        try{
+            const books = await bookService.getBooks();
+            res.status(200).json({
+                message: "All books found!",
+                data: books
+            });
+        }catch(err){
+            res.status(401).json({
+                message: "Error occured",
+                data: null
+            });
+        }
     }
 
-    async getBookById(bookId){
-
-        return await bookService.getBookById(bookId);
+    async getBookById(req, res){
+        try{
+            const book = await bookService.getBookById(req.params.id);
+            res.status(200).json({
+                message: "Book found!",
+                data: book
+            });
+        }catch(err){
+            res.status(401).json({
+                message: "Error occured",
+                data: null
+            });
+        }
     }
 
-    async createBook(book){
-
-        return await bookService.createBook(book);
+    async createBook(req, res){
+        try{
+            const book = await bookService.createBook(req.body.book);
+            res.status(200).json({
+                message: "Book created!",
+                data: book
+            });
+        }catch(err){
+            res.status(401).json({
+                message: "Error occured",
+                data: null
+            });
+        }
     }
 
-    async updateBook(book){
-
-        return await bookService.updateBook(book);
+    async updateBook(req, res){
+        try{
+            const book = await bookService.updateBook(req.body.book);
+            res.status(200).json({
+                message: "Book updated!",
+                data: book
+            });
+        }catch(err){
+            res.status(401).json({
+                message: "Error occured",
+                data: null
+            });
+        }
     }
 
-    async deleteBook(bookId){
-
-        return await bookService.deleteBook(bookId);
+    async deleteBook(req, res){
+        try{
+            const book = await bookService.deleteBook(req.params.id);
+            res.status(200).json({
+                message: "Book removed!",
+                data: book
+            });
+        }catch(err){
+            res.status(401).json({
+                message: "Error occured",
+                data: null
+            });
+        }
     }
 
 }

@@ -4,28 +4,11 @@ const copyController = require('../controllers/copy.controller');
 
 const copyRouter = Router();
 
-copyRouter.get("/copies", (req, res) => {
-    copyController.getCopies().then(data => res.json(data));
-});
-
-copyRouter.get("/copy/id/:id", (req, res) => {
-    copyController.getCopyById(req.params.id).then(data => res.json(data));
-});
-
-copyRouter.get("/copy/book/:id", (req, res) => {
-    copyController.getCopiesByBookId(req.params.id).then(data => res.json(data));
-});
-
-copyRouter.post("/copy", (req, res) => {
-    copyController.createCopy(req.body.copy).then(data => res.json(data));
-});
-
-copyRouter.put("/copy", (req, res) => {
-    copyController.updateCopy(req.body.copy).then(data => res.json(data));
-});
-
-copyRouter.delete("/copy/id/:id", (req, res) => {
-    copyController.deleteCopy(req.params.id).then(data => res.json(data));
-});
+copyRouter.get("/copies", copyController.getCopies);
+copyRouter.get("/copy/id/:id", copyController.getCopyById);
+copyRouter.get("/copy/book/:id", copyController.getCopiesByBookId);
+copyRouter.post("/copy", copyController.createCopy);
+copyRouter.put("/copy", copyController.updateCopy);
+copyRouter.delete("/copy/id/:id", copyController.deleteCopy);
 
 module.exports = copyRouter;

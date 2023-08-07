@@ -1,34 +1,94 @@
 const copyService = require('../services/copy.service');
 
 class CopyController{
-    async getCopies(){
-
-        return await copyService.getCopies();
+    async getCopies(req, res){
+        try{
+            const copies = await copyService.getCopies();
+            res.status(200).json({
+                message: "Copies found!",
+                data: copies
+            });
+        }catch(err){
+            res.status(401).json({
+                message: "Error occured",
+                data: null
+            })
+        };
     }
 
-    async getCopyById(copyId){
-
-        return await copyService.getCopyById(copyId);
+    async getCopyById(req, res){
+        try{
+            const copy = await copyService.getCopyById(req.params.id);
+            res.status(200).json({
+                message: "Copy found!",
+                data: copy
+            });
+        }catch(err){
+            res.status(401).json({
+                message: "Error occured",
+                data: null
+            })
+        };
     }
 
-    async getCopiesByBookId(bookId){
-
-        return await copyService.getCopiesByBookId(bookId);
+    async getCopiesByBookId(req, res){
+        try{
+            const copies = await copyService.getCopiesByBookId(req.params.id);
+            res.status(200).json({
+                message: "Copies found!",
+                data: copies
+            });
+        }catch(err){
+            res.status(401).json({
+                message: "Error occured",
+                data: null
+            })
+        };
     }
 
-    async createCopy(copy){
-
-        return await copyService.createCopy(copy);
+    async createCopy(req, res){
+        try{
+            const copy = await copyService.createCopy(req.body.copy);
+            res.status(200).json({
+                message: "Copy created!",
+                data: copy
+            });
+        }catch(err){
+            res.status(401).json({
+                message: "Error occured",
+                data: null
+            })
+        };
     }
 
-    async updateCopy(copy){
-
-        return await copyService.updateCopy(copy);
+    async updateCopy(req, res){
+        try{
+            const copy = await copyService.updateCopy(req.body.copy);
+            res.status(200).json({
+                message: "Copy updated!",
+                data: copy
+            });
+        }catch(err){
+            res.status(401).json({
+                message: "Error occured",
+                data: null
+            })
+        };
     }
 
-    async deleteCopy(copyId){
-
-        return await copyService.deleteCopy(copyId);
+    async deleteCopy(req, res){
+        try{
+            const copy = await copyService.deleteCopy(req.params.id);
+            res.status(200).json({
+                message: "Copy removed!",
+                data: copy
+            });
+        }catch(err){
+            res.status(401).json({
+                message: "Error occured",
+                data: null
+            })
+        };
     }
 
 }
