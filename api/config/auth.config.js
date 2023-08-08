@@ -12,7 +12,7 @@ passport.deserializeUser((borrowerId, done) => {
 
 function initialize(passport) {
     const authenticateBorrower = (email, password, done) => {
-        borrowerService.getBorrower(email).then(borrower => {
+        borrowerService.getBorrower({email: email}).then(borrower => {
             if(!borrower){
                 return done(null, false, "Invalid email/password");
             }else{

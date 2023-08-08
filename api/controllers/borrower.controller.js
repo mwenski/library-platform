@@ -16,7 +16,6 @@ class BorrowerController{
         };
     }
 
-    //TODO: Check how does it work
     async getBorrower(req, res){
         try{
             const borrower = await borrowerService.getBorrower(req.body.borrower);

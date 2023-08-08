@@ -3,8 +3,8 @@ module.exports = (sequelize, DataTypes, Model) => {
 
     Borrowers.init({
         borrowerId: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
             primaryKey: true
         },
         firstName: {
@@ -37,6 +37,11 @@ module.exports = (sequelize, DataTypes, Model) => {
             validate: {
                 notEmpty: true
             }
+        },
+        role: {
+            type: DataTypes.ENUM('admin', 'user'),
+            allowNull: false,
+            defaultValue: 'user'
         }
     }, {
         sequelize,

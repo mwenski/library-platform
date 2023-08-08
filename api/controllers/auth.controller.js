@@ -5,6 +5,7 @@ const borrowerService = require('../services/borrower.service');
 
 class AuthController{
     login(req, res, next){
+        console.log(req.body);
         passport.authenticate('local', (err, borrower, message) => {
             if (err) throw err;
 

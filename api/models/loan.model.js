@@ -3,8 +3,8 @@ module.exports = (sequelize, DataTypes, Model) => {
 
     Loans.init({
         loanId: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
             primaryKey: true
         },
         bookId: {
@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes, Model) => {
             }
         },
         borrowerId: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.UUID,
             allowNull: false,
             references: {
                 model: 'borrowers',

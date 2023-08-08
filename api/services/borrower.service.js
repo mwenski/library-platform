@@ -15,14 +15,13 @@ class BorrowerService{
         }
     }
 
-    async getBorrower(email){
+    async getBorrower(borrower){
         let data = {};
         try{
             data = await db.borrowers.findOne({
-                where: {
-                    email: email
-                },
+                where: borrower,
             });
+            console.log(data)
         }catch(err){
             console.log(err);
         }
