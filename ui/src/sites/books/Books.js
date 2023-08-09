@@ -1,18 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { getAllBooks, deleteBook } from "../../services/BookService";
+import { getAllBooks, findBooks, deleteBook } from "../../services/BookService";
 import BookList from "../../components/books/BookList";
-
+import SearchBook from "../../components/global/SearchBar";
 
 function Books(){
     const [books, setBooks] = useState([]);
     const [numberOfBooks, setNumberOfBooks] = useState([]);
+    const [find, setFind] = useState("");
 
     useEffect(() => {
-        getAllBooks().then(res => {
-            setBooks(res.data);
-        })
-    }, [numberOfBooks]);
+        if(find!==""){
+            findBooks(find).then(res => {
+                setBooks(res.data);
+            })
+        }else{
+            getAllBooks().then(res => {
+                setBooks(res.data);
+            })
+        }
+    }, [numberOfBooks, find]);
 
     function delBook(id){
         deleteBook(id).then(res => {
@@ -21,8 +28,13 @@ function Books(){
         })
     }
 
+    function findBook(find){
+        setFind(find);
+    }
+
     return (
         <div>
+            <SearchBook find={find} findFunc={findBook} /> 
             <Link to="/create-book">Add a book!</Link>
             <BookList books={books} deleteBook={delBook} />
         </div>

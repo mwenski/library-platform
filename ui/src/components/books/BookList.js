@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function BookList(props){
-
     return(
         <table>
             <tbody>

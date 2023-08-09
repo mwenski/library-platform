@@ -8,8 +8,8 @@ function CreateUpdateBook(){
     const [book, setBook] = useState({});
     useEffect(() => {
         if(id){
-            getBookById(id).then(book => {
-                setBook(book);
+            getBookById(id).then(res => {
+                setBook(res.data);
             });
         }
     }, [id]);

@@ -16,6 +16,21 @@ class BorrowerController{
         };
     }
 
+    async findBorrowers(req, res){
+        try{
+            const borrowers = await borrowerService.findBorrowers(req.params.query);
+            res.status(200).json({
+                message: "Borrowers found!",
+                data: borrowers
+            });
+        }catch(err){
+            res.status(401).json({
+                message: "Error occured",
+                data: null
+            });
+        }
+    }
+
     async getBorrower(req, res){
         try{
             const borrower = await borrowerService.getBorrower(req.body.borrower);

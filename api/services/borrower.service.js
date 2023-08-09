@@ -15,6 +15,27 @@ class BorrowerService{
         }
     }
 
+    async findBorrowers(query){
+        const Op = db.Sequelize.Op;
+        try{
+            const borrowers = await db.borrowers.findAll({
+                where: {
+                    [Op.or]: [
+                        { firstName: { [Op.iLike]: `%${query}%` } },
+                        { lastName: { [Op.iLike]: `%${query}%` } },
+                        { address: { [Op.iLike]: `%${query}%` } },
+                        { phoneNumber: { [Op.iLike]: `%${query}%` } },
+                        { email: { [Op.iLike]: `%${query}%` } }
+                    ]
+                }
+            });
+            return borrowers;
+        }catch(err){
+            console.log(err);
+            return [];
+        }
+    }
+
     async getBorrower(borrower){
         let data = {};
         try{

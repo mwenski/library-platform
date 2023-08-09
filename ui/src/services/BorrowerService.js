@@ -3,6 +3,11 @@ export async function getAllBorrowers(){
     return await response.json();
 }
 
+export async function findBorrowers(query){
+    const response = await fetch(`/borrowers/find/${query}`);
+    return await response.json();
+}
+
 export async function getBorrowerById(borrowerId){
     const response = await fetch(`/borrower/id/${borrowerId}`);
     return await response.json();

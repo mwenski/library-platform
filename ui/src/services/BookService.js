@@ -3,6 +3,11 @@ export async function getAllBooks(){
     return await response.json();
 }
 
+export async function findBooks(query){
+    const response = await fetch(`/books/find/${query}`);
+    return await response.json();
+}
+
 export async function getBookById(bookId){
     const response = await fetch(`/book/id/${bookId}`);
     return await response.json();

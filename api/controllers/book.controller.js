@@ -16,6 +16,21 @@ class BookController{
         }
     }
 
+    async findBooks(req, res){
+        try{
+            const books = await bookService.findBooks(req.params.query);
+            res.status(200).json({
+                message: "Books found!",
+                data: books
+            });
+        }catch(err){
+            res.status(401).json({
+                message: "Error occured",
+                data: null
+            });
+        }
+    }
+
     async getBookById(req, res){
         try{
             const book = await bookService.getBookById(req.params.id);
