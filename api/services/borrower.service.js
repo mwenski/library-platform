@@ -42,7 +42,6 @@ class BorrowerService{
             data = await db.borrowers.findOne({
                 where: borrower,
             });
-            console.log(data)
         }catch(err){
             console.log(err);
         }
