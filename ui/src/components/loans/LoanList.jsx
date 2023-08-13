@@ -1,4 +1,3 @@
-import React from "react";
 import { returnBook } from "../../services/LibraryService";
 import LoanRow from "./LoanRow";
 

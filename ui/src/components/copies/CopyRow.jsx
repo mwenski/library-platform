@@ -1,4 +1,3 @@
-import React from "react";
 import CreateUpdateCopy from "./CreateUpdateCopy";
 
 function CopyRow(props){

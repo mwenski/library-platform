@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { getCopiesByBookId, deleteCopy } from "../../services/CopyService";
 import { borrowBook } from "../../services/LibraryService";
 import CopyRow from "./CopyRow";

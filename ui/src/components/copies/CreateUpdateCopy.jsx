@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Popup from "reactjs-popup";
 import { createCopy, updateCopy } from "../../services/CopyService";
 
