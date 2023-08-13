@@ -31,7 +31,7 @@ function RegisterBorrower(){
             <h2>Register now!</h2>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label for="firstname">First name</label>
+                    <label>First name</label>
                     <input type="text" value={firstName} placeholder="First name" onChange={(e) => setFirstName(e.target.value)} />
                 </div>
                 <div>

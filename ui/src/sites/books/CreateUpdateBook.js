@@ -82,35 +82,35 @@ function CreateUpdateBook(){
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>Title</label>
-                    <input type="text" value={title} placeholder="Title" onChange={(e) => setTitle(e.target.value)} />
+                    <input type="text" value={title || ""} placeholder="Title" onChange={(e) => setTitle(e.target.value)} />
                 </div>
                 <div>
                     <label>Author</label>
-                    <input type="text" value={author} placeholder="Author" onChange={(e) => setAuthor(e.target.value)} />
+                    <input type="text" value={author || ""} placeholder="Author" onChange={(e) => setAuthor(e.target.value)} />
                 </div>
                 <div>
                     <label>Cover URL</label>
-                    <input type="text" value={coverUrl} placeholder="Cover URL" onChange={(e) => setCoverUrl(e.target.value)} />
+                    <input type="text" value={coverUrl || ""} placeholder="Cover URL" onChange={(e) => setCoverUrl(e.target.value)} />
                 </div>
                 <div>
                     <label>Description</label>
-                    <input type="text" value={description} placeholder="Description" onChange={(e) => setDescription(e.target.value)} />
+                    <input type="text" value={description || ""} placeholder="Description" onChange={(e) => setDescription(e.target.value)} />
                 </div>
                 <div>
                     <label>Publisher</label>
-                    <input type="text" value={publisher} placeholder="Publisher" onChange={(e) => setPublisher(e.target.value)} />
+                    <input type="text" value={publisher || ""} placeholder="Publisher" onChange={(e) => setPublisher(e.target.value)} />
                 </div>
                 <div>
                     <label>ISBN</label>
-                    <input type="text" value={isbn} placeholder="ISBN" onChange={(e) => setIsbn(e.target.value)} />
+                    <input type="text" value={isbn || ""} placeholder="ISBN" onChange={(e) => setIsbn(e.target.value)} />
                 </div>
                 <div>
                     <label>Publication year</label>
-                    <input type="number" value={publicationYear} placeholder={publicationYear} onChange={(e) => setPublicationYear(e.target.value)} />
+                    <input type="number" value={publicationYear || 0} placeholder={publicationYear} onChange={(e) => setPublicationYear(e.target.value)} />
                 </div>
                 <div>
                     <label>Number of pages</label>
-                    <input type="number" value={numberOfPages} placeholder={numberOfPages} onChange={(e) => setNumberOfPages(e.target.value)} />
+                    <input type="number" value={numberOfPages || 0} placeholder={numberOfPages} onChange={(e) => setNumberOfPages(e.target.value)} />
                 </div>
                 
                 <button type="submit">{id ? 'Update' : 'Create'}</button>

@@ -7,11 +7,13 @@ import RegisterBorrower from './sites/borrowers/RegisterBorrower';
 import Borrowers from './sites/borrowers/Borrowers';
 import Borrower from './sites/borrowers/Borrower';
 import LoginBorrower from './sites/borrowers/LoginBorrower';
+import Header from './components/global/Header';
+import Footer from './components/global/Footer';
 
 function App() {
   return (
-    
     <BrowserRouter>
+      <Header />
       <div>
         <Routes>
           <Route path='/register' element={<RegisterBorrower />} />
@@ -24,8 +26,8 @@ function App() {
           <Route path='/borrower/:id' element={<Borrower />} />
         </Routes>
       </div>
+      <Footer />
     </BrowserRouter>
-
   );
 }
 
