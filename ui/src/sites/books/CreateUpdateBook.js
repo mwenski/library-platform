@@ -77,7 +77,7 @@ function CreateUpdateBook(){
     };
 
     return(
-        <div>
+        <div className="create-update-book">
             <h2>{id ? 'Update a book!' : 'Add a book'}</h2>
             <form onSubmit={handleSubmit}>
                 <div>
@@ -91,10 +91,6 @@ function CreateUpdateBook(){
                 <div>
                     <label>Cover URL</label>
                     <input type="text" value={coverUrl || ""} placeholder="Cover URL" onChange={(e) => setCoverUrl(e.target.value)} />
-                </div>
-                <div>
-                    <label>Description</label>
-                    <input type="text" value={description || ""} placeholder="Description" onChange={(e) => setDescription(e.target.value)} />
                 </div>
                 <div>
                     <label>Publisher</label>
@@ -111,6 +107,11 @@ function CreateUpdateBook(){
                 <div>
                     <label>Number of pages</label>
                     <input type="number" value={numberOfPages || 0} placeholder={numberOfPages} onChange={(e) => setNumberOfPages(e.target.value)} />
+                </div>
+                <br />
+                <div id="description">
+                    <label>Description</label>
+                    <input type="text" value={description || ""} placeholder="Description" onChange={(e) => setDescription(e.target.value)} />
                 </div>
                 
                 <button type="submit">{id ? 'Update' : 'Create'}</button>
