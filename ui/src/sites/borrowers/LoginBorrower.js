@@ -13,12 +13,12 @@ function LoginBorrower(){
     }
 
     return(
-        <div>
+        <div className="login-register-form">
             <h2>Login</h2>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label>Email</label>
-                    <input type="email" value={email} placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+                    <label>Email address</label>
+                    <input type="email" value={email} placeholder="Email address" onChange={(e) => setEmail(e.target.value)} />
                 </div>
                 <div>
                     <label>Password</label>

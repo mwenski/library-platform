@@ -4,10 +4,12 @@ function Header(){
     return (
         <header>
             <img src="" alt="Logo" />
-            <Link to="/">Catalog</Link>
-            <Link to="/borrowers">Borrowers</Link>
-            <Link to="/login">Sign in</Link>
-            <Link to="/register">Sign up</Link>
+            <ul>
+                <li><Link to="/">Catalog</Link></li>
+                <li><Link to="/borrowers">Borrowers</Link></li>
+                <li><Link to="/login">Sign in</Link></li>
+                <li><Link to="/register">Sign up</Link></li>
+            </ul>
         </header>
     )
 }

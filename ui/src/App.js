@@ -14,7 +14,7 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
-      <div>
+      <div className='content'>
         <Routes>
           <Route path='/register' element={<RegisterBorrower />} />
           <Route path='/login' element={<LoginBorrower />} />

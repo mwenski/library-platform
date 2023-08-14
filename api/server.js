@@ -1,5 +1,4 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const passport = require('passport');
 const session = require('express-session');
 require('dotenv').config();
@@ -17,8 +16,8 @@ require('./config/auth.config')(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use(require('./routers/auth.router'));
 app.use(require('./routers/book.router'));

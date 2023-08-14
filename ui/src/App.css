@@ -1,38 +1,115 @@
-.App {
-  text-align: center;
+html, body {
+  height: 100%;
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+header {
+  width: 100%;
+  height: 80px;
+  padding-top: 20px;
+  background-color: #DC143C;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
 }
 
-.App-link {
-  color: #61dafb;
+header img{
+  width: 120px;
+  height: 80px;
+  margin-left: 12px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+header ul{
+  display: flex;
+  list-style-type: none;
+}
+
+header ul li{
+  margin: 0 12px;
+}
+
+header ul li a{
+  text-transform: uppercase;
+}
+
+ul li a{
+  color: aliceblue;
+  line-height: 14px;
+  text-decoration: none;
+  margin: 0 12px;
+}
+
+ul li a:hover{
+  text-decoration: underline;
+}
+
+.content{
+  min-height: 100vh;
+}
+
+input{
+  border: 1px solid;
+  outline-color: #0C0908;
+}
+
+input:focus{
+  border: 1px solid;
+  outline-color: #DC143C;
+}
+
+.search-bar{
+  padding: 10px 20px;
+}
+
+.search-bar input{
+  line-height: 64px;
+  font-size: 46px;
+  width: 100%;
+}
+
+.login-register-form form{
+  margin: 0 auto;
+}
+
+.login-register-form h2{
+  text-align: center;
+  margin-top: 50px;
+}
+
+.login-register-form form div{
+  width: 252px;
+  margin: 15px auto;
+}
+
+.login-register-form form input, label{
+  display: block;
+}
+
+.login-register-form form label{
+  font-size: 14px;
+}
+
+.login-register-form input{
+  line-height: 46px;
+  font-size: 28px;
+  width: 250px;
+}
+
+footer{
+  clear: both;
+  position: relative;
+  width: 100%;
+  height: 200px;
+  margin-top: -200px;
+  background-color: #0C0908;
+}
+
+footer ul{
+  list-style-type: none;
+  padding-top: 20px;
+}
+
+footer p{
+  color: aliceblue;
+  text-align: center;
+  margin-top: 100px;
 }

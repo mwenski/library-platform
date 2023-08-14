@@ -27,7 +27,7 @@ function RegisterBorrower(){
 
 
     return(
-        <div>
+        <div className="login-register-form">
             <h2>Register now!</h2>
             <form onSubmit={handleSubmit}>
                 <div>
