@@ -7,7 +7,6 @@ class BorrowerService{
     async getBorrowers(){
         try{
             const borrowers = await db.borrowers.findAll();
-            console.log("borrowers: ", borrowers);
             return borrowers;
         }catch(err){
             console.log(err);

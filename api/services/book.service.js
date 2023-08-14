@@ -7,7 +7,6 @@ class BookService{
     async getBooks(){
         try{
             const books = await db.books.findAll();
-            console.log("books: ", books);
             return books;
         }catch(err){
             console.log(err);

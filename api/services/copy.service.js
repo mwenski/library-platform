@@ -7,7 +7,6 @@ class CopyService{
     async getCopies(){
         try{
             const copies = await db.copies.findAll();
-            console.log("copies: ", copies);
             return copies;
         }catch(err){
             console.log(err);

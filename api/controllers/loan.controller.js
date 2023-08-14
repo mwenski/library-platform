@@ -9,8 +9,8 @@ class LoanController{
                 data: loans
             });
         }catch(err){
-            res.status(401).json({
-                message: "Error occured",
+            res.status(500).json({
+                message: "Internal error",
                 data: null
             })
         };
@@ -24,8 +24,8 @@ class LoanController{
                 data: loan
             });
         }catch(err){
-            res.status(401).json({
-                message: "Error occured",
+            res.status(500).json({
+                message: "Internal error",
                 data: null
             })
         };
@@ -39,8 +39,8 @@ class LoanController{
                 data: loans
             });
         }catch(err){
-            res.status(401).json({
-                message: "Error occured",
+            res.status(500).json({
+                message: "Internal error",
                 data: null
             })
         };
@@ -54,8 +54,8 @@ class LoanController{
                 data: loan
             });
         }catch(err){
-            res.status(401).json({
-                message: "Error occured",
+            res.status(500).json({
+                message: "Internal error",
                 data: null
             })
         };
@@ -69,8 +69,8 @@ class LoanController{
                 data: loan
             });
         }catch(err){
-            res.status(401).json({
-                message: "Error occured",
+            res.status(500).json({
+                message: "Internal error",
                 data: null
             })
         };
@@ -84,8 +84,8 @@ class LoanController{
                 data: loan
             });
         }catch(err){
-            res.status(401).json({
-                message: "Error occured",
+            res.status(500).json({
+                message: "Internal error",
                 data: null
             })
         };

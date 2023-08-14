@@ -9,8 +9,8 @@ class BookController{
                 data: books
             });
         }catch(err){
-            res.status(401).json({
-                message: "Error occured",
+            res.status(500).json({
+                message: "Internal error",
                 data: null
             });
         }
@@ -24,8 +24,8 @@ class BookController{
                 data: books
             });
         }catch(err){
-            res.status(401).json({
-                message: "Error occured",
+            res.status(500).json({
+                message: "Internal error",
                 data: null
             });
         }
@@ -39,8 +39,8 @@ class BookController{
                 data: book
             });
         }catch(err){
-            res.status(401).json({
-                message: "Error occured",
+            res.status(500).json({
+                message: "Internal error",
                 data: null
             });
         }
@@ -54,8 +54,8 @@ class BookController{
                 data: book
             });
         }catch(err){
-            res.status(401).json({
-                message: "Error occured",
+            res.status(500).json({
+                message: "Internal error",
                 data: null
             });
         }
@@ -70,7 +70,7 @@ class BookController{
             });
         }catch(err){
             res.status(401).json({
-                message: "Error occured",
+                message: "Internal error",
                 data: null
             });
         }
@@ -84,8 +84,8 @@ class BookController{
                 data: book
             });
         }catch(err){
-            res.status(401).json({
-                message: "Error occured",
+            res.status(500).json({
+                message: "Internal error",
                 data: null
             });
         }

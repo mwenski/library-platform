@@ -7,7 +7,6 @@ class LoanService{
     async getLoans(){
         try{
             const loans = await db.loans.findAll();
-            console.log("loans: ", loans);
             return loans;
         }catch(err){
             console.log(err);

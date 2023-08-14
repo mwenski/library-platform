@@ -7,7 +7,7 @@ class LibraryController{
         const { loan, copy } = req.body;
         const checkCopy = await copyService.getCopyById(copy.copyId);
         if(checkCopy.loanStatus === "borrowed"){
-            return res.status(401).json({
+            return res.status(403).json({
                 message: "Book already borrowed",
                 data: null
             })
@@ -21,8 +21,8 @@ class LibraryController{
                 data: newLoan
             });
         }catch(err){
-            res.status(401).json({
-                message: "Error occured",
+            res.status(500).json({
+                message: "Internal error",
                 data: null
             });
         };
@@ -37,8 +37,8 @@ class LibraryController{
                 data: loan
             });
         }catch(err){
-            res.status(401).json({
-                message: "Error occured",
+            res.status(500).json({
+                message: "Internal error",
                 data: null
             });
         };
