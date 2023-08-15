@@ -4,6 +4,8 @@ import { createCopy, updateCopy } from "../../services/CopyService";
 
 function CreateUpdateCopy(props){
     const [signature, setSignature] = useState("");
+    const [placeSymbol, setPlaceSymbol] = useState("");
+
     useEffect(() => {
         if(props.copy){
            setSignature(props.copy.signature); 
@@ -43,18 +45,24 @@ function CreateUpdateCopy(props){
 
     return(
         <div>
-            <Popup trigger={<button>{props.bookId ? "Add a copy!" : "Update"}</button>} modal nested>
+            <Popup trigger={<button className="button-update">{props.bookId ? "Add a copy!" : "Update"}</button>} modal nested>
                 {
                     close => (
-                        <div className="modal">
+                        <div className="popup">
+                            <button id="close-button" onClick={() => {close()}}>X</button>
                             <form onSubmit={handleSubmit}>
                                 <div>
                                     <label>Signature</label>
                                     <input type="text" value={signature} placeholder="Signature" onChange={(e) => setSignature(e.target.value)} />
                                 </div>
-                                <button type="submit">{props.bookId ? "Create" : "Update"}</button>
+                                <div>
+                                    <label>Place symbol</label>
+                                    <input type="text" value={placeSymbol} placeholder="Signature" onChange={(e) => setPlaceSymbol(e.target.value)} />
+                                </div>
+                                <div>
+                                    <button className="button-library" type="submit">{props.bookId ? "Create" : "Update"}</button>
+                                </div>
                             </form>
-                            <button onClick={() => {close()}}>Cancel</button>
                         </div>
                     )
                 }

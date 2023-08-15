@@ -54,10 +54,9 @@ function RegisterBorrower(){
                     <label>Password</label>
                     <input type="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
                 </div>
-                
-                
-                <button type="submit">Register!</button>
-
+                <div id="link">
+                    <button type="submit">Register!</button>
+                </div>
                 
             </form>
         </div>

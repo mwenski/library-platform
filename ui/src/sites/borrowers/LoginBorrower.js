@@ -24,9 +24,13 @@ function LoginBorrower(){
                     <label>Password</label>
                     <input type="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
                 </div>
-                <button type="submit">Login!</button>
+                <div>
+                    <button type="submit">Login!</button>
+                </div>
             </form>
-            <Link to='/register'>Register now!</Link>
+            <div id="link">
+                <Link to='/register'>Register now!</Link>
+            </div>
         </div>
     );
 }

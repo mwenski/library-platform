@@ -21,7 +21,7 @@ function BorrowerList(props){
                                     {borrower.lastName}
                                 </td>
                                 <td>
-                                    <button type="button" onClick={(e) => props.deleteBorrower(borrower.borrowerId)}>Delete</button>
+                                    <button type="button" className="button-delete" onClick={(e) => props.deleteBorrower(borrower.borrowerId)}>Delete</button>
                                 </td>
                                 
                             </tr>

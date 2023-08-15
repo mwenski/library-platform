@@ -2,10 +2,12 @@
 html, body {
   height: 100%;
   margin: 0;
+  background-color: #FFFEFC;
+  color: #0C0908;
 }
 
 ul li a{
-  color: aliceblue;
+  color: #FFFEFC;
   line-height: 14px;
   text-decoration: none;
   margin: 0 12px;
@@ -17,20 +19,35 @@ ul li a:hover{
 
 .content{
   min-height: 100vh;
+  padding: 20px;
+}
+
+input, label{
+  display: block;
 }
 
 input{
   border: 1px solid;
   outline-color: #0C0908;
+  border-radius: 5px;
+}
+
+label{
+  font-size: 14px;
 }
 
 input:focus{
   border: 1px solid;
   outline-color: #DC143C;
+  border-radius: 5px;
 }
 
 form{
   margin: 0 auto;
+}
+
+form div{
+  margin: 7px auto;
 }
 
 form label{
@@ -39,6 +56,39 @@ form label{
 
 br{
   clear: both;
+}
+
+.button-update{
+  width: 100px;
+  height: 40px;
+  background-color: #FFFEFC;
+  border: 2px solid #DC143C;
+  color: #DC143C;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+.button-delete{
+  width: 100px;
+  height: 40px;
+  background-color: #0C0908;
+  border: none;
+  color: #FFFEFC;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+.button-library{
+  width: 100px;
+  height: 40px;
+  background-color: #DC143C;
+  border: none;
+  color: #FFFEFC;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 4px;
 }
 
 /* Header */
@@ -82,15 +132,22 @@ header ul li a{
 }
 
 /* Login & Register form */
+.login-register-form{
+  height: 100%;
+}
 
 .login-register-form h2{
   text-align: center;
   margin-top: 50px;
 }
 
-.login-register-form form div{
-  width: 252px;
+.login-register-form div{
+  width: 256px;
   margin: 15px auto;
+}
+
+.login-register-form #link{
+  text-align: center;
 }
 
 .login-register-form form input, label{
@@ -103,20 +160,39 @@ header ul li a{
   width: 250px;
 }
 
-/* Create Update Book */
-.create-update-book form{
-  margin-left: 20px;
+.login-register-form button{
+  width: 100%;
+  height: 50px;
+  background-color: #DC143C;
+  border: none;
+  color: #FFFEFC;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 4px;
 }
+
+/* Create Update Book */
 
 .create-update-book h2{
   text-align: center;
   margin-top: 25px;
 }
 
-.create-update-book form div{
-  width: 502px;
+.create-update-book form .form-column{
+  width: 508px;
   margin: 15px 15px;
   float: left;
+}
+
+.create-update-book p{
+  margin: 0;
+  font-size: 14px;
+}
+
+.create-update-book img{
+  width: 340px;
+  height: 480px;
+  margin: 0 auto;
 }
 
 .create-update-book form #description{
@@ -128,10 +204,6 @@ header ul li a{
 #description input{
   width: 1000px;
   height: 200px;
-}
-
-.create-update-book form input, label{
-  display: block;
 }
 
 .create-update-book input{
@@ -155,6 +227,10 @@ header ul li a{
   display: flex;
 }
 
+.book-info .row h1{
+  margin-left: 12px;
+}
+
 .book-info .row h2{
   margin-top: 29px;
   margin-bottom: 0;
@@ -163,6 +239,42 @@ header ul li a{
 
 .book-info .row, h3, p{
   margin: 12px 12px;
+}
+
+/* Create Update Copy */
+.popup{
+  z-index: 1;
+  border: 2px solid #DC143C;
+  background-color: #FFFEFC;
+  border-radius: 4px;
+  width: 500px;
+  height: 300px;
+  padding: 15px;
+}
+
+.popup form{
+  margin-top: 12px;
+}
+
+.popup form div:last-child{
+  text-align: center;
+}
+
+.popup input{
+  line-height: 46px;
+  font-size: 28px;
+  width: 494px;
+}
+
+#close-button{
+  margin-bottom: 6px;
+  background-color: #0C0908;
+  border: none;
+  color: #FFFEFC;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 4px;
+  float: right;
 }
 
 /* Footer */
@@ -181,7 +293,7 @@ footer ul{
 }
 
 footer p{
-  color: aliceblue;
+  color: #FFFEFC;
   text-align: center;
   margin-top: 100px;
 }

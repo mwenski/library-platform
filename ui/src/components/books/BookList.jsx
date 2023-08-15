@@ -20,10 +20,10 @@ function BookList(props){
                                     {book.publicationYear}
                                 </td>
                                 <td>
-                                    <button type="button" onClick={(e) => props.deleteBook(book.bookId)}>Delete</button>
+                                    <Link to={{ pathname: `/update-book/${book.bookId}`}}><button className="button-update">Edit</button></Link>
                                 </td>
                                 <td>
-                                    <Link to={{ pathname: `/update-book/${book.bookId}`}}>Edit</Link>
+                                    <button type="button" className="button-delete" onClick={(e) => props.deleteBook(book.bookId)}>Delete</button>
                                 </td>
                             </tr>
                         );
