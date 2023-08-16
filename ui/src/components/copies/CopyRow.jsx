@@ -5,7 +5,7 @@ function CopyRow(props){
     let borrow;
 
     if(props.copy.loanStatus === "available"){
-        borrow = <button type="button" className="button-library" onClick={(e) => props.borrowBook(props.copy.copyId)}>Borrow</button>
+        borrow = <button type="button" title="Borrow the book!" className="button-library" onClick={(e) => props.borrowBook(props.copy.copyId)}>Borrow</button>
     }
 
     return(
@@ -14,16 +14,15 @@ function CopyRow(props){
                 {props.copy.signature}
             </td>
             <td>
+                {props.copy.placeSymbol}
+            </td>
+            <td>
                 {props.copy.loanStatus}
             </td>
             <td>
                 {borrow}
-            </td>
-            <td>
                 <CreateUpdateCopy copy={props.copy} />
-            </td>
-            <td>
-                <button type="button" className="button-delete" onClick={(e) => props.deleteCopy(props.copy.copyId)}>Delete</button>
+                <button type="button" title="Delete the copy" className="button-delete" onClick={(e) => props.deleteCopy(props.copy.copyId)}>Delete</button>
             </td>
         </tr>
     )

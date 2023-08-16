@@ -4,6 +4,15 @@ html, body {
   margin: 0;
   background-color: #FFFEFC;
   color: #0C0908;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1, h2, h3, h4, h5{
+  margin: 0 5px;
+}
+
+h2{
+  padding-top: 8px;
 }
 
 ul li a{
@@ -18,15 +27,23 @@ ul li a:hover{
 }
 
 .content{
-  min-height: 100vh;
+  min-height: 300vh;
   padding: 20px;
 }
 
-input, label{
+.content div{
+  padding: 12px;
+}
+
+input, label, textarea{
   display: block;
 }
 
-input{
+textarea{
+  resize: none;
+}
+
+input, textarea{
   border: 1px solid;
   outline-color: #0C0908;
   border-radius: 5px;
@@ -36,7 +53,7 @@ label{
   font-size: 14px;
 }
 
-input:focus{
+input:focus, textarea:focus{
   border: 1px solid;
   outline-color: #DC143C;
   border-radius: 5px;
@@ -58,7 +75,11 @@ br{
   clear: both;
 }
 
-.button-update{
+button{
+  margin: 2px;
+}
+
+.button-library{
   width: 100px;
   height: 40px;
   background-color: #FFFEFC;
@@ -69,26 +90,73 @@ br{
   border-radius: 4px;
 }
 
+.button-library:hover{
+  background-color: #DC143C;
+  color: #FFFEFC;
+}
+
 .button-delete{
   width: 100px;
   height: 40px;
-  background-color: #0C0908;
-  border: none;
-  color: #FFFEFC;
+  background-color: #FFFEFC;
+  border: 2px solid #0C0908;
+  color: #0C0908;
   text-align: center;
   font-size: 16px;
   border-radius: 4px;
 }
 
-.button-library{
-  width: 100px;
-  height: 40px;
-  background-color: #DC143C;
-  border: none;
+.button-delete:hover{
+  background-color: #0C0908;
   color: #FFFEFC;
+}
+
+.button-create{
+  width: 80px;
+  height: 80px;
+  background-color: #FFFEFC;
+  border: 2px solid #DC143C;
+  color: #DC143C;
   text-align: center;
-  font-size: 16px;
-  border-radius: 4px;
+
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+
+  font-size: 60px;
+  border-radius: 50%;
+}
+
+.button-create:hover{
+  background-color: #DC143C;
+  color: #FFFEFC;
+}
+
+/* Table */
+table{
+  width: 100%;
+  margin: 0 7px;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+td{
+  padding: 2px;
+  height: 48px;
+  width: auto;
+}
+
+thead{
+  background-color: #A9A9A9;
+}
+
+tbody tr:nth-child(even){
+  background-color: #DCDCDC;
+}
+
+td:last-child{
+  width: 320px;
+  text-align: right;
 }
 
 /* Header */
@@ -171,17 +239,51 @@ header ul li a{
   border-radius: 4px;
 }
 
-/* Create Update Book */
-
-.create-update-book h2{
-  text-align: center;
-  margin-top: 25px;
+/* Book Row */
+.book-row{
+  margin: 7px 0;
+  height: 200px;
+  width: 80%;
+  display: flex;
 }
 
-.create-update-book form .form-column{
-  width: 508px;
-  margin: 15px 15px;
-  float: left;
+.book-row img{
+  width: 128px;
+  height: 180px;
+}
+
+.book-row .column:last-child{
+  width: 100%;
+}
+
+.book-row .row{
+  display: flex;
+  width: 100%;
+  padding: 2px;
+}
+
+.book-row .row:last-child{
+  padding-top: 60px;
+}
+
+.book-row .row a:first-child{
+  margin-left: auto;
+}
+
+
+/* Create Update Book */
+.create-update-book h2{
+  text-align: center;
+}
+
+.create-update-book .column{
+  width: 50%;
+}
+
+.create-update-book form .row{
+  width: 100%;
+  margin: 7px;
+  display: flex;
 }
 
 .create-update-book p{
@@ -190,26 +292,32 @@ header ul li a{
 }
 
 .create-update-book img{
-  width: 340px;
+  width: 320px;
   height: 480px;
-  margin: 0 auto;
+  margin: auto 0;
 }
 
-.create-update-book form #description{
-  width: 1004px;
-  margin: 15px 15px;
-  display: block;
+
+.create-update-book input, .create-update-book textarea{
+  line-height: 46px;
+  font-size: 28px;
+  width: 100%;
 }
 
-#description input{
-  width: 1000px;
+.create-update-book #description{
+  width: 90%;
   height: 200px;
 }
 
-.create-update-book input{
-  line-height: 46px;
-  font-size: 28px;
-  width: 500px;
+.create-update-book textarea{
+  height: 170px;
+}
+
+.create-update-book button{
+  margin: 0 auto;
+  width: 50%;
+  height: 50px;
+  font-size: 20px;
 }
 
 /* Book Info*/
@@ -231,14 +339,8 @@ header ul li a{
   margin-left: 12px;
 }
 
-.book-info .row h2{
-  margin-top: 29px;
-  margin-bottom: 0;
-  margin-left: 20px;
-}
-
-.book-info .row, h3, p{
-  margin: 12px 12px;
+.book-info .row, .book-info h3, .book-info p{
+  margin: 12px;
 }
 
 /* Create Update Copy */

@@ -35,7 +35,7 @@ function Books(){
     return (
         <div>
             <SearchBook find={find} findFunc={findBook} /> 
-            <Link to="/create-book">Add a book!</Link>
+            <Link to="/create-book"><button className="button-create" title="Add a book!">+</button></Link>
             <BookList books={books} deleteBook={delBook} />
         </div>
     );

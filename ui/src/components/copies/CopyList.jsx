@@ -41,10 +41,26 @@ function CopyList({ bookId }){
     
     return(
         <table>
+            <thead>
+                <tr>
+                    <td>
+                        Signature
+                    </td>
+                    <td>
+                        Place symbol
+                    </td>
+                    <td>
+                        Status
+                    </td>
+                    <td>
+
+                    </td>
+                </tr>
+            </thead>
             <tbody>
                 {
                     copies.map(copy => 
-                        <CopyRow copy={copy} deleteCopy={delCopy} borrowBook={borBook}/>
+                        <CopyRow copy={copy} deleteCopy={delCopy} borrowBook={borBook} key={copy.copyId}/>
                     )
                 }
             </tbody>

@@ -43,13 +43,17 @@ function CreateUpdateCopy(props){
         }
     }
 
+    let buttonClass = props.bookId? "button-create" : "button-library";
+    let buttonText = props.bookId? "+" : "Update";
+    let buttonTitle = props.bookId? "Add a copy!" : "Update the copy";
+
     return(
-        <div>
-            <Popup trigger={<button className="button-update">{props.bookId ? "Add a copy!" : "Update"}</button>} modal nested>
+        
+            <Popup trigger={<button className={buttonClass} title={buttonTitle}>{buttonText}</button>} modal nested>
                 {
                     close => (
                         <div className="popup">
-                            <button id="close-button" onClick={() => {close()}}>X</button>
+                            <button id="close-button" title="Close" onClick={() => {close()}}>X</button>
                             <form onSubmit={handleSubmit}>
                                 <div>
                                     <label>Signature</label>
@@ -67,7 +71,7 @@ function CreateUpdateCopy(props){
                     )
                 }
             </Popup>
-        </div>
+        
     );
 }
 

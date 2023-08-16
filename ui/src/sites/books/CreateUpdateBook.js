@@ -80,47 +80,51 @@ function CreateUpdateBook(){
         <div className="create-update-book">
             <h2>{id ? 'Update a book!' : 'Add a book'}</h2>
             <form onSubmit={handleSubmit}>
-                <div className="form-column">
-                    <div>
-                        <label>Title</label>
-                        <input type="text" value={title || ""} placeholder="Title" onChange={(e) => setTitle(e.target.value)} />
+                <div className="row">
+                    <div className="column">
+                        <div>
+                            <label>Title</label>
+                            <input type="text" value={title || ""} placeholder="Title" onChange={(e) => setTitle(e.target.value)} />
+                        </div>
+                        <div>
+                            <label>Author</label>
+                            <input type="text" value={author || ""} placeholder="Author" onChange={(e) => setAuthor(e.target.value)} />
+                        </div>
+                        <div>
+                            <label>Cover URL</label>
+                            <input type="text" value={coverUrl || ""} placeholder="Cover URL" onChange={(e) => setCoverUrl(e.target.value)} />
+                        </div>
+                        <div>
+                            <label>Publisher</label>
+                            <input type="text" value={publisher || ""} placeholder="Publisher" onChange={(e) => setPublisher(e.target.value)} />
+                        </div>
+                        <div>
+                            <label>ISBN</label>
+                            <input type="text" value={isbn || ""} placeholder="ISBN" onChange={(e) => setIsbn(e.target.value)} />
+                        </div>
+                        <div>
+                            <label>Publication year</label>
+                            <input type="number" value={publicationYear || 0} placeholder={publicationYear} onChange={(e) => setPublicationYear(e.target.value)} />
+                        </div>
+                        <div>
+                            <label>Number of pages</label>
+                            <input type="number" value={numberOfPages || 0} placeholder={numberOfPages} onChange={(e) => setNumberOfPages(e.target.value)} />
+                        </div>
                     </div>
-                    <div>
-                        <label>Author</label>
-                        <input type="text" value={author || ""} placeholder="Author" onChange={(e) => setAuthor(e.target.value)} />
-                    </div>
-                    <div>
-                        <label>Cover URL</label>
-                        <input type="text" value={coverUrl || ""} placeholder="Cover URL" onChange={(e) => setCoverUrl(e.target.value)} />
-                    </div>
-                    <div>
-                        <label>Publisher</label>
-                        <input type="text" value={publisher || ""} placeholder="Publisher" onChange={(e) => setPublisher(e.target.value)} />
-                    </div>
-                    <div>
-                        <label>ISBN</label>
-                        <input type="text" value={isbn || ""} placeholder="ISBN" onChange={(e) => setIsbn(e.target.value)} />
-                    </div>
-                    <div>
-                        <label>Publication year</label>
-                        <input type="number" value={publicationYear || 0} placeholder={publicationYear} onChange={(e) => setPublicationYear(e.target.value)} />
-                    </div>
-                    <div>
-                        <label>Number of pages</label>
-                        <input type="number" value={numberOfPages || 0} placeholder={numberOfPages} onChange={(e) => setNumberOfPages(e.target.value)} />
+                    <div className="column">
+                        <p>Cover preview</p>
+                        <img src={coverUrl} alt={coverUrl} />
                     </div>
                 </div>
-                <div className="form-column">
-                    <p>Cover preview</p>
-                    <img src={coverUrl} alt={coverUrl} />
+                <div className="row">
+                    <div id="description">
+                        <label>Description</label>
+                        <textarea value={description || ""} placeholder="Description" onChange={(e) => setDescription(e.target.value)}/>
+                    </div>
                 </div>
-                <div id="description">
-                    <label>Description</label>
-                    <input type="text" value={description || ""} placeholder="Description" onChange={(e) => setDescription(e.target.value)} />
+                <div className="row">
+                    <button className="button-library" type="submit">{id ? 'Update' : 'Create'}</button>
                 </div>
-                
-                <button type="submit">{id ? 'Update' : 'Create'}</button>
-
                 
             </form>
         </div>
