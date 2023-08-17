@@ -37,7 +37,7 @@ function Borrower(){
         <div>
             <BorrowerInfo borrower={borrower} />
             <h2>Books borrowed</h2>
-            <LoanList loans={loansBorrowed} handleLoanStatus={handleLoanStatus}/>
+            <LoanList loans={loansBorrowed} handleLoanStatus={handleLoanStatus} type={"borrowed"}/>
             <h2>Books returned</h2>
             <LoanList loans={loansReturned} />
         </div>

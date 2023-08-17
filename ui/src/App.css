@@ -31,7 +31,7 @@ ul li a:hover{
   padding: 20px;
 }
 
-.content div{
+.content > div{
   padding: 12px;
 }
 
@@ -132,6 +132,17 @@ button{
   color: #FFFEFC;
 }
 
+.no-data{
+  width: 100%;
+  height: 100px;
+  padding: auto;
+}
+
+.no-data h1{
+  text-align: center;
+  margin: 31.5px auto;
+}
+
 /* Table */
 table{
   width: 100%;
@@ -206,20 +217,11 @@ header ul li a{
 
 .login-register-form h2{
   text-align: center;
-  margin-top: 50px;
 }
 
 .login-register-form div{
   width: 256px;
-  margin: 15px auto;
-}
-
-.login-register-form #link{
-  text-align: center;
-}
-
-.login-register-form form input, label{
-  display: block;
+  margin: 7px auto;
 }
 
 .login-register-form input{
@@ -237,6 +239,20 @@ header ul li a{
   text-align: center;
   font-size: 16px;
   border-radius: 4px;
+  margin: 7px auto;
+}
+
+.login-register-form div:last-child{
+  text-align: center;
+}
+
+.login-register-form a{
+  color: #DC143C;
+  text-decoration: none;
+}
+
+.login-register-form a:hover{
+  text-decoration: underline;
 }
 
 /* Book Row */
@@ -339,8 +355,21 @@ header ul li a{
   margin-left: 12px;
 }
 
-.book-info .row, .book-info h3, .book-info p{
+.book-info .row, .book-info p{
   margin: 12px;
+}
+
+.book-info table{
+  width: 80%;
+}
+
+.book-info td{
+  height: 30px;
+  background-color: #FFFEFC;
+}
+
+.book-info td:last-child{
+  text-align: left;
 }
 
 /* Create Update Copy */
@@ -377,6 +406,16 @@ header ul li a{
   font-size: 16px;
   border-radius: 4px;
   float: right;
+}
+
+/* Borrower Info */
+.borrower-info .column{
+  width: 80%;
+}
+
+.borrower-info td{
+  width: auto;
+  background-color: #FFFEFC;
 }
 
 /* Footer */

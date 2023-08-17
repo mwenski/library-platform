@@ -44,7 +44,7 @@ function CopyList({ bookId }){
             <thead>
                 <tr>
                     <td>
-                        Signature
+                        <h4>Signature</h4>
                     </td>
                     <td>
                         Place symbol

@@ -2,19 +2,41 @@ function BookInfo({ book }){
 
     return (
         <div className="book-info">
-            <img src={book.coverUrl} alt={book.coverUrl} />
-            <div>
+            <div className="column"> 
+                <img src={book.coverUrl} alt={book.coverUrl} />
+            </div>
+            <div className="column">
                 <div className="row">
                     <h1>{book.title}</h1>
                     <h2>{book.author}</h2>
                 </div>
                 <div className="row">
-                    <div>
-                        <h3>Published by: {book.publisher}</h3>
-                        <h3>Year: {book.publicationYear}</h3>
-                        <h3>Number of pages: {book.numberOfPages}</h3>
-                        <h3>ISBN: {book.isbn}</h3>
-                    </div>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td><h4>Category:</h4></td>
+                                <td><h4>{book.category}</h4></td>
+                            </tr>
+                            <tr>
+                                <td><h4>Published by:</h4></td>
+                                <td><h4>{book.publisher}</h4></td>
+                            </tr>
+                            <tr>
+                                <td><h4>Year:</h4></td>
+                                <td><h4>{book.publicationYear}</h4></td>
+                            </tr>
+                            <tr>
+                                <td><h4>Number of pages:</h4></td>
+                                <td><h4>{book.numberOfPages}</h4></td>
+                            </tr>
+                            <tr>
+                                <td><h4>ISBN:</h4></td>
+                                <td><h4>{book.isbn}</h4></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div className="row">
                     <p>{book.description}</p>
                 </div>
             </div>

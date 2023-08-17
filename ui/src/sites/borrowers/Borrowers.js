@@ -34,7 +34,7 @@ function Borrowers(){
     return (
         <div>
             <SearchBar find={find} findFunc={findBorrower} />
-            <Link to="/register">Register a borrower!</Link>
+            <Link to="/register"><button className="button-create" title="Register new borrower">+</button></Link>
             <BorrowerList borrowers={borrowers} deleteBorrower={delBorrower} />
         </div>
     );

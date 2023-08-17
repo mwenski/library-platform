@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { register } from "../../services/AuthService";
+import { Link } from "react-router-dom";
 
 function RegisterBorrower(){
     const [firstName, setFirstName] = useState("");
@@ -54,8 +55,11 @@ function RegisterBorrower(){
                     <label>Password</label>
                     <input type="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
                 </div>
-                <div id="link">
+                <div>
                     <button type="submit">Register!</button>
+                </div>
+                <div>
+                    <Link to="/login">Login into account</Link>
                 </div>
                 
             </form>

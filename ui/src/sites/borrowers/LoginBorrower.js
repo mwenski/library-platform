@@ -28,7 +28,7 @@ function LoginBorrower(){
                     <button type="submit">Login!</button>
                 </div>
             </form>
-            <div id="link">
+            <div>
                 <Link to='/register'>Register now!</Link>
             </div>
         </div>
