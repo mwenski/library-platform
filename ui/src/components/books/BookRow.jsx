@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { BsTrash, BsPencilSquare } from "react-icons/bs";
 
 function BookRow(props){
     return(
@@ -20,9 +21,9 @@ function BookRow(props){
                         <button title="Read more about the book" className="button-library">More</button>
                     </Link>
                     <Link to={{ pathname: `/update-book/${props.book.bookId}`}}>
-                        <button title="Edit the book" className="button-library">Edit</button>
+                        <button title="Edit the book" className="button-edit"><BsPencilSquare /></button>
                     </Link>
-                    <button type="button" title="Delete the book" className="button-delete" onClick={(e) => props.deleteBook(props.book.bookId)}>Delete</button>
+                    <button type="button" title="Delete the book" className="button-delete" onClick={(e) => props.deleteBook(props.book.bookId)}><BsTrash /></button>
                 </div>
             </div>
         </div>

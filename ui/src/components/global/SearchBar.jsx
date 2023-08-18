@@ -1,8 +1,12 @@
 function SearchBar(props){
+    function handleSubmit(){
+        
+    }
+
     return (
-        <div className="search-bar">
+        <form className="search-bar" onSubmit={handleSubmit}>
             <input type="text" value={props.find} placeholder="Find..." onChange={(e) => props.findFunc(e.target.value)}/>
-        </div>
+        </form>
     )
 }
 

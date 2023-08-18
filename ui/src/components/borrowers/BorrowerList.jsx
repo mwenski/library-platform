@@ -1,15 +1,16 @@
 import { Link } from "react-router-dom";
+import { BsTrash } from "react-icons/bs";
 
 function BorrowerList(props){
 
     return(
-        <table>
+        <table className="borrower-list">
             <thead>
                 <tr>
-                    <td>Borrower ID</td>
-                    <td>First Name</td>
-                    <td>Last Name</td>
-                    <td>Phone number</td>
+                    <td><h4>Borrower ID</h4></td>
+                    <td><h4>First Name</h4></td>
+                    <td><h4>Last Name</h4></td>
+                    <td><h4>Phone number</h4></td>
                     <td />
                 </tr>
             </thead>
@@ -19,9 +20,7 @@ function BorrowerList(props){
                         return(
                             <tr key={borrower.borrowerId}>
                                 <td>
-                                    <Link to={{ pathname: `/borrower/${borrower.borrowerId}`}}>
-                                        {borrower.borrowerId}
-                                    </Link>
+                                    {borrower.borrowerId}
                                 </td>
                                 <td>
                                     {borrower.firstName}
@@ -33,7 +32,10 @@ function BorrowerList(props){
                                     {borrower.phoneNumber}
                                 </td>
                                 <td>
-                                    <button type="button" className="button-delete" onClick={(e) => props.deleteBorrower(borrower.borrowerId)}>Delete</button>
+                                    <Link to={{ pathname: `/borrower/${borrower.borrowerId}`}}>
+                                        <button className="button-library" title="Get borrower data">More</button> 
+                                    </Link>
+                                    <button type="button" className="button-delete" onClick={(e) => props.deleteBorrower(borrower.borrowerId)}><BsTrash /></button>
                                 </td>
                                 
                             </tr>

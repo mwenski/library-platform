@@ -4,7 +4,6 @@ html, body {
   margin: 0;
   background-color: #FFFEFC;
   color: #0C0908;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 h1, h2, h3, h4, h5{
@@ -46,7 +45,6 @@ textarea{
 input, textarea{
   border: 1px solid;
   outline-color: #0C0908;
-  border-radius: 5px;
 }
 
 label{
@@ -56,7 +54,6 @@ label{
 input:focus, textarea:focus{
   border: 1px solid;
   outline-color: #DC143C;
-  border-radius: 5px;
 }
 
 form{
@@ -82,41 +79,54 @@ button{
 .button-library{
   width: 100px;
   height: 40px;
-  background-color: #FFFEFC;
+  background-color: #DC143C;
   border: 2px solid #DC143C;
-  color: #DC143C;
+  color: #FFFEFC;
   text-align: center;
   font-size: 16px;
-  border-radius: 4px;
 }
 
 .button-library:hover{
+  background-color: #FFFEFC;
+  color: #DC143C;
+}
+
+.button-edit{
+  width: 40px;
+  height: 40px;
   background-color: #DC143C;
+  border: 2px solid #DC143C;
   color: #FFFEFC;
+  text-align: center;
+  font-size: 16px;
+}
+
+.button-edit:hover{
+  background-color: #FFFEFC;
+  color: #DC143C;
 }
 
 .button-delete{
-  width: 100px;
+  width: 40px;
   height: 40px;
-  background-color: #FFFEFC;
+  background-color: #0C0908;
   border: 2px solid #0C0908;
-  color: #0C0908;
+  color: #FFFEFC;
   text-align: center;
   font-size: 16px;
-  border-radius: 4px;
 }
 
 .button-delete:hover{
-  background-color: #0C0908;
-  color: #FFFEFC;
+  background-color: #FFFEFC;
+  color: #0C0908;
 }
 
 .button-create{
   width: 80px;
   height: 80px;
-  background-color: #FFFEFC;
+  background-color: #DC143C;
   border: 2px solid #DC143C;
-  color: #DC143C;
+  color: #FFFEFC;
   text-align: center;
 
   position: fixed;
@@ -128,8 +138,8 @@ button{
 }
 
 .button-create:hover{
-  background-color: #DC143C;
-  color: #FFFEFC;
+  background-color: #FFFEFC;
+  color: #DC143C;
 }
 
 .no-data{
@@ -151,6 +161,10 @@ table{
   table-layout: fixed;
 }
 
+table h4{
+  margin-left: 4px;
+}
+
 td{
   padding: 2px;
   height: 48px;
@@ -161,14 +175,15 @@ thead{
   background-color: #A9A9A9;
 }
 
+tbody td{
+  padding-left: 6px;
+}
+
 tbody tr:nth-child(even){
   background-color: #DCDCDC;
 }
 
-td:last-child{
-  width: 320px;
-  text-align: right;
-}
+
 
 /* Header */
 header {
@@ -180,10 +195,20 @@ header {
   justify-content: space-between;
 }
 
-header img{
-  width: 120px;
-  height: 80px;
+.logo a{
   margin-left: 12px;
+  height: 50px;
+  font-size: 50px;
+  color: #FFFEFC;
+  display: flex;
+  text-decoration: none;
+}
+
+.logo div{
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 30px;
+  margin: 13px 2px 0;
 }
 
 header ul{
@@ -238,7 +263,6 @@ header ul li a{
   color: #FFFEFC;
   text-align: center;
   font-size: 16px;
-  border-radius: 4px;
   margin: 7px auto;
 }
 
@@ -351,12 +375,12 @@ header ul li a{
   display: flex;
 }
 
-.book-info .row h1{
-  margin-left: 12px;
-}
-
 .book-info .row, .book-info p{
   margin: 12px;
+}
+
+.book-info .row h1, .book-info .row p{
+  margin-left: 16px;
 }
 
 .book-info table{
@@ -368,8 +392,10 @@ header ul li a{
   background-color: #FFFEFC;
 }
 
-.book-info td:last-child{
-  text-align: left;
+/* Copy List */
+.copy-list td:last-child{
+  width: 320px;
+  text-align: right;
 }
 
 /* Create Update Copy */
@@ -404,8 +430,12 @@ header ul li a{
   color: #FFFEFC;
   text-align: center;
   font-size: 16px;
-  border-radius: 4px;
   float: right;
+}
+
+/* Borrower List */
+.borrower-list td:last-child{
+  text-align: right;
 }
 
 /* Borrower Info */
@@ -414,8 +444,13 @@ header ul li a{
 }
 
 .borrower-info td{
-  width: auto;
   background-color: #FFFEFC;
+}
+
+/* Loan list */
+.loan-list td:last-child{
+  width: 320px;
+  text-align: right;
 }
 
 /* Footer */

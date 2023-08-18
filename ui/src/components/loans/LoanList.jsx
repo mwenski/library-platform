@@ -29,7 +29,7 @@ function LoanList(props){
     }
     
     return(
-        <table>
+        <table className="loan-list">
             <thead>
                 <tr>
                     <td><h4>Title</h4></td>

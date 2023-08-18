@@ -1,4 +1,5 @@
 import CreateUpdateCopy from "./CreateUpdateCopy";
+import { BsTrash } from "react-icons/bs";
 
 function CopyRow(props){
 
@@ -22,7 +23,7 @@ function CopyRow(props){
             <td>
                 {borrow}
                 <CreateUpdateCopy copy={props.copy} />
-                <button type="button" title="Delete the copy" className="button-delete" onClick={(e) => props.deleteCopy(props.copy.copyId)}>Delete</button>
+                <button type="button" title="Delete the copy" className="button-delete" onClick={(e) => props.deleteCopy(props.copy.copyId)}><BsTrash /></button>
             </td>
         </tr>
     )

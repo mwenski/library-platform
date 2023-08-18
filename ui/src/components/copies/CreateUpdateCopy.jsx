@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Popup from "reactjs-popup";
+import { BsPencilSquare } from "react-icons/bs";
 import { createCopy, updateCopy } from "../../services/CopyService";
 
 function CreateUpdateCopy(props){
@@ -43,8 +44,8 @@ function CreateUpdateCopy(props){
         }
     }
 
-    let buttonClass = props.bookId? "button-create" : "button-library";
-    let buttonText = props.bookId? "+" : "Update";
+    let buttonClass = props.bookId? "button-create" : "button-edit";
+    let buttonText = props.bookId? "+" : <BsPencilSquare />;
     let buttonTitle = props.bookId? "Add a copy!" : "Update the copy";
 
     return(

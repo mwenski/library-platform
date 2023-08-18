@@ -40,21 +40,19 @@ function CopyList({ bookId }){
     }
     
     return(
-        <table>
+        <table className="copy-list">
             <thead>
                 <tr>
                     <td>
                         <h4>Signature</h4>
                     </td>
                     <td>
-                        Place symbol
+                        <h4>Place symbol</h4>
                     </td>
                     <td>
-                        Status
+                        <h4>Status</h4>
                     </td>
-                    <td>
-
-                    </td>
+                    <td />
                 </tr>
             </thead>
             <tbody>
