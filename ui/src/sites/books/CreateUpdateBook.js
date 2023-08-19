@@ -112,8 +112,10 @@ function CreateUpdateBook(){
                         </div>
                     </div>
                     <div className="column">
-                        <p>Cover preview</p>
-                        <img src={coverUrl} alt={coverUrl} />
+                        <div>
+                            <label>Cover preview</label>
+                            <img src={coverUrl} alt={coverUrl} />
+                        </div>
                     </div>
                 </div>
                 <div className="row">

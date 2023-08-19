@@ -14,6 +14,10 @@ h2{
   padding-top: 8px;
 }
 
+ul{
+  list-style: none;
+}
+
 ul li a{
   color: #FFFEFC;
   line-height: 14px;
@@ -26,12 +30,16 @@ ul li a:hover{
 }
 
 .content{
-  min-height: 300vh;
+  min-height: 50vh;
   padding: 20px;
 }
 
 .content > div{
   padding: 12px;
+}
+
+.row{
+  display: flex;
 }
 
 input, label, textarea{
@@ -43,6 +51,8 @@ textarea{
 }
 
 input, textarea{
+  line-height: 30px;
+  font-size: 24px;
   border: 1px solid;
   outline-color: #0C0908;
 }
@@ -122,8 +132,8 @@ button{
 }
 
 .button-create{
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   background-color: #DC143C;
   border: 2px solid #DC143C;
   color: #FFFEFC;
@@ -133,7 +143,7 @@ button{
   bottom: 20px;
   right: 20px;
 
-  font-size: 60px;
+  font-size: 36px;
   border-radius: 50%;
 }
 
@@ -213,26 +223,86 @@ header {
 
 header ul{
   display: flex;
-  list-style-type: none;
+  text-transform: uppercase;
 }
 
 header ul li{
   margin: 0 12px;
 }
 
-header ul li a{
-  text-transform: uppercase;
+/* Footer */
+footer{
+  clear: both;
+  position: relative;
+  width: 100%;
+  height: 200px;
+  background-color: #0C0908;
+  display: flex;
+}
+
+footer .column{
+  width: 50%;
+  list-style-type: none;
+  margin: 20px 0 20px;
+  padding-left: 20px;
+}
+
+footer .column:first-child{
+  border-right: 1px solid #DC143C;
+}
+
+footer .column:last-child{
+  padding-left: 60px;
+  border-left: 1px solid #DC143C;
+}
+
+footer li{
+  margin: 12px 0;
+}
+
+footer ul li a:hover{
+  text-decoration-color: #DC143C;
+}
+
+footer .column p{
+  margin: 0;
+  padding-left: 17px;
+  color: #FFFEFC;
 }
 
 /* Search Bar*/
 .search-bar{
+  display: flex;
   padding: 10px 20px;
 }
 
+.search-bar:focus{
+  background-color: #0C0908;
+}
+
 .search-bar input{
+  height: 64px;
   line-height: 64px;
   font-size: 46px;
-  width: 100%;
+  width: 80%;
+  border: 2px solid #DCDCDC;
+}
+
+
+
+.search-bar button{
+  border: 2px solid #DCDCDC;
+  background-color: #DCDCDC;
+  color: #FFFEFC;
+  width: 20%;
+  height: 70px;
+  font-size: 40px;
+  margin: 0;
+}
+
+.search-bar button:hover{
+  background-color: #DC143C;
+  border-color: #DC143C;
 }
 
 /* Login & Register form */
@@ -245,14 +315,12 @@ header ul li a{
 }
 
 .login-register-form div{
-  width: 256px;
+  width: 300px;
   margin: 7px auto;
 }
 
 .login-register-form input{
-  line-height: 46px;
-  font-size: 28px;
-  width: 250px;
+  width: 294px;
 }
 
 .login-register-form button{
@@ -264,6 +332,11 @@ header ul li a{
   text-align: center;
   font-size: 16px;
   margin: 7px auto;
+}
+
+.login-register-form button:hover{
+  background-color: #FFFEFC;
+  color: #DC143C;
 }
 
 .login-register-form div:last-child{
@@ -303,7 +376,7 @@ header ul li a{
 }
 
 .book-row .row:last-child{
-  padding-top: 60px;
+  padding-top: 40px;
 }
 
 .book-row .row a:first-child{
@@ -318,34 +391,27 @@ header ul li a{
 
 .create-update-book .column{
   width: 50%;
+  padding: 0 5px;
 }
 
 .create-update-book form .row{
   width: 100%;
   margin: 7px;
-  display: flex;
-}
-
-.create-update-book p{
-  margin: 0;
-  font-size: 14px;
 }
 
 .create-update-book img{
-  width: 320px;
-  height: 480px;
-  margin: auto 0;
+  width: 240px;
+  height: 395px;
+  margin: 0 auto;
 }
 
 
 .create-update-book input, .create-update-book textarea{
-  line-height: 46px;
-  font-size: 28px;
-  width: 100%;
+  width: 95%;
 }
 
 .create-update-book #description{
-  width: 90%;
+  width: 100%;
   height: 200px;
 }
 
@@ -369,10 +435,6 @@ header ul li a{
 .book-info img{
   width: 221px;
   height: 312px;
-}
-
-.book-info .row{
-  display: flex;
 }
 
 .book-info .row, .book-info p{
@@ -403,9 +465,7 @@ header ul li a{
   z-index: 1;
   border: 2px solid #DC143C;
   background-color: #FFFEFC;
-  border-radius: 4px;
   width: 500px;
-  height: 300px;
   padding: 15px;
 }
 
@@ -420,7 +480,7 @@ header ul li a{
 .popup input{
   line-height: 46px;
   font-size: 28px;
-  width: 494px;
+  width: 98%;
 }
 
 #close-button{
@@ -453,23 +513,99 @@ header ul li a{
   text-align: right;
 }
 
-/* Footer */
-footer{
-  clear: both;
-  position: relative;
-  width: 100%;
-  height: 200px;
-  margin-top: -200px;
-  background-color: #0C0908;
-}
+@media screen and (max-width: 800px) {
+  .content{
+    min-height: 60vh;
+    padding: 10px;
+  }
 
-footer ul{
-  list-style-type: none;
-  padding-top: 20px;
-}
+  footer{
+    display: block;
+    height: 350px;
+    padding-top: 20px;
+  }
 
-footer p{
-  color: #FFFEFC;
-  text-align: center;
-  margin-top: 100px;
+  footer .column{
+    width: 300px;
+    margin-left: 24px;
+    margin-right: 24px;
+    padding-right: 20px;
+  }
+
+  footer .column:first-child{
+    border-right: none;
+    border-bottom: 2px solid #DC143C;
+  }
+
+  footer ul{
+    padding-left: 0;
+  }
+
+  footer .column:last-child{
+    border-left: none;
+    padding-left: 18px;
+  }
+
+  .row:first-child{
+    display: block;
+  }
+
+  table{
+    width: 100%;
+  }
+
+  .copy-list{
+    margin: 0;
+  }
+
+  .book-info{
+    display: block;
+    width: 100%;
+    padding-left: 12px;
+  }
+
+  .book-info .column:first-child{
+    padding-left: 30px;
+  }
+
+  .book-info .row:first-child{
+    display: block;
+  }
+
+  .book-info h2{
+    margin-left: 16px;
+  }
+
+  .popup{
+    width: 300px;
+  }
+
+  .book-row{
+    width: 100%;
+  }
+
+  .book-row h1, .book-row h2, .book-row h4{
+    margin-left: 10px;
+  }
+
+  .book-row .row:first-child{
+    display: block;
+  }
+
+  .book-row .row:last-child{
+    padding-top: 35px;
+  }
+
+  .create-update-book .column{
+    width: 100%;
+  }
+
+  .create-update-book form .row:first-child{
+    display: block;
+  }
+
+  .borrower-info .column{
+    width: 100%;
+  }
+
 }
