@@ -142,6 +142,7 @@ button{
   position: fixed;
   bottom: 20px;
   right: 20px;
+  z-index: 1;
 
   font-size: 36px;
   border-radius: 50%;
@@ -273,7 +274,7 @@ footer .column p{
 /* Search Bar*/
 .search-bar{
   display: flex;
-  padding: 10px 20px;
+  padding: 10px 0;
 }
 
 .search-bar:focus{
@@ -281,10 +282,10 @@ footer .column p{
 }
 
 .search-bar input{
-  height: 64px;
-  line-height: 64px;
-  font-size: 46px;
-  width: 80%;
+  height: 40px;
+  line-height: 40px;
+  font-size: 36px;
+  width: 90%;
   border: 2px solid #DCDCDC;
 }
 
@@ -294,9 +295,9 @@ footer .column p{
   border: 2px solid #DCDCDC;
   background-color: #DCDCDC;
   color: #FFFEFC;
-  width: 20%;
-  height: 70px;
-  font-size: 40px;
+  width: 10%;
+  height: 46px;
+  font-size: 30px;
   margin: 0;
 }
 
@@ -376,7 +377,7 @@ footer .column p{
 }
 
 .book-row .row:last-child{
-  padding-top: 40px;
+  padding-top: 60px;
 }
 
 .book-row .row a:first-child{
@@ -546,6 +547,14 @@ footer .column p{
     padding-left: 18px;
   }
 
+  .search-bar input{
+    width: 80%;
+  }
+
+  .search-bar button{
+    width: 20%;
+  }
+
   .row:first-child{
     display: block;
   }
@@ -608,4 +617,55 @@ footer .column p{
     width: 100%;
   }
 
+
+  /* Tables */
+  .copy-list, .borrower-list, .loan-list,
+  .copy-list thead, .borrower-list thead, .loan-list thead,
+  .copy-list tbody, .borrower-list tbody, .loan-list tbody,
+  .copy-list tr, .borrower-list tr, .loan-list tr,
+  .copy-list td, .borrower-list td, .loan-list td{
+    display: block;
+  }
+
+  .copy-list thead tr, .borrower-list thead tr, .loan-list thead tr{
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  .copy-list td, .borrower-list td, .loan-list td{
+    position: relative;
+    padding-left: 50%;
+    height: 20px;
+  }
+
+  .copy-list td:last-child, .borrower-list td:last-child, .loan-list:first-child td:last-child{
+    height: 45px;
+    padding-left: 29%;
+  }
+
+  .copy-list td::before, .borrower-list td::before, .loan-list td::before{
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+
+  .copy-list td:nth-child(1)::before{content: "Signature";}
+  .copy-list td:nth-child(2)::before{content: "Place symbol";}
+  .copy-list td:nth-child(3)::before{content: "Status";}
+
+  .borrower-list td:nth-child(1)::before{content: "Borrower ID";}
+  .borrower-list td:nth-child(2)::before{content: "First Name";}
+  .borrower-list td:nth-child(3)::before{content: "Last Name";}
+  .borrower-list td:nth-child(4)::before{content: "Phone number";}
+
+  .loan-list td:nth-child(1)::before{content: "Title";}
+  .loan-list td:nth-child(2)::before{content: "Author";}
+  .loan-list td:nth-child(3)::before{content: "Signature";}
+  .loan-list td:nth-child(4)::before{content: "Date borrowed";}
+  .loan-list:first-child td:nth-child(4)::before{content: "Due date";}
+  .loan-list:last-child td:nth-child(4)::before{content: "Date returned";}
 }
