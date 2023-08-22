@@ -1,9 +1,14 @@
 function BookInfo({ book }){
+    const handleImgError = (e) => {
+        e.target.onError = null;
+        e.target.src = '../no-cover.jpg';
+    }
 
     return (
         <div className="book-info">
             <div className="column"> 
-                <img src={book.coverUrl} alt={book.coverUrl} />
+                <img src={book.coverUrl ?? '../no-cover.jpg'} alt={book.coverUrl} 
+                onError={handleImgError}/>
             </div>
             <div className="column">
                 <div className="row">

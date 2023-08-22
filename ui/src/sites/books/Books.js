@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { getAllBooks, findBooks, deleteBook } from "../../services/BookService";
 import BookList from "../../components/books/BookList";
 import SearchBook from "../../components/global/SearchBar";
+import PaginationNav from "../../components/global/PaginationNav";
 
 function Books(){
     const [books, setBooks] = useState([]);
@@ -32,11 +33,34 @@ function Books(){
         setFind(find);
     }
 
+    const [currentPage, setCurrentPage] = useState(1);
+    const [booksPerPage] = useState(10);
+
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    }
+
+    const previousPage = () => {
+        if(currentPage!==1){
+            setCurrentPage(currentPage-1);
+        }
+    }
+
+    const nextPage = () => {
+        if(currentPage!==Math.ceil(books.length/booksPerPage)){
+            setCurrentPage(currentPage+1);
+        }
+    }
+
+    const indexOfLastBook = currentPage * booksPerPage;
+    const indexOfFirstBook = indexOfLastBook - booksPerPage;
+
     return (
         <div>
             <SearchBook find={find} findFunc={findBook} /> 
             <Link to="/create-book"><button className="button-create" title="Add a book!">+</button></Link>
-            <BookList books={books} deleteBook={delBook} />
+            <BookList books={books.slice(indexOfFirstBook, indexOfLastBook)} deleteBook={delBook} />
+            <PaginationNav postsPerPage={booksPerPage} totalPosts={books.length} paginate={paginate} previousPage={previousPage} nextPage={nextPage} />
         </div>
     );
 }

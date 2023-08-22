@@ -38,6 +38,14 @@ function CopyList({ bookId }){
             setCopyBorrowed(res)
         )
     }
+
+    if(copies.length === 0){
+        return(
+            <div className="no-data">
+                <h1>Copies not available</h1>
+            </div>
+        )
+    }
     
     return(
         <table className="copy-list">

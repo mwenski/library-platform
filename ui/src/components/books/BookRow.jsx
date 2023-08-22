@@ -2,10 +2,16 @@ import { Link } from "react-router-dom";
 import { BsTrash, BsPencilSquare } from "react-icons/bs";
 
 function BookRow(props){
+    const handleImgError = (e) => {
+        e.target.onError = null;
+        e.target.src = 'no-cover.jpg';
+    }
+
     return(
         <div className="book-row">
             <div className="column">
-                <img src={props.book.coverUrl} alt={props.book.coverUrl}/>
+                <img src={props.book.coverUrl ?? 'no-cover.jpg'} alt={props.book.coverUrl}
+                onError={handleImgError} />
             </div>
             <div className="column">
                 <div className="row">

@@ -76,6 +76,11 @@ function CreateUpdateBook(){
         }
     };
 
+    const handleImgError = (e) => {
+        e.target.onError = null;
+        e.target.src = 'no-cover.jpg';
+    }
+
     return(
         <div className="create-update-book">
             <h2>{id ? 'Update a book!' : 'Add a book'}</h2>
@@ -114,7 +119,7 @@ function CreateUpdateBook(){
                     <div className="column">
                         <div>
                             <label>Cover preview</label>
-                            <img src={coverUrl} alt={coverUrl} />
+                            <img src={coverUrl ?? 'no-cover.jpg'} alt={coverUrl} onError={handleImgError}/>
                         </div>
                     </div>
                 </div>

@@ -84,6 +84,7 @@ br{
 
 button{
   margin: 2px;
+  cursor: pointer;
 }
 
 .button-library{
@@ -151,6 +152,30 @@ button{
 .button-create:hover{
   background-color: #FFFEFC;
   color: #DC143C;
+}
+
+.pagination-nav{
+  text-align: center;
+}
+
+.pagination-nav ul{
+  margin: auto;
+  display: inline-flex;
+  padding-left: 0;
+}
+
+.pagination-nav li{
+ margin: 0 4px;
+}
+
+.pagination-nav li:hover{
+  color: #DC143C;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.pagination-nav li:first-child, .pagination-nav li:last-child{
+  padding-top: 2px;
 }
 
 .no-data{
@@ -267,7 +292,6 @@ footer .column:first-child{
 }
 
 footer .column:last-child{
-  padding-left: 60px;
   border-left: 1px solid #DC143C;
 }
 
@@ -555,8 +579,9 @@ footer .column p{
     flex-direction: column;
     top: 80px;
     left: 0;
-    width: 99%;
+    width: 99.3%;
     padding-left: 5px;
+    z-index: 1;
   }
 
   header ul li{
