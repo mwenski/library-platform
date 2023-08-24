@@ -7,8 +7,9 @@ function BookInfo({ book }){
     return (
         <div className="book-info">
             <div className="column"> 
-                <img src={book.coverUrl ?? '../no-cover.jpg'} alt={book.coverUrl} 
-                onError={handleImgError}/>
+                <img src={book.coverUrl ?? '../no-cover.jpg'} 
+                alt={book.coverUrl} 
+                onError={handleImgError} />
             </div>
             <div className="column">
                 <div className="row">

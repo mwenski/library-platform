@@ -5,7 +5,7 @@ import { getLoansByBorrowerId } from "../../services/LoanService";
 import BorrowerInfo from "../../components/borrowers/BorrowerInfo";
 import LoanList from "../../components/loans/LoanList";
 
-function Borrower(){
+function BorrowerInfoSite(){
     const { id } = useParams();
 
     const [borrower, setBorrower] = useState({});
@@ -37,11 +37,13 @@ function Borrower(){
         <div>
             <BorrowerInfo borrower={borrower} />
             <h2>Books borrowed</h2>
-            <LoanList loans={loansBorrowed} handleLoanStatus={handleLoanStatus} type={"borrowed"}/>
+            <LoanList loans={loansBorrowed} 
+            handleLoanStatus={handleLoanStatus} 
+            type={"borrowed"}/>
             <h2>Books returned</h2>
             <LoanList loans={loansReturned} />
         </div>
     );
 }
 
-export default Borrower;
+export default BorrowerInfoSite;

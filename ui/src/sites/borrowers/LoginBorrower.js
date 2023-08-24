@@ -18,11 +18,17 @@ function LoginBorrower(){
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>Email address</label>
-                    <input type="email" value={email} placeholder="Email address" onChange={(e) => setEmail(e.target.value)} />
+                    <input type="email" 
+                    value={email} 
+                    placeholder="Email address" 
+                    onChange={(e) => setEmail(e.target.value)} />
                 </div>
                 <div>
                     <label>Password</label>
-                    <input type="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+                    <input type="password" 
+                    value={password} 
+                    placeholder="Password" 
+                    onChange={(e) => setPassword(e.target.value)} />
                 </div>
                 <div>
                     <button type="submit">Login!</button>

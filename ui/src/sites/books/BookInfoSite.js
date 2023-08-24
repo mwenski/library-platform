@@ -5,7 +5,7 @@ import BookInfo from "../../components/books/BookInfo";
 import CopyList from "../../components/copies/CopyList";
 import CreateUpdateCopy from "../../components/copies/CreateUpdateCopy";
 
-function Book(){
+function BookInfoSite(){
     const { id } = useParams();
 
     const [book, setBook] = useState({});
@@ -18,10 +18,10 @@ function Book(){
     return (
         <div>
             <BookInfo book={book} />
-            <CreateUpdateCopy bookId={book.bookId}/>
-            <CopyList bookId={id}/>
+            <CopyList bookId={id} />
+            <CreateUpdateCopy bookId={book.bookId} />
         </div>
     );
 }
 
-export default Book;
+export default BookInfoSite;

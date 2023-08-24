@@ -18,12 +18,19 @@ function Header(){
                 <BiMenu />
             </button>
             <ul className={ulExpanded ? "expanded" : ""}>
-                <li><Link to="/">Catalog</Link></li>
-                <li><Link to="/borrowers">Borrowers</Link></li>
-                <li><Link to="/login">Sign in</Link></li>
-                <li><Link to="/register">Sign up</Link></li>
-            </ul>
-            
+                <li>
+                    <Link to="/">Catalog</Link>
+                </li>
+                <li>
+                    <Link to="/borrowers">Borrowers</Link>
+                </li>
+                <li>
+                    <Link to="/login">Sign in</Link>
+                </li>
+                <li>
+                    <Link to="/register">Sign up</Link>
+                </li>
+            </ul>    
         </header>
     )
 }

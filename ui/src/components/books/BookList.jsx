@@ -1,8 +1,12 @@
 import BookRow from "./BookRow";
 
-function BookList(props){
+function BookList({ books, deleteBook }){
     return(
-        props.books.map(book => <BookRow book={book} deleteBook={props.deleteBook} key={book.bookId}/>)
+        books.map(book => 
+            <BookRow book={book} 
+            deleteBook={deleteBook} 
+            key={book.bookId} />
+        )
     );
 }
 

@@ -3,19 +3,19 @@ import Popup from "reactjs-popup";
 import { BsPencilSquare } from "react-icons/bs";
 import { createCopy, updateCopy } from "../../services/CopyService";
 
-function CreateUpdateCopy(props){
+function CreateUpdateCopy({ copy, bookId,  }){
     const [signature, setSignature] = useState("");
     const [placeSymbol, setPlaceSymbol] = useState("");
 
     useEffect(() => {
-        if(props.copy){
-           setSignature(props.copy.signature); 
+        if(copy){
+           setSignature(copy.signature); 
         }
-    }, [props.copy]);
+    }, [copy]);
 
     function addCopy(){
         const copy = {
-            bookId: props.bookId,
+            bookId: bookId,
             signature: signature
         }
 
@@ -25,47 +25,65 @@ function CreateUpdateCopy(props){
     }
 
     function updCopy(){
-        const copy = {
-            copyId: props.copy.copyId,
-            bookId: props.copy.bookId,
+        const _copy = {
+            copyId: copy.copyId,
+            bookId: copy.bookId,
             signature: signature
         }
 
-        updateCopy(copy).then((res) => {
+        updateCopy(_copy).then((res) => {
             console.log(res);
         })
     }
 
     let handleSubmit = (e) => {
-        if(props.bookId){
+        if(bookId){
             addCopy();
         }else{
             updCopy();
         }
     }
 
-    let buttonClass = props.bookId? "button-create" : "button-edit";
-    let buttonText = props.bookId? "+" : <BsPencilSquare />;
-    let buttonTitle = props.bookId? "Add a copy!" : "Update the copy";
+    let buttonClass = bookId? "button-create" : "button-edit";
+    let buttonText = bookId? "+" : <BsPencilSquare />;
+    let buttonTitle = bookId? "Add a copy!" : "Update the copy";
 
     return(
         
-            <Popup trigger={<button className={buttonClass} title={buttonTitle}>{buttonText}</button>} modal nested>
+            <Popup trigger={
+                <button className={buttonClass} 
+                title={buttonTitle}>
+                    {buttonText}
+                </button>
+            } modal nested>
                 {
                     close => (
                         <div className="popup">
-                            <button id="close-button" title="Close" onClick={() => {close()}}>X</button>
+                            <button id="close-button" 
+                            title="Close" 
+                            onClick={() => {close()}}>
+                                X
+                            </button>
                             <form onSubmit={handleSubmit}>
                                 <div>
                                     <label>Signature</label>
-                                    <input type="text" value={signature} placeholder="Signature" onChange={(e) => setSignature(e.target.value)} />
+                                    <input type="text" 
+                                    value={signature} 
+                                    placeholder="Signature" 
+                                    onChange={(e) => setSignature(e.target.value)} />
                                 </div>
                                 <div>
                                     <label>Place symbol</label>
-                                    <input type="text" value={placeSymbol} placeholder="Signature" onChange={(e) => setPlaceSymbol(e.target.value)} />
+                                    <input type="text" 
+                                    value={placeSymbol} 
+                                    placeholder="Signature" 
+                                    onChange={(e) => setPlaceSymbol(e.target.value)} />
                                 </div>
                                 <div>
-                                    <button className="button-library" type="submit">{props.bookId ? "Create" : "Update"}</button>
+                                    <button className="button-library" 
+                                    type="submit">
+                                        {bookId ? "Create" : "Update"}
+                                    </button>
                                 </div>
                             </form>
                         </div>

@@ -4,13 +4,20 @@ import { LuLibrary } from "react-icons/lu";
 function Footer(){
     return (
         <footer>
-            
                 <div className="column">
                     <ul>
-                        <li><Link to="/">Catalog</Link></li>
-                        <li><Link to="/borrowers">Borrowers</Link></li>
-                        <li><a href="https://github.com/mwenski">Author</a></li>
-                        <li><a href="https://github.com/mwenski/library-platform">Code</a></li>
+                        <li>
+                            <Link to="/">Catalog</Link>
+                        </li>
+                        <li>
+                            <Link to="/borrowers">Borrowers</Link>
+                        </li>
+                        <li>
+                            <a href="https://github.com/mwenski">Author</a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/mwenski/library-platform">Code</a>
+                        </li>
                     </ul>
                 </div>
                 <div className="column">

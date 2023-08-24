@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { BsTrash, BsPencilSquare } from "react-icons/bs";
 
-function BookRow(props){
+function BookRow({ book, deleteBook }){
     const handleImgError = (e) => {
         e.target.onError = null;
         e.target.src = 'no-cover.jpg';
@@ -10,26 +10,38 @@ function BookRow(props){
     return(
         <div className="book-row">
             <div className="column">
-                <img src={props.book.coverUrl ?? 'no-cover.jpg'} alt={props.book.coverUrl}
+                <img src={book.coverUrl ?? 'no-cover.jpg'} 
+                alt={book.coverUrl}
                 onError={handleImgError} />
             </div>
             <div className="column">
                 <div className="row">
-                    <h1>{props.book.title}</h1>
-                    <h2>{props.book.author}</h2>
+                    <h1>{book.title}</h1>
+                    <h2>{book.author}</h2>
                 </div>
                 <div className="row">
-                    <h4>{props.book.publisher}</h4>
-                    <h4>{props.book.publicationYear}</h4>
+                    <h4>{book.publisher}</h4>
+                    <h4>{book.publicationYear}</h4>
                 </div>
                 <div className="row">
-                    <Link to={{ pathname: `/book/${props.book.bookId}`}}>
-                        <button title="Read more about the book" className="button-library">More</button>
+                    <Link to={{ pathname: `/book/${book.bookId}`}}>
+                        <button title="Read more about the book" 
+                        className="button-library">
+                            More
+                        </button>
                     </Link>
-                    <Link to={{ pathname: `/update-book/${props.book.bookId}`}}>
-                        <button title="Edit the book" className="button-edit"><BsPencilSquare /></button>
+                    <Link to={{ pathname: `/update-book/${book.bookId}`}}>
+                        <button title="Edit the book" 
+                        className="button-edit">
+                            <BsPencilSquare />
+                        </button>
                     </Link>
-                    <button type="button" title="Delete the book" className="button-delete" onClick={(e) => props.deleteBook(props.book.bookId)}><BsTrash /></button>
+                    <button type="button" 
+                    title="Delete the book" 
+                    className="button-delete" 
+                    onClick={(e) => deleteBook(book.bookId)}>
+                        <BsTrash />
+                    </button>
                 </div>
             </div>
         </div>

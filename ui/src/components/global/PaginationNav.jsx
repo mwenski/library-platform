@@ -15,7 +15,8 @@ function PaginationNav({ postsPerPage, totalPosts, paginate, previousPage, nextP
                 </li>
                 {
                     pageNumbers.map(number => 
-                        <li key={number} onClick={() => paginate(number)}>
+                        <li key={number} 
+                        onClick={() => paginate(number)}>
                             { number }
                         </li>
                     )

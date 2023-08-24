@@ -5,7 +5,7 @@ import BorrowerList from "../../components/borrowers/BorrowerList";
 import SearchBar from "../../components/global/SearchBar";
 import PaginationNav from "../../components/global/PaginationNav";
 
-function Borrowers(){
+function BorrowerListSite(){
     const [borrowers, setBorrowers] = useState([]);
     const [numberOfBorrowers, setNumberOfBorrowers] = useState([]);
     const [find, setFind] = useState("");
@@ -55,12 +55,23 @@ function Borrowers(){
 
     return (
         <div>
-            <SearchBar find={find} findFunc={findBorrower} />
-            <Link to="/register"><button className="button-create" title="Register new borrower">+</button></Link>
-            <BorrowerList borrowers={borrowers.slice(indexOfFirstBorrower, indexOfLastBorrower)} deleteBorrower={delBorrower} />
-            <PaginationNav postsPerPage={borrowersPerPage} totalPosts={borrowers.length} paginate={paginate} previousPage={previousPage} nextPage={nextPage} />
+            <SearchBar find={find} 
+            findFunc={findBorrower} />
+            <BorrowerList borrowers={borrowers.slice(indexOfFirstBorrower, indexOfLastBorrower)} 
+            deleteBorrower={delBorrower} />
+            <PaginationNav postsPerPage={borrowersPerPage} 
+            totalPosts={borrowers.length} 
+            paginate={paginate} 
+            previousPage={previousPage} 
+            nextPage={nextPage} />
+            <Link to="/register">
+                <button className="button-create" 
+                title="Register new borrower">
+                    +
+                </button>
+            </Link>
         </div>
     );
 }
 
-export default Borrowers;
+export default BorrowerListSite;

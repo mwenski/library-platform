@@ -66,7 +66,10 @@ function CopyList({ bookId }){
             <tbody>
                 {
                     copies.map(copy => 
-                        <CopyRow copy={copy} deleteCopy={delCopy} borrowBook={borBook} key={copy.copyId}/>
+                        <CopyRow copy={copy} 
+                        deleteCopy={delCopy} 
+                        borrowBook={borBook} 
+                        key={copy.copyId} />
                     )
                 }
             </tbody>

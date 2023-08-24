@@ -5,7 +5,7 @@ import BookList from "../../components/books/BookList";
 import SearchBook from "../../components/global/SearchBar";
 import PaginationNav from "../../components/global/PaginationNav";
 
-function Books(){
+function BookListSite(){
     const [books, setBooks] = useState([]);
     const [numberOfBooks, setNumberOfBooks] = useState([]);
     const [find, setFind] = useState("");
@@ -57,12 +57,23 @@ function Books(){
 
     return (
         <div>
-            <SearchBook find={find} findFunc={findBook} /> 
-            <Link to="/create-book"><button className="button-create" title="Add a book!">+</button></Link>
-            <BookList books={books.slice(indexOfFirstBook, indexOfLastBook)} deleteBook={delBook} />
-            <PaginationNav postsPerPage={booksPerPage} totalPosts={books.length} paginate={paginate} previousPage={previousPage} nextPage={nextPage} />
+            <SearchBook find={find} 
+            findFunc={findBook} /> 
+            <BookList books={books.slice(indexOfFirstBook, indexOfLastBook)} 
+            deleteBook={delBook} />
+            <PaginationNav postsPerPage={booksPerPage} 
+            totalPosts={books.length} 
+            paginate={paginate} 
+            previousPage={previousPage} 
+            nextPage={nextPage} />
+            <Link to="/create-book">
+                <button className="button-create" 
+                title="Add a book!">
+                    +
+                </button>
+            </Link>
         </div>
     );
 }
 
-export default Books;
+export default BookListSite;
