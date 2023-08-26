@@ -1,0 +1,31 @@
+version: '3.9'
+services:
+  database:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      target: database
+    container_name: database
+    ports:
+      - 5432:5432
+    restart: always
+  server-api:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      target: server-api
+    container_name: server-api
+    depends_on:
+      - database
+    ports:
+      - 9000:9000
+  client-ui:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      target: client-ui
+    container_name: client-ui
+    depends_on:
+      - server-api
+    ports:
+      - 8081:80

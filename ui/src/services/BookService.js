@@ -1,10 +1,10 @@
 export async function getAllBooks(){
-    const response = await fetch('/books');
+    const response = await fetch('/book');
     return await response.json();
 }
 
 export async function findBooks(query){
-    const response = await fetch(`/books/find/${query}`);
+    const response = await fetch(`/book/find/${query}`);
     return await response.json();
 }
 

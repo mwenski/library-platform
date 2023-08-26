@@ -1,10 +1,10 @@
 export async function getAllBorrowers(){
-    const response = await fetch('/borrowers');
+    const response = await fetch('/borrower');
     return await response.json();
 }
 
 export async function findBorrowers(query){
-    const response = await fetch(`/borrowers/find/${query}`);
+    const response = await fetch(`/borrower/find/${query}`);
     return await response.json();
 }
 

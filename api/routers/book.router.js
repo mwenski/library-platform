@@ -4,8 +4,8 @@ const bookController = require('../controllers/book.controller');
 
 const bookRouter = Router();
 
-bookRouter.get("/books", bookController.getBooks);
-bookRouter.get("/books/find/:query", bookController.findBooks);
+bookRouter.get("/book", bookController.getBooks);
+bookRouter.get("/book/find/:query", bookController.findBooks);
 bookRouter.get("/book/id/:id", bookController.getBookById);
 bookRouter.post("/book", bookController.createBook);
 bookRouter.put("/book", bookController.updateBook);

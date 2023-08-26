@@ -4,7 +4,7 @@ const copyController = require('../controllers/copy.controller');
 
 const copyRouter = Router();
 
-copyRouter.get("/copies", copyController.getCopies);
+copyRouter.get("/copy", copyController.getCopies);
 copyRouter.get("/copy/id/:id", copyController.getCopyById);
 copyRouter.get("/copy/book/:id", copyController.getCopiesByBookId);
 copyRouter.post("/copy", copyController.createCopy);
