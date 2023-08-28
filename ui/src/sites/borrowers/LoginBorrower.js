@@ -1,16 +1,35 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { login } from "../../services/AuthService";
+import { useDispatch } from "react-redux";
+import { loginBorrowerAction } from "../../redux/actions/authAction";
+// import { login } from "../../services/AuthService";
+import { history } from "../../config/history";
 
 function LoginBorrower(){
+    const dispatch = useDispatch();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    let handleSubmit = (e) => {
-        login(email, password).then((res) => {
-            console.log(res);
-        });
+    const handleSubmit = (e) => {
+        dispatch(
+            loginBorrowerAction(
+                email,
+                password,
+                () => history.push('/')
+            )
+        );
+
+        // login(email, password).then((res) => {
+        //     console.log(res);
+        // });
+        resetForm();
     }
+
+    const resetForm = () => {
+        setEmail('');
+        setPassword('');
+    }
+
 
     return(
         <div className="login-register-form">

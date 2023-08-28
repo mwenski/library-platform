@@ -1,8 +1,12 @@
 import React, { useState } from "react";
-import { register } from "../../services/AuthService";
+// import { register } from "../../services/AuthService";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { registerBorrowerAction } from "../../redux/actions/authAction";
 
 function RegisterBorrower(){
+    const dispatch = useDispatch();
+    
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [address, setAddress] = useState("");
@@ -20,10 +24,26 @@ function RegisterBorrower(){
             password: password
         }
 
-        register(borrower).then((res) => {
-            console.log(res);
-        }
+        dispatch(
+            registerBorrowerAction(
+                borrower
+            )
         );
+
+        // register(borrower).then((res) => {
+        //         console.log(res);
+        //     }
+        // );
+        resetForm();
+    }
+
+    const resetForm = () => {
+        setFirstName('');
+        setLastName('');
+        setAddress('');
+        setPhoneNumber('');
+        setEmail('');
+        setPassword('');
     }
 
 
