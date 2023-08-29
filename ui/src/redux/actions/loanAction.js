@@ -1,69 +1,69 @@
 import axios from '../../config/backendConfig';
-import { book } from '../actionTypes';
+import { loan } from '../actionTypes';
 import { returnErrors } from './errorAction';
 
-export const getBooksAction = () => (dispatch) => {
-    axios.get('/book')
+export const getLoansAction = () => (dispatch) => {
+    axios.get('/loan')
     .then(res => {
         dispatch({
-            type: book.GET_BOOKS_SUCCESS,
+            type: loan.GET_LOANS_SUCCESS,
             payload: res
         });
     })
     .catch(err => {
         dispatch({
-            type: book.GET_BOOKS_FAIL,
+            type: loan.GET_LOANS_FAIL,
             payload: err
         });
         dispatch(returnErrors(err));
     })
 }
 
-export const createBookAction = (newBook) => (dispatch) => {
-    axios.post('/book', { book: newBook })
+export const createLoanAction = (newLoan) => (dispatch) => {
+    axios.post('/loan', { loan: newLoan })
     .then(res => {
         dispatch({
-            type: book.CREATE_BOOK_SUCCESS,
-            payload: res
-        })
-    })
-    .catch(err => {
-        dispatch({
-            type: book.CREATE_BOOK_FAIL,
-            payload: err
-        });
-        dispatch(returnErrors(err));
-    })
-}
-
-export const updateBookAction = (updatedBook) => (dispatch) => {
-    axios.put('/book', { book: updatedBook })
-    .then(res => {
-        dispatch({
-            type: book.UPDATE_BOOK_SUCCESS,
+            type: loan.CREATE_LOAN_SUCCESS,
             payload: res
         })
     })
     .catch(err => {
         dispatch({
-            type: book.UPDATE_BOOK_FAIL,
+            type: loan.CREATE_LOAN_FAIL,
             payload: err
         });
         dispatch(returnErrors(err));
     })
 }
 
-export const deleteBookAction = (bookId) => (dispatch) => {
-    axios.delete(`/book/id/${bookId}`)
+export const updateLoanAction = (updatedLoan) => (dispatch) => {
+    axios.put('/loan', { loan: updatedLoan })
+    .then(res => {
+        dispatch({
+            type: loan.UPDATE_LOAN_SUCCESS,
+            payload: res
+        })
+    })
+    .catch(err => {
+        dispatch({
+            type: loan.UPDATE_LOAN_FAIL,
+            payload: err
+        });
+        dispatch(returnErrors(err));
+    })
+}
+
+export const deleteLoanAction = (loanId) => (dispatch) => {
+    axios.delete(`/loan/id/${loanId}`)
     .then(
         dispatch({
-            type: book.DELETE_BOOK_SUCCESS,
-            payload: bookId
+            type: loan.DELETE_LOAN_SUCCESS,
+            payload: loanId
         })
     )
     .catch(err => {
         dispatch({
-            type: book.DELETE_BOOK_FAIL,
+            type: loan.DELETE_LOAN_FAIL,
             payload: err
         });
         dispatch(returnErrors(err));

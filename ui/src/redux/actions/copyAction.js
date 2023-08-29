@@ -1,69 +1,69 @@
 import axios from '../../config/backendConfig';
-import { book } from '../actionTypes';
+import { copy } from '../actionTypes';
 import { returnErrors } from './errorAction';
 
-export const getBooksAction = () => (dispatch) => {
-    axios.get('/book')
+export const getCopiesAction = () => (dispatch) => {
+    axios.get('/copy')
     .then(res => {
         dispatch({
-            type: book.GET_BOOKS_SUCCESS,
+            type: copy.GET_COPIES_SUCCESS,
             payload: res
         });
     })
     .catch(err => {
         dispatch({
-            type: book.GET_BOOKS_FAIL,
+            type: copy.GET_COPIES_FAIL,
             payload: err
         });
         dispatch(returnErrors(err));
     })
 }
 
-export const createBookAction = (newBook) => (dispatch) => {
-    axios.post('/book', { book: newBook })
+export const createCopyAction = (newCopy) => (dispatch) => {
+    axios.post('/copy', { copy: newCopy })
     .then(res => {
         dispatch({
-            type: book.CREATE_BOOK_SUCCESS,
-            payload: res
-        })
-    })
-    .catch(err => {
-        dispatch({
-            type: book.CREATE_BOOK_FAIL,
-            payload: err
-        });
-        dispatch(returnErrors(err));
-    })
-}
-
-export const updateBookAction = (updatedBook) => (dispatch) => {
-    axios.put('/book', { book: updatedBook })
-    .then(res => {
-        dispatch({
-            type: book.UPDATE_BOOK_SUCCESS,
+            type: copy.CREATE_COPY_SUCCESS,
             payload: res
         })
     })
     .catch(err => {
         dispatch({
-            type: book.UPDATE_BOOK_FAIL,
+            type: copy.CREATE_COPY_FAIL,
             payload: err
         });
         dispatch(returnErrors(err));
     })
 }
 
-export const deleteBookAction = (bookId) => (dispatch) => {
-    axios.delete(`/book/id/${bookId}`)
+export const updateCopyAction = (updatedCopy) => (dispatch) => {
+    axios.put('/copy', { copy: updatedCopy })
+    .then(res => {
+        dispatch({
+            type: copy.UPDATE_COPY_SUCCESS,
+            payload: res
+        })
+    })
+    .catch(err => {
+        dispatch({
+            type: copy.UPDATE_COPY_FAIL,
+            payload: err
+        });
+        dispatch(returnErrors(err));
+    })
+}
+
+export const deleteCopyAction = (copyId) => (dispatch) => {
+    axios.delete(`/copy/id/${copyId}`)
     .then(
         dispatch({
-            type: book.DELETE_BOOK_SUCCESS,
-            payload: bookId
+            type: copy.DELETE_COPY_SUCCESS,
+            payload: copyId
         })
     )
     .catch(err => {
         dispatch({
-            type: book.DELETE_BOOK_FAIL,
+            type: copy.DELETE_COPY_FAIL,
             payload: err
         });
         dispatch(returnErrors(err));
