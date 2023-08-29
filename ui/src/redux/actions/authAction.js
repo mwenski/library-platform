@@ -1,14 +1,14 @@
-import axios from 'axios';
+import axios from '../../config/backendConfig';
 import { auth } from "../actionTypes";
 import { history } from '../../config/history';
 import { returnErrors } from './errorAction';
 
 export const registerBorrowerAction = (borrower) => (dispatch) => {
     axios.post('/auth/register', {borrower})
-    .then((response) => {
+    .then(res => {
         dispatch({
             type: auth.REGISTER_SUCCESS,
-            payload: response
+            payload: res
         });
     })
     .catch((err) => {
@@ -22,10 +22,10 @@ export const registerBorrowerAction = (borrower) => (dispatch) => {
 
 export const loginBorrowerAction = (email, password) => (dispatch) => {
     axios.post('/auth/login', {email, password})
-    .then((response) => {
+    .then(res => {
         dispatch({
             type: auth.LOGIN_SUCCESS,
-            payload: response.data.data
+            payload: res.data.data
         });
     })
     .catch((err) => {

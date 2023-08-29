@@ -3,24 +3,24 @@ const initialState = {
     isAuthenticated: false,
     accessToken: localStorage.getItem('accessToken'),
     refreshToken: localStorage.refreshToken('refreshToken'),
-    userData: JSON.parse(localStorage.getItem('userData'))
+    borrowerData: JSON.parse(localStorage.getItem('borrowerData'))
 };
 
-export default function (state = initialState, action){
+export default function(state = initialState, action){
     switch(action.type){
         case auth.LOGIN_SUCCESS:
-            const { accessToken, refreshToken, userData } = action.payload;
+            const { accessToken, refreshToken, borrowerData } = action.payload;
 
             localStorage.setItem('accessToken', accessToken);
             localStorage.setItem('refreshToken', refreshToken);
-            localStorage.setItem('userData', JSON.stringify(userData));
+            localStorage.setItem('borrowerData', JSON.stringify(borrowerData));
 
             return{
                 ...state,
                 isAuthenticated: true,
                 accessToken,
                 refreshToken,
-                userData
+                borrowerData
             };
         case auth.REGISTER_SUCCESS:
             return{
@@ -39,7 +39,7 @@ export default function (state = initialState, action){
         case auth.LOGOUT_SUCCESS:
             localStorage.removeItem('accessToken');
             localStorage.removeItem('refreshToken');
-            localStorage.removeItem('userData');
+            localStorage.removeItem('borrowerData');
 
             return initialState;
         default:
