@@ -8,7 +8,7 @@ export const getBorrowersAction = () => (dispatch) => {
     .then(res => {
         dispatch({
             type: borrower.GET_BORROWERS_SUCCESS,
-            payload: res
+            payload: res.data.data
         });
     })
     .catch(err => {

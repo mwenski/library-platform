@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import rootReducer from './reducers/index';
+import reducer from './reducers/index';
 
-const initialState = {};
+const preloadState = {};
 
-export default configureStore(rootReducer, initialState);
+export default configureStore({reducer, preloadState});

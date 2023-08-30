@@ -57,15 +57,14 @@ function BookListSite(){
 
     return (
         <div>
-            <SearchBook find={find} 
-            findFunc={findBook} /> 
-            <BookList books={books.slice(indexOfFirstBook, indexOfLastBook)} 
-            deleteBook={delBook} />
-            <PaginationNav postsPerPage={booksPerPage} 
+            {/* <SearchBook find={find} 
+            findFunc={findBook} />  */}
+            <BookList />
+            {/* <PaginationNav postsPerPage={booksPerPage} 
             totalPosts={books.length} 
             paginate={paginate} 
             previousPage={previousPage} 
-            nextPage={nextPage} />
+            nextPage={nextPage} /> */}
             <Link to="/create-book">
                 <button className="button-create" 
                 title="Add a book!">

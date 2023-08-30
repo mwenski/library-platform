@@ -2,7 +2,7 @@ import { auth } from "../actionTypes";
 const initialState = {
     isAuthenticated: false,
     accessToken: localStorage.getItem('accessToken'),
-    refreshToken: localStorage.refreshToken('refreshToken'),
+    refreshToken: localStorage.getItem('refreshToken'),
     borrowerData: JSON.parse(localStorage.getItem('borrowerData'))
 };
 

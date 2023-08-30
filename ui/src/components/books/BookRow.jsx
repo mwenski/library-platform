@@ -1,7 +1,17 @@
 import { Link } from "react-router-dom";
 import { BsTrash, BsPencilSquare } from "react-icons/bs";
+import { useDispatch } from 'react-redux';
+import { deleteBookAction } from "../../redux/actions/bookAction";
 
-function BookRow({ book, deleteBook }){
+function BookRow({ book }){
+    const dispatch = useDispatch();
+    
+    const deleteBook = () => {
+        dispatch(
+            deleteBookAction(book.bookId)
+        );
+    }
+
     const handleImgError = (e) => {
         e.target.onError = null;
         e.target.src = 'no-cover.jpg';
@@ -39,7 +49,7 @@ function BookRow({ book, deleteBook }){
                     <button type="button" 
                     title="Delete the book" 
                     className="button-delete" 
-                    onClick={(e) => deleteBook(book.bookId)}>
+                    onClick={(e) => deleteBook()}>
                         <BsTrash />
                     </button>
                 </div>

@@ -7,7 +7,7 @@ export const getBooksAction = () => (dispatch) => {
     .then(res => {
         dispatch({
             type: book.GET_BOOKS_SUCCESS,
-            payload: res
+            payload: res.data.data
         });
     })
     .catch(err => {
@@ -24,7 +24,7 @@ export const createBookAction = (newBook) => (dispatch) => {
     .then(res => {
         dispatch({
             type: book.CREATE_BOOK_SUCCESS,
-            payload: res
+            payload: res.data.data
         })
     })
     .catch(err => {
@@ -41,7 +41,7 @@ export const updateBookAction = (updatedBook) => (dispatch) => {
     .then(res => {
         dispatch({
             type: book.UPDATE_BOOK_SUCCESS,
-            payload: res
+            payload: res.data.data
         })
     })
     .catch(err => {

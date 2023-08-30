@@ -1,18 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getBookById, createBook, updateBook } from "../../services/BookService";
+import { useSelector, useDispatch } from 'react-redux';
+import { createBookAction, updateBookAction } from "../../redux/actions/bookAction";
+import { history } from "../../config/history";
 
 function CreateUpdateBook(){
     const { id } = useParams();
+    const book = useSelector(state => state.book.books.filter(book => book.bookId === id));
+    const dispatch = useDispatch();
 
-    const [book, setBook] = useState({});
-    useEffect(() => {
-        if(id){
-            getBookById(id).then(res => {
-                setBook(res.data);
-            });
-        }
-    }, [id]);
+    console.log(book)
+
+    // const [book, setBook] = useState({});
+    // useEffect(() => {
+    //     if(id){
+    //         getBookById(id).then(res => {
+    //             setBook(res.data);
+    //         });
+    //     }
+    // }, [id]);
 
     const [title, setTitle] = useState("");
     const [author, setAuthor] = useState("");
@@ -31,10 +38,10 @@ function CreateUpdateBook(){
         setIsbn(book.isbn);
         setPublicationYear(book.publicationYear);
         setNumberOfPages(book.numberOfPages);
-    }, [book]);
+    }, [dispatch]);
 
     function addBook(){
-        const book = {
+        const newBook = {
             title: title,
             author: author,
             coverUrl: coverUrl,
@@ -45,13 +52,15 @@ function CreateUpdateBook(){
             numberOfPages: numberOfPages
         }
 
-        createBook(book).then((res) => {
-            console.log(res);
-        })
+        dispatch(
+            createBookAction(
+                newBook
+            )
+        )
     }
 
-    function updBook(){
-        const book = {
+    function updateBook(){
+        const updatedBook = {
             bookId: id,
             title: title,
             author: author,
@@ -63,14 +72,16 @@ function CreateUpdateBook(){
             numberOfPages: numberOfPages
         }
 
-        updateBook(book).then((res) => {
-            console.log(res);
-        })
+        dispatch(
+            updateBookAction(
+                updatedBook
+            )
+        )
     }
     
     let handleSubmit = (e) => {
         if(id){
-            updBook();
+            updateBook();
         }else{
             addBook();
         }
