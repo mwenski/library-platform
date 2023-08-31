@@ -7,7 +7,7 @@ export const getLoansAction = () => (dispatch) => {
     .then(res => {
         dispatch({
             type: loan.GET_LOANS_SUCCESS,
-            payload: res
+            payload: res.data.data
         });
     })
     .catch(err => {
@@ -24,7 +24,7 @@ export const createLoanAction = (newLoan) => (dispatch) => {
     .then(res => {
         dispatch({
             type: loan.CREATE_LOAN_SUCCESS,
-            payload: res
+            payload: res.data.data
         })
     })
     .catch(err => {
@@ -41,7 +41,7 @@ export const updateLoanAction = (updatedLoan) => (dispatch) => {
     .then(res => {
         dispatch({
             type: loan.UPDATE_LOAN_SUCCESS,
-            payload: res
+            payload: res.data.data
         })
     })
     .catch(err => {

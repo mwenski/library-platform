@@ -3,7 +3,7 @@ const { Sequelize, Model, DataTypes } = require('sequelize');
 db = {}
 
 const connect = () => {
-    const hostName = process.env.NODE_ENV ? process.env.DB_HOST : 'database';
+    const hostName = process.env.NODE_ENV ? process.env.DB_HOST : 'localhost';
     const userName = process.env.NODE_ENV ? process.env.DB_USER : 'admin';
     const password = process.env.NODE_ENV ? process.env.DB_PASSWORD : 'password';
     const database = process.env.NODE_ENV ? process.env.DB : 'library';

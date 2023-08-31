@@ -4,11 +4,11 @@ import { history } from '../../config/history';
 import { returnErrors } from './errorAction';
 
 export const getBorrowersAction = () => (dispatch) => {
-    axios.get('/book')
+    axios.get('/borrower')
     .then(res => {
         dispatch({
             type: borrower.GET_BORROWERS_SUCCESS,
-            payload: res
+            payload: res.data.data
         });
     })
     .catch(err => {

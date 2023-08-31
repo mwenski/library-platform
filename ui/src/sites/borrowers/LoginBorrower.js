@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginBorrowerAction } from "../../redux/actions/authAction";
-// import { login } from "../../services/AuthService";
 import { history } from "../../config/history";
 
 function LoginBorrower(){
@@ -19,9 +18,6 @@ function LoginBorrower(){
             )
         );
 
-        // login(email, password).then((res) => {
-        //     console.log(res);
-        // });
         resetForm();
     }
 

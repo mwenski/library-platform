@@ -7,7 +7,7 @@ export const getCopiesAction = () => (dispatch) => {
     .then(res => {
         dispatch({
             type: copy.GET_COPIES_SUCCESS,
-            payload: res
+            payload: res.data.data
         });
     })
     .catch(err => {
@@ -24,7 +24,7 @@ export const createCopyAction = (newCopy) => (dispatch) => {
     .then(res => {
         dispatch({
             type: copy.CREATE_COPY_SUCCESS,
-            payload: res
+            payload: res.data.data
         })
     })
     .catch(err => {
@@ -41,7 +41,7 @@ export const updateCopyAction = (updatedCopy) => (dispatch) => {
     .then(res => {
         dispatch({
             type: copy.UPDATE_COPY_SUCCESS,
-            payload: res
+            payload: res.data.data
         })
     })
     .catch(err => {

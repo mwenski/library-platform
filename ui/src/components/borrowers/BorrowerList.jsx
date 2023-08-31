@@ -1,7 +1,20 @@
-import { Link } from "react-router-dom";
-import { BsTrash } from "react-icons/bs";
+import { useEffect } from "react";
 
-function BorrowerList({ borrowers, deleteBorrower }){
+import { useDispatch, useSelector } from "react-redux";
+import { getBorrowersAction } from "../../redux/actions/borrowerAction";
+import BorrowerRow from "./BorrowerRow";
+
+function BorrowerList(){
+    const dispatch = useDispatch();
+    const borrowersData = useSelector(state => state.borrower.borrowers);
+
+    useEffect(() => {
+        dispatch(
+            getBorrowersAction()
+        );
+    }, [dispatch]);
+
+    console.log(borrowersData);
 
     return(
         <table className="borrower-list">
@@ -16,29 +29,10 @@ function BorrowerList({ borrowers, deleteBorrower }){
             </thead>
             <tbody>
                 {
-                    borrowers.map(borrower => {
-                        return(
-                            <tr key={borrower.borrowerId}>
-                                <td>{borrower.borrowerId}</td>
-                                <td>{borrower.firstName}</td>
-                                <td>{borrower.lastName}</td>
-                                <td>{borrower.phoneNumber}</td>
-                                <td>
-                                    <Link to={{ pathname: `/borrower/${borrower.borrowerId}`}}>
-                                        <button className="button-library" 
-                                        title="Get borrower data">
-                                            More
-                                        </button> 
-                                    </Link>
-                                    <button type="button" 
-                                    className="button-delete" 
-                                    onClick={(e) => deleteBorrower(borrower.borrowerId)}>
-                                        <BsTrash />
-                                    </button>
-                                </td>   
-                            </tr>
-                        );
-                    })
+                    borrowersData.map(borrower => 
+                        <BorrowerRow borrower={borrower} 
+                        key={borrower.borrowerId} />
+                    )
                 }
             </tbody>
         </table>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { getAllBooks, findBooks, deleteBook } from "../../services/BookService";
+import { getAllBooks, findBooks } from "../../services/BookService";
 import BookList from "../../components/books/BookList";
 import SearchBook from "../../components/global/SearchBar";
 import PaginationNav from "../../components/global/PaginationNav";
@@ -21,13 +21,6 @@ function BookListSite(){
             })
         }
     }, [numberOfBooks, find]);
-
-    function delBook(id){
-        deleteBook(id).then(res => {
-            console.log(res);
-            setNumberOfBooks(numberOfBooks - 1);
-        })
-    }
 
     function findBook(find){
         setFind(find);
@@ -57,15 +50,14 @@ function BookListSite(){
 
     return (
         <div>
-            <SearchBook find={find} 
-            findFunc={findBook} /> 
-            <BookList books={books.slice(indexOfFirstBook, indexOfLastBook)} 
-            deleteBook={delBook} />
-            <PaginationNav postsPerPage={booksPerPage} 
+            {/* <SearchBook find={find} 
+            findFunc={findBook} />  */}
+            <BookList />
+            {/* <PaginationNav postsPerPage={booksPerPage} 
             totalPosts={books.length} 
             paginate={paginate} 
             previousPage={previousPage} 
-            nextPage={nextPage} />
+            nextPage={nextPage} /> */}
             <Link to="/create-book">
                 <button className="button-create" 
                 title="Add a book!">

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import { register } from "../../services/AuthService";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { registerBorrowerAction } from "../../redux/actions/authAction";
@@ -30,10 +29,6 @@ function RegisterBorrower(){
             )
         );
 
-        // register(borrower).then((res) => {
-        //         console.log(res);
-        //     }
-        // );
         resetForm();
     }
 

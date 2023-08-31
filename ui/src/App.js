@@ -1,5 +1,5 @@
 import './styles/App.css';
-import { Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { history } from './config/history';
 import store from './redux/store';
 import { Provider } from 'react-redux';
@@ -21,14 +21,14 @@ function App() {
         <Header />
         <div className='content'>
           <Routes>
-            <Route path='/register' element={<RegisterBorrower />} />
-            <Route path='/login' element={<LoginBorrower />} />
-            <Route path='/' element={<BookListSite />} />
-            <Route path='/book/:id' element={<BookInfoSite />} />
-            <Route path='/create-book' element={<CreateUpdateBook />} />
-            <Route path='/update-book/:id' element={<CreateUpdateBook />} />
-            <Route path='/borrowers' element={<BorrowerListSite />} />
-            <Route path='/borrower/:id' element={<BorrowerInfoSite />} />
+            <Route exact path='/register' Component={RegisterBorrower} />
+            <Route exact path='/login' Component={LoginBorrower} />
+            <Route exact path='/' Component={BookListSite} />
+            <Route path='/book/:id' Component={BookInfoSite} />
+            <Route exact path='/create-book' Component={CreateUpdateBook} />
+            <Route path='/update-book/:id' Component={CreateUpdateBook} />
+            <Route exact path='/borrowers' Component={BorrowerListSite} />
+            <Route path='/borrower/:id' Component={BorrowerInfoSite} />
           </Routes>
         </div>
         <Footer />
