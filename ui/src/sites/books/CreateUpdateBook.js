@@ -7,11 +7,12 @@ import { history } from "../../config/history";
 
 function CreateUpdateBook(){
     const { id } = useParams();
-    const book = useSelector(state => state.book.books);
+
+    const book = useSelector(state => state.book.books.filter(book => book.bookId === id));
     const dispatch = useDispatch();
 
+    console.log(book)
 
-    console.log(book);
 
     // const [book, setBook] = useState({});
     // useEffect(() => {
@@ -30,6 +31,7 @@ function CreateUpdateBook(){
     const [isbn, setIsbn] = useState("");
     const [publicationYear, setPublicationYear] = useState(0);
     const [numberOfPages, setNumberOfPages] = useState(0);
+
     // useEffect(() => {
     //     setTitle(book.title);
     //     setAuthor(book.author);
@@ -40,6 +42,7 @@ function CreateUpdateBook(){
     //     setPublicationYear(book.publicationYear);
     //     setNumberOfPages(book.numberOfPages);
     // }, [dispatch]);
+
 
     function addBook(){
         const newBook = {
