@@ -1,15 +1,19 @@
+import { useState } from "react";
 import { BsSearch } from "react-icons/bs";
 
-function SearchBar({ find, findFunc }){
-    function handleSubmit(){    
+function SearchBar({ findRecord }){
+    const [query, setQuery] = useState('');
+
+    function handleSubmit(){   
+        findRecord(query);
     }
 
     return (
         <form className="search-bar" onSubmit={handleSubmit}>
             <input type="text" 
-            value={find} 
+            value={query || ''} 
             placeholder="Find..." 
-            onChange={(e) => findFunc(e.target.value)}/>
+            onChange={(e) => setQuery(e.target.value)}/>
             <button><BsSearch /></button>
         </form>
     )

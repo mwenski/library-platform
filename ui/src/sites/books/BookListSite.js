@@ -1,30 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getAllBooks, findBooks } from "../../services/BookService";
-import BookList from "../../components/books/BookList";
 import SearchBook from "../../components/global/SearchBar";
 import PaginationNav from "../../components/global/PaginationNav";
 
+import BookRow from "../../components/books/BookRow";
+import { useDispatch, useSelector } from 'react-redux';
+import { getBooksAction } from "../../redux/actions/bookAction";
+
 function BookListSite(){
-    const [books, setBooks] = useState([]);
-    const [numberOfBooks, setNumberOfBooks] = useState([]);
-    const [find, setFind] = useState("");
+    const dispatch = useDispatch();
+    const booksData = useSelector(state => state.book.books);
 
     useEffect(() => {
-        if(find!==""){
-            findBooks(find).then(res => {
-                setBooks(res.data);
-            })
-        }else{
-            getAllBooks().then(res => {
-                setBooks(res.data);
-            })
-        }
-    }, [numberOfBooks, find]);
+        dispatch(
+            getBooksAction()
+        );
+    }, [dispatch]);
 
-    function findBook(find){
-        setFind(find);
-    }
+
+    const [numberOfBooks, setNumberOfBooks] = useState([]);
+    const [find, setFind] = useState("");
 
     const [currentPage, setCurrentPage] = useState(1);
     const [booksPerPage] = useState(10);
@@ -40,7 +36,7 @@ function BookListSite(){
     }
 
     const nextPage = () => {
-        if(currentPage!==Math.ceil(books.length/booksPerPage)){
+        if(currentPage!==Math.ceil(booksData.length/booksPerPage)){
             setCurrentPage(currentPage+1);
         }
     }
@@ -52,12 +48,20 @@ function BookListSite(){
         <div>
             {/* <SearchBook find={find} 
             findFunc={findBook} />  */}
-            <BookList />
-            {/* <PaginationNav postsPerPage={booksPerPage} 
-            totalPosts={books.length} 
+            
+            {
+                booksData.slice(indexOfFirstBook, indexOfLastBook).map(book => 
+                    <BookRow book={book} 
+                    key={book.bookId} />
+                )
+            }
+            
+            <PaginationNav postsPerPage={booksPerPage} 
+            totalPosts={booksData.length} 
             paginate={paginate} 
             previousPage={previousPage} 
-            nextPage={nextPage} /> */}
+            nextPage={nextPage} />
+            
             <Link to="/create-book">
                 <button className="button-create" 
                 title="Add a book!">

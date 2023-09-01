@@ -8,10 +8,12 @@ import { history } from "../../config/history";
 function CreateUpdateBook(){
     const { id } = useParams();
 
-    const book = useSelector(state => state.book.books.filter(book => book.bookId === id));
+    const booksData = useSelector(state => state.book.books);
+    let book = booksData.find(book => book.bookId === id);
     const dispatch = useDispatch();
 
-    console.log(book)
+    console.log(book);
+
 
 
     // const [book, setBook] = useState({});

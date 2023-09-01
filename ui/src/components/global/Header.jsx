@@ -2,9 +2,19 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { LuLibrary } from "react-icons/lu";
 import { BiMenu } from "react-icons/bi";
+import { useSelector, useDispatch } from "react-redux";
+import { logoutBorrowerAction } from "../../redux/actions/authAction";
 
 function Header(){
+    const dispatch = useDispatch();
     const [ulExpanded, setUlExpanded] = useState(false);
+    const  userData = useSelector(state => state.auth.userData);
+    let role, id;
+    if(userData && userData.role){
+        role = userData.role;
+        id = userData.borrowerId;
+    }
+
 
     return (
         <header>
@@ -21,15 +31,32 @@ function Header(){
                 <li>
                     <Link to="/">Catalog</Link>
                 </li>
-                <li>
-                    <Link to="/borrowers">Borrowers</Link>
-                </li>
-                <li>
-                    <Link to="/login">Sign in</Link>
-                </li>
-                <li>
-                    <Link to="/register">Sign up</Link>
-                </li>
+                {userData ? (
+                    role === 'admin' ? (
+                        <li>
+                            <Link to="/borrowers">Borrowers</Link>
+                        </li>
+                        ):(
+                        <li>
+                            <Link to={{ pathname: `/borrower/${id}`}} >Profile</Link>
+                        </li>
+                        )
+                    (
+                        <li>
+                            <Link to="/" onClick={dispatch(logoutBorrowerAction)}>Sign out</Link>
+                        </li>
+                    )
+                    ):(
+                        <>
+                            <li>
+                                <Link to="/login">Sign in</Link>
+                            </li>
+                            <li>
+                                <Link to="/register">Sign up</Link>
+                            </li>
+                        </>
+                    )
+                }
             </ul>    
         </header>
     )
