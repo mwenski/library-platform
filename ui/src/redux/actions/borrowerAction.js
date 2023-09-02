@@ -20,6 +20,13 @@ export const getBorrowersAction = () => (dispatch) => {
     })
 }
 
+export const getBorrowerAction = (borrowerId) => (dispatch) => {
+    dispatch({
+        type: borrower.GET_BORROWER_SUCCESS,
+        payload: borrowerId
+    });
+}
+
 export const deleteBorrowerAction = (borrowerId) => (dispatch) => {
     axios.delete(`/borrower/id/${borrowerId}`)
     .then(

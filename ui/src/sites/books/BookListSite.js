@@ -10,7 +10,7 @@ import { getBooksAction } from "../../redux/actions/bookAction";
 
 function BookListSite(){
     const dispatch = useDispatch();
-    const booksData = useSelector(state => state.book.books);
+    const booksData = useSelector(state => state.book.booksArray);
 
     useEffect(() => {
         dispatch(

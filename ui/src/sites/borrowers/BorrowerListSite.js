@@ -9,7 +9,7 @@ import BorrowerRow from "../../components/borrowers/BorrowerRow";
 
 function BorrowerListSite(){
     const dispatch = useDispatch();
-    const borrowersData = useSelector(state => state.borrower.borrowers);
+    const borrowersData = useSelector(state => state.borrower.borrowersArray);
 
     useEffect(() => {
         dispatch(

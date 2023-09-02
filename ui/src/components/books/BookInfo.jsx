@@ -1,4 +1,8 @@
-function BookInfo({ book }){
+    import { UseSelector, useSelector } from "react-redux/es/hooks/useSelector";
+
+function BookInfo(){
+    const book = useSelector(state => state.book.book);
+
     const handleImgError = (e) => {
         e.target.onError = null;
         e.target.src = '../no-cover.jpg';

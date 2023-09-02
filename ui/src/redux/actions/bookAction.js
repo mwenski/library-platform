@@ -19,6 +19,14 @@ export const getBooksAction = () => (dispatch) => {
     })
 }
 
+export const getBookAction = (bookId) => (dispatch) => {
+    
+    dispatch({
+        type: book.GET_BOOK_SUCCESS,
+        payload: bookId
+    })
+}
+
 export const createBookAction = (newBook) => (dispatch) => {
     axios.post('/book', { book: newBook })
     .then(res => {

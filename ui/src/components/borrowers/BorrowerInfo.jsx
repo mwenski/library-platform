@@ -1,4 +1,7 @@
-function BorrowerInfo({ borrower }){
+import { useSelector } from "react-redux";
+
+function BorrowerInfo(){
+    const borrower = useSelector(state => state.borrower.borrower);
 
     return (
         <div className="borrower-info">

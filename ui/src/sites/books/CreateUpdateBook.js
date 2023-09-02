@@ -2,15 +2,20 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getBookById, createBook, updateBook } from "../../services/BookService";
 import { useSelector, useDispatch } from 'react-redux';
-import { createBookAction, updateBookAction } from "../../redux/actions/bookAction";
+import { getBookAction, createBookAction, updateBookAction } from "../../redux/actions/bookAction";
 import { history } from "../../config/history";
 
 function CreateUpdateBook(){
     const { id } = useParams();
-
-    const booksData = useSelector(state => state.book.books);
-    let book = booksData.find(book => book.bookId === id);
+    console.log(id);
     const dispatch = useDispatch();
+    const book = useSelector(state => state.book.book);
+    
+    useEffect(() => {
+        dispatch(
+            getBookAction(id)
+        );
+    }, [dispatch]);
 
     console.log(book);
 
@@ -34,16 +39,16 @@ function CreateUpdateBook(){
     const [publicationYear, setPublicationYear] = useState(0);
     const [numberOfPages, setNumberOfPages] = useState(0);
 
-    // useEffect(() => {
-    //     setTitle(book.title);
-    //     setAuthor(book.author);
-    //     setCoverUrl(book.coverUrl);
-    //     setDescription(book.description);
-    //     setPublisher(book.publisher);
-    //     setIsbn(book.isbn);
-    //     setPublicationYear(book.publicationYear);
-    //     setNumberOfPages(book.numberOfPages);
-    // }, [dispatch]);
+    useEffect(() => {
+        setTitle(book.title);
+        setAuthor(book.author);
+        setCoverUrl(book.coverUrl);
+        setDescription(book.description);
+        setPublisher(book.publisher);
+        setIsbn(book.isbn);
+        setPublicationYear(book.publicationYear);
+        setNumberOfPages(book.numberOfPages);
+    }, [book]);
 
 
     function addBook(){

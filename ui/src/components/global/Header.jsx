@@ -15,6 +15,31 @@ function Header(){
         id = userData.borrowerId;
     }
 
+    const roleMenu = role === 'admin' ? (
+        <li>
+            <Link to="/borrowers">Borrowers</Link>
+        </li>
+    ):(
+        <li>
+            <Link to={{ pathname: `/borrower/${id}`}} >Profile</Link>
+        </li>
+    )
+
+    const loggedMenu = userData ? (
+        {roleMenu}
+        (<li>
+            <Link to="/" onClick={dispatch(logoutBorrowerAction)}>Sign out</Link>
+        </li>)
+    ):(
+        <>
+            <li>
+                <Link to="/login">Sign in</Link>
+            </li>
+            <li>
+                <Link to="/register">Sign up</Link>
+            </li>
+        </>
+    )
 
     return (
         <header>
@@ -31,32 +56,15 @@ function Header(){
                 <li>
                     <Link to="/">Catalog</Link>
                 </li>
-                {userData ? (
-                    role === 'admin' ? (
-                        <li>
-                            <Link to="/borrowers">Borrowers</Link>
-                        </li>
-                        ):(
-                        <li>
-                            <Link to={{ pathname: `/borrower/${id}`}} >Profile</Link>
-                        </li>
-                        )
-                    (
-                        <li>
-                            <Link to="/" onClick={dispatch(logoutBorrowerAction)}>Sign out</Link>
-                        </li>
-                    )
-                    ):(
-                        <>
-                            <li>
-                                <Link to="/login">Sign in</Link>
-                            </li>
-                            <li>
-                                <Link to="/register">Sign up</Link>
-                            </li>
-                        </>
-                    )
-                }
+                <li>
+                    <Link to="/borrowers">Borrowers</Link>
+                </li>
+                <li>
+                    <Link to="/login">Sign in</Link>
+                </li>
+                <li>
+                    <Link to="/register">Sign up</Link>
+                </li>
             </ul>    
         </header>
     )

@@ -5,15 +5,18 @@ import { getLoansByBorrowerId } from "../../services/LoanService";
 import BorrowerInfo from "../../components/borrowers/BorrowerInfo";
 import LoanList from "../../components/loans/LoanList";
 
+import { useDispatch } from "react-redux";
+import { getBorrowerAction } from "../../redux/actions/borrowerAction";
+
 function BorrowerInfoSite(){
     const { id } = useParams();
+    const dispatch = useDispatch();
 
-    const [borrower, setBorrower] = useState({});
-    useEffect(() => {
-        getBorrowerById(id).then(res => {
-            setBorrower(res.data);
-        });
-    }, [id]);
+    useEffect(()=> {
+        dispatch(
+            getBorrowerAction(id)
+        )
+    }, [dispatch, id]);
 
     const [loanStatus, setLoanStatus] = useState({});
     function handleLoanStatus(res){
@@ -35,7 +38,7 @@ function BorrowerInfoSite(){
 
     return (
         <div>
-            <BorrowerInfo borrower={borrower} />
+            <BorrowerInfo />
             <h2>Books borrowed</h2>
             <LoanList loans={loansBorrowed} 
             handleLoanStatus={handleLoanStatus} 
