@@ -1,32 +1,35 @@
 import { copy } from "../actionTypes";
 
 const initialState = {
-    copies: []
+    copiesArray: []
 };
 
-export default function(state = initialState, action){
+export default function def(state = initialState, action){
     switch(action.type){
         case copy.GET_COPIES_SUCCESS:
-            const copies = action.payload;
+            const copies = action.payload.data;
+            const bookId = action.payload.bookId;
 
             return{
                 ...state,
-                copies: copies
+                copiesArray: 
+                    [...state.copiesArray.filter(copy => copy.bookId != bookId)]
+                    .concat(copies)
             };
         case copy.CREATE_COPY_SUCCESS:
             const newCopy = action.payload;
 
             return{
                 ...state,
-                copies: [...state.copies, newCopy]
+                copiesArray: [...state.copiesArray, newCopy]
             };
         case copy.UPDATE_COPY_SUCCESS:
             const updatedCopy = action.payload;
 
             return{
                 ...state,
-                copies: [
-                    ...state.copies.filter(copy => copy.copyId !== updatedCopy.copyId),
+                copiesArray: [
+                    ...state.copiesArray.filter(copy => copy.copyId != updatedCopy.copyId),
                     updatedCopy
                 ]
             }
@@ -36,7 +39,7 @@ export default function(state = initialState, action){
             return{
                 ...state,
                 copies: [
-                    ...state.copies.filter(copy => copy.copyId !== removedId)
+                    ...state.copiesArray.filter(copy => copy.copyId != removedId)
                 ]
             }
         case copy.GET_COPIES_FAIL:

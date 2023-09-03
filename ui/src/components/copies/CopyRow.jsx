@@ -1,10 +1,16 @@
 import CreateUpdateCopy from "./CreateUpdateCopy";
 import { BsTrash } from "react-icons/bs";
+import { useDispatch } from "react-redux";
+import { deleteCopyAction } from "../../redux/actions/copyAction";
 
-function CopyRow({ copy, deleteCopy, borrowBook }){
+function CopyRow({ copy, borrowBook }){
+    const dispatch = useDispatch();
+
+    const deleteCopy = () => {
+        dispatch(deleteCopyAction(copy.copyId))
+    }
 
     let borrow;
-
     if(copy.loanStatus === "available"){
         borrow = <button type="button" 
                 title="Borrow the book!" 
@@ -21,11 +27,11 @@ function CopyRow({ copy, deleteCopy, borrowBook }){
             <td>{copy.loanStatus}</td>
             <td>
                 {borrow}
-                <CreateUpdateCopy copy={copy} />
+                <CreateUpdateCopy copyId={copy.copyId} />
                 <button type="button" 
                 title="Delete the copy" 
                 className="button-delete" 
-                onClick={(e) => deleteCopy(copy.copyId)}>
+                onClick={(e) => deleteCopy()}>
                     <BsTrash />
                 </button>
             </td>

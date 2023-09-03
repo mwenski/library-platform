@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getBookById } from "../../services/BookService";
 import BookInfo from "../../components/books/BookInfo";
 import CopyList from "../../components/copies/CopyList";
 import CreateUpdateCopy from "../../components/copies/CreateUpdateCopy";
 import { useDispatch } from "react-redux";
 import { getBookAction } from "../../redux/actions/bookAction";
+import { getCopiesAction } from "../../redux/actions/copyAction";
 
 function BookInfoSite(){
     const { id } = useParams();
@@ -17,18 +17,17 @@ function BookInfoSite(){
         )
     }, [dispatch, id])
 
-    const [book, setBook] = useState({});
     useEffect(() => {
-        getBookById(id).then(res => {
-            setBook(res.data);
-        });
-    }, [id]);
+        dispatch(
+            getCopiesAction(id)
+        )
+    }, [dispatch, id])
 
     return (
         <div>
             <BookInfo />
             <CopyList bookId={id} />
-            <CreateUpdateCopy bookId={book.bookId} />
+            <CreateUpdateCopy bookId={id} />
         </div>
     );
 }

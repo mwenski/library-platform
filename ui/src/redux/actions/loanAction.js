@@ -2,12 +2,15 @@ import axios from '../../config/backendConfig';
 import { loan } from '../actionTypes';
 import { returnErrors } from './errorAction';
 
-export const getLoansAction = () => (dispatch) => {
-    axios.get('/loan')
+export const getLoansAction = (borrowerId) => (dispatch) => {
+    axios.get(`/loan/borrower/${borrowerId}`)
     .then(res => {
         dispatch({
             type: loan.GET_LOANS_SUCCESS,
-            payload: res.data.data
+            payload: {
+               data: res.data.data,
+               borrowerId: borrowerId
+            }
         });
     })
     .catch(err => {

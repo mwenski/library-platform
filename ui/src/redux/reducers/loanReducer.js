@@ -1,32 +1,35 @@
 import { loan } from "../actionTypes";
 
 const initialState = {
-    loans: []
+    loansArray: []
 };
 
-export default function(state = initialState, action){
+export default function def(state = initialState, action){
     switch(action.type){
         case loan.GET_LOANS_SUCCESS:
-            const loans = action.payload;
+            const loans = action.payload.data;
+            const borrowerId = action.payload.borrowerId;
 
             return{
                 ...state,
-                loans: loans
+                loansArray: 
+                [...state.loansArray.filter(loan => loan.borrowerId != borrowerId)]
+                .concat(loans)
             };
         case loan.CREATE_LOAN_SUCCESS:
             const newLoan = action.payload;
 
             return{
                 ...state,
-                loans: [...state.loans, newLoan]
+                loansArray: [...state.loans, newLoan]
             };
         case loan.UPDATE_LOAN_SUCCESS:
             const updatedLoan = action.payload;
 
             return{
                 ...state,
-                loans: [
-                    ...state.loans.filter(loan => loan.loanId !== updatedLoan.loanId),
+                loansArray: [
+                    ...state.loansArray.filter(loan => loan.loanId != updatedLoan.loanId),
                     updatedLoan
                 ]
             }
@@ -35,8 +38,8 @@ export default function(state = initialState, action){
 
             return{
                 ...state,
-                loans: [
-                    ...state.loans.filter(loan => loan.loanId !== removedId)
+                loansArray: [
+                    ...state.loansArray.filter(loan => loan.loanId != removedId)
                 ]
             }
         case loan.GET_LOANS_FAIL:

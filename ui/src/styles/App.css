@@ -82,6 +82,10 @@ br{
   clear: both;
 }
 
+img{
+  border: 0.1px solid #A9A9A9;
+}
+
 button{
   margin: 2px;
   cursor: pointer;

@@ -2,12 +2,15 @@ import axios from '../../config/backendConfig';
 import { copy } from '../actionTypes';
 import { returnErrors } from './errorAction';
 
-export const getCopiesAction = () => (dispatch) => {
-    axios.get('/copy')
+export const getCopiesAction = (bookId) => (dispatch) => {
+    axios.get(`/copy/book/${bookId}`)
     .then(res => {
         dispatch({
             type: copy.GET_COPIES_SUCCESS,
-            payload: res.data.data
+            payload: {
+                data: res.data.data,
+                bookId: bookId
+            }
         });
     })
     .catch(err => {

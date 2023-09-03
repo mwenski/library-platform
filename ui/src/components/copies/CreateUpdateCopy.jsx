@@ -1,9 +1,14 @@
 import { useState, useEffect } from "react";
 import Popup from "reactjs-popup";
 import { BsPencilSquare } from "react-icons/bs";
-import { createCopy, updateCopy } from "../../services/CopyService";
+import { useDispatch, useSelector } from "react-redux";
+import { createCopyAction, updateCopyAction } from "../../redux/actions/copyAction";
 
-function CreateUpdateCopy({ copy, bookId,  }){
+function CreateUpdateCopy({ copyId, bookId }){
+    const dispatch = useDispatch();
+    const copiesData = useSelector(state => state.copy.copiesArray);
+    const copy = copiesData.find(copy => copy.copyId == copyId);
+
     const [signature, setSignature] = useState("");
     const [placeSymbol, setPlaceSymbol] = useState("");
 
@@ -14,26 +19,26 @@ function CreateUpdateCopy({ copy, bookId,  }){
     }, [copy]);
 
     function addCopy(){
-        const copy = {
+        const newCopy = {
             bookId: bookId,
             signature: signature
         }
 
-        createCopy(copy).then((res) => {
-            console.log(res);
-        })
+        dispatch(
+            createCopyAction(newCopy)
+        );
     }
 
     function updCopy(){
-        const _copy = {
+        const updatedCopy = {
             copyId: copy.copyId,
             bookId: copy.bookId,
             signature: signature
         }
 
-        updateCopy(_copy).then((res) => {
-            console.log(res);
-        })
+        dispatch(
+            updateCopyAction(updatedCopy)
+        );
     }
 
     let handleSubmit = (e) => {

@@ -2,22 +2,27 @@ import { useState, useEffect } from "react";
 import { getCopiesByBookId, deleteCopy } from "../../services/CopyService";
 import { borrowBook } from "../../services/LibraryService";
 import CopyRow from "./CopyRow";
+import { useSelector } from "react-redux";
 
 function CopyList({ bookId }){
-    const [copies, setCopies] = useState([]);
-    const [numberOfCopies, setNumberOfCopies] = useState([]);
-    const [copyBorrowed, setCopyBorrowed] = useState({});
-    useEffect(() => {
-        getCopiesByBookId(bookId).then(res => {
-            setCopies(res.data);
-        });
-    }, [bookId, numberOfCopies, copyBorrowed]);
+    const copiesData = useSelector(state => state.copy.copiesArray);
+    const copies = copiesData.filter(copy => copy.bookId == bookId);
 
-    function delCopy(copyId){
-        deleteCopy(copyId).then(
-            setNumberOfCopies(numberOfCopies - 1)
-        )
-    }
+    // const [copies, setCopies] = useState([]);
+    // const [numberOfCopies, setNumberOfCopies] = useState([]);
+    // const [copyBorrowed, setCopyBorrowed] = useState({});
+
+    // useEffect(() => {
+    //     getCopiesByBookId(bookId).then(res => {
+    //         setCopies(res.data);
+    //     });
+    // }, [bookId, numberOfCopies, copyBorrowed]);
+
+    // function delCopy(copyId){
+    //     deleteCopy(copyId).then(
+    //         setNumberOfCopies(numberOfCopies - 1)
+    //     )
+    // }
 
     function borBook(copyId){
         let copy = {
@@ -34,9 +39,9 @@ function CopyList({ bookId }){
             status: "borrowed"
         };
 
-        borrowBook(loan, copy).then(res =>
-            setCopyBorrowed(res)
-        )
+        // borrowBook(loan, copy).then(res =>
+        //      setCopyBorrowed(res)
+        // )
     }
 
     if(copies.length === 0){
@@ -67,7 +72,6 @@ function CopyList({ bookId }){
                 {
                     copies.map(copy => 
                         <CopyRow copy={copy} 
-                        deleteCopy={delCopy} 
                         borrowBook={borBook} 
                         key={copy.copyId} />
                     )

@@ -1,7 +1,14 @@
 import { returnBook } from "../../services/LibraryService";
 import LoanRow from "./LoanRow";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
-function LoanList({ loans, type, handleLoanStatus }){
+function LoanList({ borrowerId ,status, handleLoanStatus }){
+    const loansData = useSelector(state => state.loan.loansArray);
+    const loans = loansData.filter(loan => loan.borrowerId == borrowerId)
+                    .filter(loan => loan.status == status);
+
+    console.log(loansData);
 
     function retBook(loanId, copyId){
         let loan = {
@@ -36,7 +43,7 @@ function LoanList({ loans, type, handleLoanStatus }){
                     <td><h4>Author</h4></td>
                     <td><h4>Signature</h4></td>
                     <td><h4>Date borrowed</h4></td>
-                    <td><h4>{type ? "Due date" : "Date returned"}</h4></td>
+                    <td><h4>{status === "borrowed" ? "Due date" : "Date returned"}</h4></td>
                     <td />
                 </tr>
             </thead>
