@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 function LoanList({ borrowerId ,status, handleLoanStatus }){
-    const loansData = useSelector(state => state.loan.loansArray);
+    const { loansData } = useSelector(state => state.loan);
     const loans = loansData.filter(loan => loan.borrowerId == borrowerId)
                     .filter(loan => loan.status == status);
 

@@ -13,19 +13,13 @@ function BookInfoSite(){
 
     useEffect(() => {
         dispatch(
-            getBookAction(id)
-        )
-    }, [dispatch, id])
-
-    useEffect(() => {
-        dispatch(
             getCopiesAction(id)
         )
     }, [dispatch, id])
 
     return (
         <div>
-            <BookInfo />
+            <BookInfo bookId={id}/>
             <CopyList bookId={id} />
             <CreateUpdateCopy bookId={id} />
         </div>

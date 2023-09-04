@@ -7,13 +7,8 @@ import { history } from "../../config/history";
 function CreateUpdateBook(){
     const { id } = useParams();
     const dispatch = useDispatch();
-    const book = useSelector(state => state.book.book);
-    
-    useEffect(() => {
-        dispatch(
-            getBookAction(id)
-        );
-    }, [dispatch, id]);
+    const { booksData } = useSelector(state => state.book);
+    const book = booksData.find(book => book.bookId == id);
 
     const [title, setTitle] = useState("");
     const [author, setAuthor] = useState("");

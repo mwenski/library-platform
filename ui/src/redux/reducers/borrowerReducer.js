@@ -1,33 +1,32 @@
 import { borrower } from "../actionTypes";
 
 const initialState = {
-    borrowersArray: [],
+    borrowersData: [],
     borrower: {}
 };
 
-export default function (state = initialState, action){
+export default function DEF(state = initialState, action){
     switch(action.type){
         case borrower.GET_BORROWERS_SUCCESS:
-            const borrowers = action.payload;
-
             return{
                 ...state,
-                borrowersArray: borrowers
+                borrowersData: action.payload
             };
+        case borrower.SEARCH_BORROWERS_SUCCESS:
+            return {
+                ...state,
+                borrowersData: action.payload
+            }
         case borrower.GET_BORROWER_SUCCESS:
-            const borrowerId = action.payload;
-
             return{
                 ...state,
-                borrower: state.borrowersArray.find(borrower => borrower.borrowerId == borrowerId)
+                borrower: state.borrowersData.find(borrower => borrower.borrowerId == action.payload)
             }
         case borrower.DELETE_BORROWER_SUCCESS:
-            const removedId = action.payload;
-
             return{
                 ...state,
-                borrowersArray: [
-                    ...state.borrowersArray.filter(borrower => borrower.borrowerId !== removedId)
+                borrowersData: [
+                    ...state.borrowersData.filter(borrower => borrower.borrowerId != action.payload)
                 ]
             }
         case borrower.GET_BORROWERS_FAIL:

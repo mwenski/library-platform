@@ -5,7 +5,7 @@ import CopyRow from "./CopyRow";
 import { useSelector } from "react-redux";
 
 function CopyList({ bookId }){
-    const copiesData = useSelector(state => state.copy.copiesArray);
+    const { copiesData } = useSelector(state => state.copy);
     const copies = copiesData.filter(copy => copy.bookId == bookId);
 
     // const [copies, setCopies] = useState([]);

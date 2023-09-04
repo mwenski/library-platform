@@ -8,7 +8,7 @@ import { logoutBorrowerAction } from "../../redux/actions/authAction";
 function Header(){
     const dispatch = useDispatch();
     const [ulExpanded, setUlExpanded] = useState(false);
-    const  userData = useSelector(state => state.auth.userData);
+    const { userData } = useSelector(state => state.auth);
     let role, id;
     if(userData && userData.role){
         role = userData.role;

@@ -19,6 +19,28 @@ export const getBooksAction = () => (dispatch) => {
     })
 }
 
+export const searchBooksAction = (query) => (dispatch) => {
+    dispatch({
+        type: book.SET_SEARCH_QUERY,
+        payload: query
+    })
+
+    axios.get(`/book/find/${query}`)
+    .then(res => {
+        dispatch({
+            type: book.SEARCH_BOOKS_SUCCESS,
+            payload: res.data.data
+        });
+    })
+    .catch(err => {
+        dispatch({
+            type: book.SEARCH_BOOKS_FAIL,
+            payload: err
+        });
+        dispatch(returnErrors(err));
+    })
+}
+
 export const getBookAction = (bookId) => (dispatch) => {
     
     dispatch({

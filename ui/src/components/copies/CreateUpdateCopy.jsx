@@ -6,7 +6,7 @@ import { createCopyAction, updateCopyAction } from "../../redux/actions/copyActi
 
 function CreateUpdateCopy({ copyId, bookId }){
     const dispatch = useDispatch();
-    const copiesData = useSelector(state => state.copy.copiesArray);
+    const { copiesData } = useSelector(state => state.copy);
     const copy = copiesData.find(copy => copy.copyId == copyId);
 
     const [signature, setSignature] = useState("");

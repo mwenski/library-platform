@@ -1,17 +1,31 @@
-import { GrPrevious, GrNext } from 'react-icons/gr';
-
-function PaginationNav({ postsPerPage, totalPosts, paginate, previousPage, nextPage }){
+function PaginationNav({ postsPerPage, totalPosts, currentPage, setCurrentPage }){
     const pageNumbers = [];
 
     for(let i=1; i<=Math.ceil(totalPosts / postsPerPage); i++){
         pageNumbers.push(i);
     }
 
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    }
+
+    const previousPage = () => {
+        if(currentPage!==1){
+            setCurrentPage(currentPage-1);
+        }
+    }
+
+    const nextPage = () => {
+        if(currentPage!==Math.ceil(totalPosts/postsPerPage)){
+            setCurrentPage(currentPage+1);
+        }
+    }
+
     return (
         <div className="pagination-nav">
             <ul>
                 <li onClick={previousPage}>
-                    <GrPrevious />
+                    &laquo;
                 </li>
                 {
                     pageNumbers.map(number => 
@@ -22,7 +36,7 @@ function PaginationNav({ postsPerPage, totalPosts, paginate, previousPage, nextP
                     )
                 }
                 <li onClick={nextPage}>
-                    <GrNext />
+                    &raquo;
                 </li>
             </ul>
         </div>

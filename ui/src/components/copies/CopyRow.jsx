@@ -7,7 +7,9 @@ function CopyRow({ copy, borrowBook }){
     const dispatch = useDispatch();
 
     const deleteCopy = () => {
-        dispatch(deleteCopyAction(copy.copyId))
+        dispatch(
+            deleteCopyAction(copy.copyId)
+        )
     }
 
     let borrow;

@@ -1,54 +1,56 @@
 import { book } from "../actionTypes";
 
 const initialState = {
-    booksArray: [],
+    booksData: [],
+    searchQuery: "",
     book: {}
 };
 
-export default function (state = initialState, action){
+export default function DEF (state = initialState, action){
     switch(action.type){
         case book.GET_BOOKS_SUCCESS:
-            const books = action.payload;
-
             return{
                 ...state,
-                booksArray: books
+                booksData: action.payload
             };
-        case book.CREATE_BOOK_SUCCESS:
-            const newBook = action.payload;
-
+        case book.SEARCH_BOOKS_SUCCESS: 
             return{
                 ...state,
-                booksArray: [...state.booksArray, newBook]
-            };
+                booksData: action.payload
+            }
         case book.GET_BOOK_SUCCESS:
-            const bookId = action.payload;
-
             return {
                 ...state,
-                book: state.booksArray.find(book => book.bookId == bookId)
-            }
-        case book.UPDATE_BOOK_SUCCESS:
-            const updatedBook = action.payload;
-
+                book: state.booksData.find(book => book.bookId == action.payload)
+            }       
+        case book.SET_SEARCH_QUERY:
+            return {
+                ...state,
+                searchQuery: action.payload
+            } 
+        case book.CREATE_BOOK_SUCCESS:
             return{
                 ...state,
-                booksArray: [
-                    ...state.booksArray.filter(book => book.bookId !== updatedBook.bookId),
-                    updatedBook
+                booksData: [...state.booksData, action.payload]
+            };
+        case book.UPDATE_BOOK_SUCCESS:
+            return{
+                ...state,
+                booksData: [
+                    ...state.booksData.filter(book => book.bookId !== action.payload.bookId),
+                    action.payload
                 ],
                 book: {}
             }
         case book.DELETE_BOOK_SUCCESS:
-            const removedId = action.payload;
-
             return{
                 ...state,
-                booksArray: [
-                    ...state.booksArray.filter(book => book.bookId !== removedId)
+                booksData: [
+                    ...state.booksData.filter(book => book.bookId !== action.payload)
                 ]
             }
         case book.GET_BOOKS_FAIL:
+        case book.SEARCH_BOOKS_FAIL:
         case book.GET_BOOK_FAIL:
             return initialState;
         case book.CREATE_BOOK_FAIL:

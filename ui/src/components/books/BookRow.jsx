@@ -8,7 +8,9 @@ function BookRow({ book }){
     
     const deleteBook = () => {
         dispatch(
-            deleteBookAction(book.bookId)
+            deleteBookAction(
+                book.bookId
+            )
         );
     }
 

@@ -14,7 +14,9 @@ function SearchBar({ findRecord }){
             value={query || ''} 
             placeholder="Find..." 
             onChange={(e) => setQuery(e.target.value)}/>
-            <button><BsSearch /></button>
+            <button type="submit">
+                <BsSearch />
+            </button>
         </form>
     )
 }

@@ -20,6 +20,24 @@ export const getBorrowersAction = () => (dispatch) => {
     })
 }
 
+export const searchBorrowersAction = (query) => (dispatch) => {
+    axios.get(`/borrower/find/${query}`)
+    .then(res => {
+        dispatch({
+            type: borrower.SEARCH_BORROWERS_SUCCESS,
+            payload: res.data.data
+        });
+    })
+    .catch(err => {
+        dispatch({
+            type: borrower.SEARCH_BORROWERS_FAIL,
+            payload: err
+        });
+        dispatch(returnErrors(err));
+    })
+}
+
+
 export const getBorrowerAction = (borrowerId) => (dispatch) => {
     dispatch({
         type: borrower.GET_BORROWER_SUCCESS,

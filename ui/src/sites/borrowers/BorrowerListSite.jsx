@@ -9,7 +9,7 @@ import BorrowerRow from "../../components/borrowers/BorrowerRow";
 
 function BorrowerListSite(){
     const dispatch = useDispatch();
-    const borrowersData = useSelector(state => state.borrower.borrowersArray);
+    const { borrowersData } = useSelector(state => state.borrower);
 
     useEffect(() => {
         dispatch(
@@ -72,9 +72,8 @@ function BorrowerListSite(){
 
             <PaginationNav postsPerPage={borrowersPerPage} 
             totalPosts={borrowersData.length} 
-            paginate={paginate} 
-            previousPage={previousPage} 
-            nextPage={nextPage} />
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage} />
 
             <Link to="/register">
                 <button className="button-create" 

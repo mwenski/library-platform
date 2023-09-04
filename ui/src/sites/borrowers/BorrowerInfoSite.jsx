@@ -13,12 +13,6 @@ function BorrowerInfoSite(){
 
     useEffect(() => {
         dispatch(
-            getBorrowerAction(id)
-        )
-    }, [dispatch, id]);
-
-    useEffect(() => {
-        dispatch(
             getLoansAction(id)
         )
     }, [dispatch, id]);
@@ -30,7 +24,7 @@ function BorrowerInfoSite(){
 
     return (
         <div>
-            <BorrowerInfo />
+            <BorrowerInfo borrowerId={id}/>
             <h2>Books borrowed</h2>
             <LoanList status={'borrowed'}
             borrowerId={id}
