@@ -62,3 +62,8 @@ export const loan = {
     DELETE_LOAN_SUCCESS: 'DELETE_LOAN_SUCCESS',
     DELETE_LOAN_FAIL: 'DELETE_LOAN_FAIL'
 }
+
+export const globalNotification = {
+    SHOW_SNACKBAR: 'SHOW_SNACKBAR',
+    HIDE_SNACKBAR: 'HIDE_SNACKBAR'
+}

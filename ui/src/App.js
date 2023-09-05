@@ -13,6 +13,7 @@ import BorrowerInfoSite from './sites/borrowers/BorrowerInfoSite';
 import LoginBorrower from './sites/borrowers/LoginBorrower';
 import Header from './components/global/Header';
 import Footer from './components/global/Footer';
+import SnackBar from './components/global/SnackBar';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route exact path='/borrowers' Component={BorrowerListSite} />
             <Route path='/borrower/:id' Component={BorrowerInfoSite} />
           </Routes>
+          <SnackBar />
         </div>
         <Footer />
       </Router>

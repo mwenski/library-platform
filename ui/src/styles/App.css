@@ -42,7 +42,7 @@ ul li a:hover{
   display: flex;
 }
 
-input, label, textarea{
+input, label, textarea, select{
   display: block;
 }
 
@@ -50,7 +50,7 @@ textarea{
   resize: none;
 }
 
-input, textarea{
+input, textarea, select{
   line-height: 30px;
   font-size: 24px;
   border: 1px solid;
@@ -61,7 +61,7 @@ label{
   font-size: 14px;
 }
 
-input:focus, textarea:focus{
+input:focus, textarea:focus, select:focus{
   border: 1px solid;
   outline-color: #DC143C;
 }
@@ -176,10 +176,6 @@ button{
   color: #DC143C;
   cursor: pointer;
   text-decoration: underline;
-}
-
-.pagination-nav li:first-child, .pagination-nav li:last-child{
-  padding-top: 2px;
 }
 
 .no-data{
@@ -443,14 +439,18 @@ footer .column p{
 }
 
 .create-update-book img{
-  width: 240px;
-  height: 395px;
+  width: 330px;
+  height: 450px;
   margin: 0 auto;
 }
 
 
 .create-update-book input, .create-update-book textarea{
   width: 95%;
+}
+
+.create-update-book select{
+  width: 96.5%;
 }
 
 .create-update-book #description{

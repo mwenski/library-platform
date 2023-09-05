@@ -12,6 +12,7 @@ function CreateUpdateBook(){
 
     const [title, setTitle] = useState("");
     const [author, setAuthor] = useState("");
+    const [category, setCategory] = useState("");
     const [coverUrl, setCoverUrl] = useState("");
     const [description, setDescription] = useState("");
     const [publisher, setPublisher] = useState("");
@@ -85,6 +86,25 @@ function CreateUpdateBook(){
         e.target.src = 'no-cover.jpg';
     }
 
+    const select = (
+        <select name="category"
+        defaultValue={category}
+        onChange={(e) => setCategory(e.target.value)}>
+            <option value="Adventure">Adventure</option>
+            <option value="Biography">Biography</option>
+            <option value="Classic">Classic</option>
+            <option value="Crime">Crime</option>
+            <option value="Fairy tale">Fairy Tale</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Horror">Horror</option>
+            <option value="Humour">Humour</option>
+            <option value="Mystery">Mystery</option>
+            <option value="Poetry">Poetry</option>
+            <option value="Romance">Romance</option>
+            <option value="Science fiction">Science fiction</option>
+        </select>
+    )
+
     return(
         <div className="create-update-book">
             <h2>{id ? 'Update a book!' : 'Add a book'}</h2>
@@ -104,6 +124,10 @@ function CreateUpdateBook(){
                             value={author || ""} 
                             placeholder="Author" 
                             onChange={(e) => setAuthor(e.target.value)} />
+                        <div>
+                            <label>Category</label>
+                            { select }
+                        </div>
                         </div>
                         <div>
                             <label>Cover URL</label>

@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux/es/hooks/useSelector";
 
 function BookInfo({ bookId }){
-    const { booksData } = useSelector(state => state.book.booksArray);
+    const { booksData } = useSelector(state => state.book);
     const book = booksData.find(book => book.bookId == bookId);
 
     const handleImgError = (e) => {
