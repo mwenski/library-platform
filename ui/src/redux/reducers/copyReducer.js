@@ -4,13 +4,13 @@ const initialState = {
     copiesData: []
 };
 
-export default function def(state = initialState, action){
+export default function copyReducer(state = initialState, action){
     switch(action.type){
         case copy.GET_COPIES_SUCCESS:
             return{
                 ...state,
                 copiesData: 
-                    [...state.copiesData.filter(copy => copy.bookId != action.payload.bookId)]
+                    [...state.copiesData.filter(copy => copy.bookId !== parseInt(action.payload.bookId))]
                     .concat(action.payload.data)
             };
         case copy.CREATE_COPY_SUCCESS:
@@ -22,7 +22,7 @@ export default function def(state = initialState, action){
             return{
                 ...state,
                 copiesData: [
-                    ...state.copiesData.filter(copy => copy.copyId != action.payload.copyId),
+                    ...state.copiesData.filter(copy => copy.copyId !== parseInt(action.payload.copyId)),
                     action.payload
                 ]
             }
@@ -30,7 +30,7 @@ export default function def(state = initialState, action){
             return{
                 ...state,
                 copies: [
-                    ...state.copiesData.filter(copy => copy.copyId != action.payload)
+                    ...state.copiesData.filter(copy => copy.copyId !== parseInt(action.payload))
                 ]
             }
         case copy.GET_COPIES_FAIL:

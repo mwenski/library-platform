@@ -8,7 +8,7 @@ const initialState = {
     }
 }
 
-export default function (state = initialState, action){
+export default function globalNotificationReducer(state = initialState, action){
     switch(action.type){
         case globalNotification.SHOW_SNACKBAR:
             return{

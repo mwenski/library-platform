@@ -4,7 +4,7 @@ const initialState = {
     message: {},
 }
 
-export default function(state = initialState, action){
+export default function errorReducer(state = initialState, action){
     switch(action.type){
         case error.GET_ERRORS:
             return {

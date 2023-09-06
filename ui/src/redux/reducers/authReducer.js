@@ -6,7 +6,7 @@ const initialState = {
     borrowerData: JSON.parse(localStorage.getItem('borrowerData'))
 };
 
-export default function(state = initialState, action){
+export default function authReducer(state = initialState, action){
     switch(action.type){
         case auth.LOGIN_SUCCESS:
             const { accessToken, refreshToken, borrowerData } = action.payload;

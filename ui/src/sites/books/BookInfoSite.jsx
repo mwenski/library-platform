@@ -4,7 +4,6 @@ import BookInfo from "../../components/books/BookInfo";
 import CopyList from "../../components/copies/CopyList";
 import CreateUpdateCopy from "../../components/copies/CreateUpdateCopy";
 import { useDispatch } from "react-redux";
-import { getBookAction } from "../../redux/actions/bookAction";
 import { getCopiesAction } from "../../redux/actions/copyAction";
 
 function BookInfoSite(){

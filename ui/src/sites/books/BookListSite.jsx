@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { getAllBooks, findBooks } from "../../services/BookService";
 import SearchBook from "../../components/global/SearchBar";
 import PaginationNav from "../../components/global/PaginationNav";
 
@@ -18,14 +17,12 @@ function BookListSite(){
             dispatch(
                 searchBooksAction(query)
             );
-        }
-        if(searchQuery === ""){
+        }else{
             dispatch(
                 getBooksAction()
             );
         }
-    }, [dispatch, query, searchQuery]);
-    console.log(searchQuery)
+    }, [dispatch, query]);
 
     const [currentPage, setCurrentPage] = useState(1);
     const [booksPerPage] = useState(10);
@@ -35,7 +32,8 @@ function BookListSite(){
 
     return (
         <div>
-            <SearchBook findRecord={setQuery} /> 
+            <SearchBook query={query}
+            setQuery={setQuery} /> 
             
             {
                 booksData.slice(indexOfFirstBook, indexOfLastBook).map(book => 

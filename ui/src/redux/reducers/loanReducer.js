@@ -4,13 +4,13 @@ const initialState = {
     loansData: []
 };
 
-export default function def(state = initialState, action){
+export default function loanReducer(state = initialState, action){
     switch(action.type){
         case loan.GET_LOANS_SUCCESS:
             return{
                 ...state,
                 loansData: 
-                [...state.loansData.filter(loan => loan.borrowerId != action.payload.borrowerId)]
+                [...state.loansData.filter(loan => loan.borrowerId !== parseInt(action.payload.borrowerId))]
                 .concat(action.payload.data)
             };
         case loan.CREATE_LOAN_SUCCESS:
@@ -22,7 +22,7 @@ export default function def(state = initialState, action){
             return{
                 ...state,
                 loansData: [
-                    ...state.loansData.filter(loan => loan.loanId != action.payload.loanId),
+                    ...state.loansData.filter(loan => loan.loanId !== parseInt(action.payload.loanId)),
                     action.payload
                 ]
             }
@@ -30,7 +30,7 @@ export default function def(state = initialState, action){
             return{
                 ...state,
                 loansData: [
-                    ...state.loansData.filter(loan => loan.loanId != action.payload)
+                    ...state.loansData.filter(loan => loan.loanId !== parseInt(action.payload))
                 ]
             }
         case loan.GET_LOANS_FAIL:

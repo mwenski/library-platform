@@ -25,7 +25,10 @@ export const searchBorrowersAction = (query) => (dispatch) => {
     .then(res => {
         dispatch({
             type: borrower.SEARCH_BORROWERS_SUCCESS,
-            payload: res.data.data
+            payload: {
+                data: res.data.data,
+                query: query
+            }
         });
     })
     .catch(err => {

@@ -6,24 +6,27 @@ const initialState = {
     book: {}
 };
 
-export default function DEF (state = initialState, action){
+export default function bookReducer(state = initialState, action){
     switch(action.type){
         case book.GET_BOOKS_SUCCESS:
             return{
                 ...state,
-                booksData: action.payload
+                booksData: action.payload,
+                searchQuery: ""
             };
         case book.SEARCH_BOOKS_SUCCESS: 
             return{
                 ...state,
-                booksData: action.payload
+                booksData: action.payload.data,
+                searchQuery: action.payload.query
             }
         case book.GET_BOOK_SUCCESS:
             return {
                 ...state,
-                book: state.booksData.find(book => book.bookId == action.payload)
+                book: state.booksData.find(book => book.bookId === parseInt(action.payload))
             }       
         case book.SET_SEARCH_QUERY:
+            console.log(action.payload);
             return {
                 ...state,
                 searchQuery: action.payload
@@ -37,7 +40,7 @@ export default function DEF (state = initialState, action){
             return{
                 ...state,
                 booksData: [
-                    ...state.booksData.filter(book => book.bookId !== action.payload.bookId),
+                    ...state.booksData.filter(book => book.bookId !== parseInt(action.payload.bookId)),
                     action.payload
                 ],
                 book: {}
@@ -46,7 +49,7 @@ export default function DEF (state = initialState, action){
             return{
                 ...state,
                 booksData: [
-                    ...state.booksData.filter(book => book.bookId !== action.payload)
+                    ...state.booksData.filter(book => book.bookId !== parseInt(action.payload))
                 ]
             }
         case book.GET_BOOKS_FAIL:
