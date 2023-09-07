@@ -1,4 +1,28 @@
-function LoanRow({ loan, returnBook }){
+import { useDispatch } from "react-redux";
+import { returnBookAction } from "../../redux/actions/libraryAction";
+
+const LoanRow = ({ loan }) => {
+    const dispatch = useDispatch();
+
+    const returnBook = () => {
+        const updatedLoan = {
+            loanId: loan.loanId,
+            dateReturned: new Date(),
+            status: "returned"
+        }
+    
+        const updatedCopy = {
+            copyId: loan.copyId,
+            loanStatus: "available"
+        }
+
+        dispatch(
+            returnBookAction(
+                updatedCopy,
+                updatedLoan
+            )
+        )
+    }
 
     return(
         <tr key={loan.loanId}>

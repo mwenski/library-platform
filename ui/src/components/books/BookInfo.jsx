@@ -1,8 +1,29 @@
-import { useSelector } from "react-redux/es/hooks/useSelector";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getBookAction } from "../../redux/actions/bookAction";
 
 function BookInfo({ bookId }){
+    const dispatch = useDispatch();
     const { booksData } = useSelector(state => state.book);
-    const book = booksData.find(book => book.bookId == bookId);
+    const book = booksData.find(book => book.bookId === parseInt(bookId));
+
+    useEffect(() => {
+        if(!book){
+            dispatch(
+                getBookAction(
+                    bookId
+                )
+            )
+        }
+    }, [dispatch, book, bookId])
+
+    if(!book){
+        return (
+            <div className="no-data">
+                <h1>We can't find this book!</h1>
+            </div>
+        )
+    }
 
     const handleImgError = (e) => {
         e.target.onError = null;

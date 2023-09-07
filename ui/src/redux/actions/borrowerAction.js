@@ -42,10 +42,23 @@ export const searchBorrowersAction = (query) => (dispatch) => {
 
 
 export const getBorrowerAction = (borrowerId) => (dispatch) => {
-    dispatch({
-        type: borrower.GET_BORROWER_SUCCESS,
-        payload: borrowerId
-    });
+    axios.get(`/borrower/id/${borrowerId}`)
+    .then(res => {
+        if(res.data.data !== null){
+            dispatch({
+                type: borrower.GET_BORROWER_SUCCESS,
+                payload: res.data.data
+            });
+        }
+    })
+    .catch(err => {
+        dispatch({
+            type: borrower.GET_BORROWER_FAIL,
+            payload: err
+        });
+        dispatch(returnErrors(err));
+    })
+
 }
 
 export const deleteBorrowerAction = (borrowerId) => (dispatch) => {

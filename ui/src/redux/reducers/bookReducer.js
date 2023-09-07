@@ -2,8 +2,7 @@ import { book } from "../actionTypes";
 
 const initialState = {
     booksData: [],
-    searchQuery: "",
-    book: {}
+    searchQuery: ""
 };
 
 export default function bookReducer(state = initialState, action){
@@ -23,14 +22,11 @@ export default function bookReducer(state = initialState, action){
         case book.GET_BOOK_SUCCESS:
             return {
                 ...state,
-                book: state.booksData.find(book => book.bookId === parseInt(action.payload))
+                booksData: [
+                    ...state.booksData.filter(book => book.bookId !== parseInt(action.payload.bookId)),
+                    action.payload
+                ]
             }       
-        case book.SET_SEARCH_QUERY:
-            console.log(action.payload);
-            return {
-                ...state,
-                searchQuery: action.payload
-            } 
         case book.CREATE_BOOK_SUCCESS:
             return{
                 ...state,
@@ -42,8 +38,7 @@ export default function bookReducer(state = initialState, action){
                 booksData: [
                     ...state.booksData.filter(book => book.bookId !== parseInt(action.payload.bookId)),
                     action.payload
-                ],
-                book: {}
+                ]
             }
         case book.DELETE_BOOK_SUCCESS:
             return{
@@ -54,8 +49,8 @@ export default function bookReducer(state = initialState, action){
             }
         case book.GET_BOOKS_FAIL:
         case book.SEARCH_BOOKS_FAIL:
-        case book.GET_BOOK_FAIL:
             return initialState;
+        case book.GET_BOOK_FAIL:
         case book.CREATE_BOOK_FAIL:
         case book.UPDATE_BOOK_FAIL:
         case book.DELETE_BOOK_FAIL:

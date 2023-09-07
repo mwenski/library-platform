@@ -6,6 +6,7 @@ import book from './bookReducer';
 import copy from "./copyReducer";
 import borrower from "./borrowerReducer";
 import loan from "./loanReducer";
+import library from "./libraryReducer";
 import globalNotification from "./globalNotificationReducer";
 
 export default combineReducers({
@@ -15,5 +16,6 @@ export default combineReducers({
     copy,
     borrower,
     loan,
+    library,
     globalNotification
 });

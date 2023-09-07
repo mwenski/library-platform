@@ -40,10 +40,21 @@ export const searchBooksAction = (query) => (dispatch) => {
 }
 
 export const getBookAction = (bookId) => (dispatch) => {
-    
-    dispatch({
-        type: book.GET_BOOK_SUCCESS,
-        payload: bookId
+    axios.get(`/book/id/${bookId}`)
+    .then(res => {
+        if(res.data.data !== null){
+            dispatch({
+                type: book.GET_BOOK_SUCCESS,
+                payload: res.data.data
+            });
+        }
+    })
+    .catch(err => {
+        dispatch({
+            type: book.GET_BOOK_FAIL,
+            payload: err
+        });
+        dispatch(returnErrors(err));
     })
 }
 

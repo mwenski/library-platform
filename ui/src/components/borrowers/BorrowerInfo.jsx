@@ -1,8 +1,29 @@
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getBorrowerAction } from "../../redux/actions/borrowerAction";
 
 function BorrowerInfo({ borrowerId }){
+    const dispatch = useDispatch();
     const { borrowersData } = useSelector(state => state.borrower);
-    const borrower = borrowersData.find(borrower => borrower.borrowerId == borrowerId);
+    const borrower = borrowersData.find(borrower => borrower.borrowerId === borrowerId);
+
+    useEffect(() => {
+        if(!borrower){
+            dispatch(
+                getBorrowerAction(
+                    borrowerId
+                )
+            )
+        }
+    }, [dispatch, borrower, borrowerId]);
+
+    if(!borrower){
+        return(
+            <div className="no-data">
+                <h1>We can't find this borrower</h1>
+            </div>
+        )
+    }
 
     return (
         <div className="borrower-info">

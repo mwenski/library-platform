@@ -1,31 +1,11 @@
 import { returnBook } from "../../services/LibraryService";
 import LoanRow from "./LoanRow";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 
-function LoanList({ borrowerId ,status, handleLoanStatus }){
+const LoanList = ({ borrowerId ,status }) => {
     const { loansData } = useSelector(state => state.loan);
-    const loans = loansData.filter(loan => loan.borrowerId == borrowerId)
-                    .filter(loan => loan.status == status);
-
-    console.log(loansData);
-
-    function retBook(loanId, copyId){
-        let loan = {
-            loanId: loanId,
-            dateReturned: new Date(),
-            status: "returned"
-        }
-    
-        let copy = {
-            copyId: copyId,
-            loanStatus: "available"
-        }
-
-        returnBook(loan, copy).then(res => 
-            handleLoanStatus(res)
-        )
-    }
+    const loans = loansData.filter(loan => loan.borrowerId === parseInt(borrowerId))
+                    .filter(loan => loan.status === status);
 
     if(loans.length === 0){
         return(
@@ -50,7 +30,7 @@ function LoanList({ borrowerId ,status, handleLoanStatus }){
             <tbody>
                 {
                     loans.map(loan => 
-                        <LoanRow loan={loan} returnBook={retBook} />
+                        <LoanRow loan={loan} />
                     )
                 }
             </tbody>

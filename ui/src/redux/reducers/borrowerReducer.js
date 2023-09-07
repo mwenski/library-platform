@@ -3,7 +3,6 @@ import { borrower } from "../actionTypes";
 const initialState = {
     borrowersData: [],
     searchQuery: "",
-    borrower: {}
 };
 
 export default function borrowerReducer(state = initialState, action){
@@ -23,7 +22,10 @@ export default function borrowerReducer(state = initialState, action){
         case borrower.GET_BORROWER_SUCCESS:
             return{
                 ...state,
-                borrower: state.borrowersData.find(borrower => borrower.borrowerId === parseInt(action.payload))
+                borrowersData: [
+                    ...state.borrowersData.filter(borrower => borrower.borrowerId !== parseInt(action.payload.borrowerId)),
+                    action.payload
+                ]
             }
         case borrower.DELETE_BORROWER_SUCCESS:
             return{
@@ -33,8 +35,8 @@ export default function borrowerReducer(state = initialState, action){
                 ]
             }
         case borrower.GET_BORROWERS_FAIL:
-        case borrower.GET_BORROWER_FAIL:
             return initialState;
+        case borrower.GET_BORROWER_FAIL:
         case borrower.DELETE_BORROWER_FAIL:
         default:
             return state;

@@ -4,7 +4,6 @@ import BorrowerInfo from "../../components/borrowers/BorrowerInfo";
 import LoanList from "../../components/loans/LoanList";
 
 import { useDispatch } from "react-redux";
-import { getBorrowerAction } from "../../redux/actions/borrowerAction";
 import { getLoansAction } from "../../redux/actions/loanAction";
 
 function BorrowerInfoSite(){
@@ -27,8 +26,7 @@ function BorrowerInfoSite(){
             <BorrowerInfo borrowerId={id}/>
             <h2>Books borrowed</h2>
             <LoanList status={'borrowed'}
-            borrowerId={id}
-            handleLoanStatus={handleLoanStatus} />
+            borrowerId={id} />
             <h2>Books returned</h2>
             <LoanList status={'returned'} 
             borrowerId={id}/>
