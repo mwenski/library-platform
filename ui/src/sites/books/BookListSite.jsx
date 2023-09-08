@@ -6,8 +6,9 @@ import PaginationNav from "../../components/global/PaginationNav";
 import BookRow from "../../components/books/BookRow";
 import { useDispatch, useSelector } from 'react-redux';
 import { getBooksAction, searchBooksAction } from "../../redux/actions/bookAction";
+import { showSnackbarAction } from "../../redux/actions/globalNotificationAction";
 
-function BookListSite(){
+const BookListSite = () => {
     const dispatch = useDispatch();
     const { booksData, searchQuery } = useSelector(state => state.book);
     const [query, setQuery] = useState(searchQuery);
@@ -15,11 +16,20 @@ function BookListSite(){
     useEffect(() => {
         if(query !== ""){
             dispatch(
-                searchBooksAction(query)
+                searchBooksAction(
+                    query,
+                    () => dispatch(
+                        showSnackbarAction('Cannot find these books', 'error')
+                    )
+                )
             );
         }else{
             dispatch(
-                getBooksAction()
+                getBooksAction(
+                    () => dispatch(
+                        showSnackbarAction('Cannot find any book', 'error')
+                    )
+                )
             );
         }
     }, [dispatch, query]);

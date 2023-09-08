@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { LuLibrary } from "react-icons/lu";
 
-function Footer(){
+const Footer = () => {
     return (
         <footer>
                 <div className="column">
@@ -30,8 +30,8 @@ function Footer(){
                     <p>City library</p>
                     <p>Main Street 1</p>
                     <p>12345 City</p>
-                    <p>Phone: 123-456-789</p>
-                    <p>Email: mail[at]library.com</p>
+                    <p>Phone: <a href="tel:+48000000000">000-000-000</a></p>
+                    <p>Email: <a href="mailto:">mail[at]library.com</a></p>
                 </div>
         </footer>
     )

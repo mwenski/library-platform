@@ -3,7 +3,7 @@ import { borrower } from '../actionTypes';
 import { history } from '../../config/history';
 import { returnErrors } from './errorAction';
 
-export const getBorrowersAction = () => (dispatch) => {
+export const getBorrowersAction = (error) => (dispatch) => {
     axios.get('/borrower')
     .then(res => {
         dispatch({
@@ -17,10 +17,11 @@ export const getBorrowersAction = () => (dispatch) => {
             payload: err
         });
         dispatch(returnErrors(err));
+        error();
     })
 }
 
-export const searchBorrowersAction = (query) => (dispatch) => {
+export const searchBorrowersAction = (query, error) => (dispatch) => {
     axios.get(`/borrower/find/${query}`)
     .then(res => {
         dispatch({
@@ -37,11 +38,12 @@ export const searchBorrowersAction = (query) => (dispatch) => {
             payload: err
         });
         dispatch(returnErrors(err));
+        error();
     })
 }
 
 
-export const getBorrowerAction = (borrowerId) => (dispatch) => {
+export const getBorrowerAction = (borrowerId, error) => (dispatch) => {
     axios.get(`/borrower/id/${borrowerId}`)
     .then(res => {
         if(res.data.data !== null){
@@ -57,23 +59,26 @@ export const getBorrowerAction = (borrowerId) => (dispatch) => {
             payload: err
         });
         dispatch(returnErrors(err));
+        error();
     })
 
 }
 
-export const deleteBorrowerAction = (borrowerId) => (dispatch) => {
+export const deleteBorrowerAction = (borrowerId, success, error) => (dispatch) => {
     axios.delete(`/borrower/id/${borrowerId}`)
-    .then(
+    .then(() => {
         dispatch({
             type: borrower.DELETE_BORROWER_SUCCESS,
             payload: borrowerId
-        })
-    )
+        });
+        success();
+    })
     .catch(err => {
         dispatch({
             type: borrower.DELETE_BORROWER_FAIL,
             payload: err
         });
         dispatch(returnErrors(err));
+        error();
     })
 }

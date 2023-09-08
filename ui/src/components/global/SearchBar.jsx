@@ -1,6 +1,6 @@
 import { BsSearch } from "react-icons/bs";
 
-function SearchBar({ query, setQuery }){
+const SearchBar = ({ query, setQuery }) => {
     return (
         <form className="search-bar">
             <input type="text" 

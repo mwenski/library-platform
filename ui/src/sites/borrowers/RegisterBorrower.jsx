@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { registerBorrowerAction } from "../../redux/actions/authAction";
+import { showSnackbarAction } from "../../redux/actions/globalNotificationAction";
 
-function RegisterBorrower(){
+const RegisterBorrower = () => {
     const dispatch = useDispatch();
     
     const [firstName, setFirstName] = useState("");
@@ -14,6 +15,8 @@ function RegisterBorrower(){
     const [password, setPassword] = useState("");
 
     let handleSubmit = (e) => {
+        e.preventDefault();
+
         const borrower = {
             firstName: firstName,
             lastName: lastName,
@@ -25,7 +28,13 @@ function RegisterBorrower(){
 
         dispatch(
             registerBorrowerAction(
-                borrower
+                borrower,
+                () => dispatch(
+                    showSnackbarAction('Registration successful', 'success')
+                ),
+                () => dispatch(
+                    showSnackbarAction('Registration failure', 'error')
+                )
             )
         );
 

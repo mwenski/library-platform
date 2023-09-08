@@ -1,13 +1,24 @@
-import { useState, useEffect } from "react";
-import { getCopiesByBookId, deleteCopy } from "../../services/CopyService";
-import { borrowBook } from "../../services/LibraryService";
-import { borrowBookAction } from "../../redux/actions/libraryAction";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getCopiesAction } from "../../redux/actions/copyAction";
+import { showSnackbarAction } from "../../redux/actions/globalNotificationAction";
 import CopyRow from "./CopyRow";
-import { useSelector } from "react-redux";
 
-function CopyList({ bookId }){
+const CopyList = ({ bookId }) => {
+    const dispatch = useDispatch();
     const { copiesData } = useSelector(state => state.copy);
     const copies = copiesData.filter(copy => copy.bookId === parseInt(bookId));
+
+    useEffect(() => {
+        dispatch(
+            getCopiesAction(
+                bookId,
+                () => dispatch(
+                    showSnackbarAction('Cannot find copies', 'error')
+                )
+            )
+        )
+    }, [dispatch, bookId])
 
     if(copies.length === 0){
         return(

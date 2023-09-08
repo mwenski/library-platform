@@ -2,7 +2,7 @@ import axios from '../../config/backendConfig';
 import { book } from '../actionTypes';
 import { returnErrors } from './errorAction';
 
-export const getBooksAction = () => (dispatch) => {
+export const getBooksAction = (error) => (dispatch) => {
     axios.get('/book')
     .then(res => {
         dispatch({
@@ -16,10 +16,11 @@ export const getBooksAction = () => (dispatch) => {
             payload: err
         });
         dispatch(returnErrors(err));
+        error();
     })
 }
 
-export const searchBooksAction = (query) => (dispatch) => {
+export const searchBooksAction = (query, error) => (dispatch) => {
     axios.get(`/book/find/${query}`)
     .then(res => {
         dispatch({
@@ -36,10 +37,11 @@ export const searchBooksAction = (query) => (dispatch) => {
             payload: err
         });
         dispatch(returnErrors(err));
+        error();
     })
 }
 
-export const getBookAction = (bookId) => (dispatch) => {
+export const getBookAction = (bookId, error) => (dispatch) => {
     axios.get(`/book/id/${bookId}`)
     .then(res => {
         if(res.data.data !== null){
@@ -55,16 +57,18 @@ export const getBookAction = (bookId) => (dispatch) => {
             payload: err
         });
         dispatch(returnErrors(err));
+        error();
     })
 }
 
-export const createBookAction = (newBook) => (dispatch) => {
+export const createBookAction = (newBook, success, error) => (dispatch) => {
     axios.post('/book', { book: newBook })
     .then(res => {
         dispatch({
             type: book.CREATE_BOOK_SUCCESS,
             payload: res.data.data
-        })
+        });
+        success();
     })
     .catch(err => {
         dispatch({
@@ -72,16 +76,18 @@ export const createBookAction = (newBook) => (dispatch) => {
             payload: err
         });
         dispatch(returnErrors(err));
+        error();
     })
 }
 
-export const updateBookAction = (updatedBook) => (dispatch) => {
+export const updateBookAction = (updatedBook, success, error) => (dispatch) => {
     axios.put('/book', { book: updatedBook })
     .then(res => {
         dispatch({
             type: book.UPDATE_BOOK_SUCCESS,
             payload: res.data.data
-        })
+        });
+        success();
     })
     .catch(err => {
         dispatch({
@@ -89,22 +95,25 @@ export const updateBookAction = (updatedBook) => (dispatch) => {
             payload: err
         });
         dispatch(returnErrors(err));
+        error();
     })
 }
 
-export const deleteBookAction = (bookId) => (dispatch) => {
+export const deleteBookAction = (bookId, success, error) => (dispatch) => {
     axios.delete(`/book/id/${bookId}`)
-    .then(
+    .then(() => {
         dispatch({
             type: book.DELETE_BOOK_SUCCESS,
             payload: bookId
         })
-    )
+        success();
+    })
     .catch(err => {
         dispatch({
             type: book.DELETE_BOOK_FAIL,
             payload: err
         });
         dispatch(returnErrors(err));
+        error();
     })
 }

@@ -1,20 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import BookInfo from "../../components/books/BookInfo";
 import CopyList from "../../components/copies/CopyList";
 import CreateUpdateCopy from "../../components/copies/CreateUpdateCopy";
-import { useDispatch } from "react-redux";
-import { getCopiesAction } from "../../redux/actions/copyAction";
 
-function BookInfoSite(){
-    const { id } = useParams();
-    const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(
-            getCopiesAction(id)
-        )
-    }, [dispatch, id])
+const BookInfoSite = () => {
+    const { id } = useParams(); 
 
     return (
         <div>

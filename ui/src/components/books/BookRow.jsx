@@ -1,15 +1,22 @@
-import { Link } from "react-router-dom";
-import { BsTrash, BsPencilSquare } from "react-icons/bs";
 import { useDispatch } from 'react-redux';
+import { Link } from "react-router-dom";
 import { deleteBookAction } from "../../redux/actions/bookAction";
+import { showSnackbarAction } from '../../redux/actions/globalNotificationAction';
+import { BsTrash, BsPencilSquare } from "react-icons/bs";
 
-function BookRow({ book }){
+const BookRow = ({ book }) => {
     const dispatch = useDispatch();
     
     const deleteBook = () => {
         dispatch(
             deleteBookAction(
-                book.bookId
+                book.bookId,
+                () => dispatch(
+                    showSnackbarAction('Book removed', 'success')
+                ),
+                () => dispatch(
+                    showSnackbarAction('Cannot remove the book', 'error')
+                )
             )
         );
     }
@@ -20,7 +27,8 @@ function BookRow({ book }){
     }
 
     return(
-        <div className="book-row">
+        <div className="book-row"
+        key={book.bookId} >
             <div className="column">
                 <img src={book.coverUrl ?? 'no-cover.jpg'} 
                 alt={book.coverUrl}

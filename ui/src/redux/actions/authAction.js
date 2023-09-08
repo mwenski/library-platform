@@ -3,13 +3,14 @@ import { auth } from "../actionTypes";
 import { history } from '../../config/history';
 import { returnErrors } from './errorAction';
 
-export const registerBorrowerAction = (borrower) => (dispatch) => {
+export const registerBorrowerAction = (borrower, success, error) => (dispatch) => {
     axios.post('/auth/register', {borrower})
     .then(res => {
         dispatch({
             type: auth.REGISTER_SUCCESS,
             payload: res
         });
+        success();
     })
     .catch((err) => {
         dispatch({
@@ -17,16 +18,18 @@ export const registerBorrowerAction = (borrower) => (dispatch) => {
             payload: err
         });
         dispatch(returnErrors(err));
+        error();
     })
 }
 
-export const loginBorrowerAction = (email, password) => (dispatch) => {
+export const loginBorrowerAction = (email, password, success, error) => (dispatch) => {
     axios.post('/auth/login', {email, password})
     .then(res => {
         dispatch({
             type: auth.LOGIN_SUCCESS,
             payload: res.data.data
         });
+        success();
     })
     .catch((err) => {
         dispatch({
@@ -34,6 +37,7 @@ export const loginBorrowerAction = (email, password) => (dispatch) => {
             payload: err
         });
         dispatch(returnErrors(err));
+        error();
     })
 }
 

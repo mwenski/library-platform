@@ -18,15 +18,18 @@ ul{
   list-style: none;
 }
 
+a{
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
 ul li a{
   color: #FFFEFC;
   line-height: 14px;
-  text-decoration: none;
   margin: 0 12px;
-}
-
-ul li a:hover{
-  text-decoration: underline;
 }
 
 .content{
@@ -189,6 +192,24 @@ button{
   margin: 31.5px auto;
 }
 
+.snackbar-success{
+  width: 97%;
+  height: 25px;
+  background-color: #33B864;
+  color: #FFFEFC;
+}
+
+.snackbar-error{
+  width: 97%;
+  height: 25px;
+  background-color: #0C0908;
+  color: #FFFEFC;
+}
+
+.snackbar-success p, .snackbar-error p{
+  margin-top: 0;
+}
+
 /* Table */
 table{
   width: 100%;
@@ -218,8 +239,6 @@ tbody td{
 tbody tr:nth-child(even){
   background-color: #DCDCDC;
 }
-
-
 
 /* Header */
 header {
@@ -299,7 +318,11 @@ footer li{
   margin: 12px 0;
 }
 
-footer ul li a:hover{
+footer a{
+  color: #FFFEFC;
+}
+
+footer ul li a:hover, footer a:hover{
   text-decoration-color: #DC143C;
 }
 

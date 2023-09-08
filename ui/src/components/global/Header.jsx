@@ -1,11 +1,11 @@
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { logoutBorrowerAction } from "../../redux/actions/authAction";
 import { LuLibrary } from "react-icons/lu";
 import { BiMenu } from "react-icons/bi";
-import { useSelector, useDispatch } from "react-redux";
-import { logoutBorrowerAction } from "../../redux/actions/authAction";
 
-function Header(){
+const Header = () => {
     const dispatch = useDispatch();
     const [ulExpanded, setUlExpanded] = useState(false);
     const { userData } = useSelector(state => state.auth);

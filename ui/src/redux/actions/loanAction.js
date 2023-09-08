@@ -2,7 +2,7 @@ import axios from '../../config/backendConfig';
 import { loan } from '../actionTypes';
 import { returnErrors } from './errorAction';
 
-export const getLoansAction = (borrowerId) => (dispatch) => {
+export const getLoansAction = (borrowerId, error) => (dispatch) => {
     axios.get(`/loan/borrower/${borrowerId}`)
     .then(res => {
         dispatch({
@@ -19,6 +19,7 @@ export const getLoansAction = (borrowerId) => (dispatch) => {
             payload: err
         });
         dispatch(returnErrors(err));
+        error();
     })
 }
 

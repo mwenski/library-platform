@@ -1,16 +1,22 @@
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { deleteBorrowerAction } from "../../redux/actions/borrowerAction";
+import { showSnackbarAction } from "../../redux/actions/globalNotificationAction";
 import { BsTrash } from "react-icons/bs";
 
-import { useDispatch } from "react-redux";
-import { deleteBorrowerAction } from "../../redux/actions/borrowerAction";
-
-function BorrowerRow({ borrower }){
+const BorrowerRow = ({ borrower }) => {
     const dispatch = useDispatch();
 
     const deleteBorrower = () => {
         dispatch(
             deleteBorrowerAction(
-                borrower.borrowerId
+                borrower.borrowerId,
+                () => dispatch(
+                    showSnackbarAction('Borrower removed', 'success')
+                ),
+                () => dispatch(
+                    showSnackbarAction('Cannot remove the borrower', 'error')
+                )
             )
         );
     }

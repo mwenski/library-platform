@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { returnBookAction } from "../../redux/actions/libraryAction";
+import { showSnackbarAction } from "../../redux/actions/globalNotificationAction";
 
 const LoanRow = ({ loan }) => {
     const dispatch = useDispatch();
@@ -19,7 +20,13 @@ const LoanRow = ({ loan }) => {
         dispatch(
             returnBookAction(
                 updatedCopy,
-                updatedLoan
+                updatedLoan,
+                () => dispatch(
+                    showSnackbarAction('Book returned successfully', 'success')
+                ),
+                () => dispatch(
+                    showSnackbarAction('Cannot return this book', 'error')
+                )
             )
         )
     }

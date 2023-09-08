@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { Route, Navigate, RouteProps } from "react-router-dom";
+import { Route, Navigate } from "react-router-dom";
 
 const ProtectedRoute = (props) => {
-    const { component, ...rest } = props;
+    const { Component, ...rest } = props;
 
     return(
         <Route

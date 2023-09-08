@@ -3,13 +3,22 @@ import { BsTrash } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 import { deleteCopyAction } from "../../redux/actions/copyAction";
 import { borrowBookAction } from "../../redux/actions/libraryAction";
+import { showSnackbarAction } from "../../redux/actions/globalNotificationAction";
 
-function CopyRow({ copy }){
+const CopyRow = ({ copy }) => {
     const dispatch = useDispatch();
 
     const deleteCopy = () => {
         dispatch(
-            deleteCopyAction(copy.copyId)
+            deleteCopyAction(
+                copy.copyId,
+                () => dispatch(
+                    showSnackbarAction('Copy removed', 'success')
+                ),
+                () => dispatch(
+                    showSnackbarAction('Cannot remove the copy', 'error')
+                )
+            )
         )
     }
 

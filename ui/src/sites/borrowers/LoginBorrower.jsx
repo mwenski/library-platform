@@ -2,19 +2,25 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginBorrowerAction } from "../../redux/actions/authAction";
+import { showSnackbarAction } from "../../redux/actions/globalNotificationAction";
 import { history } from "../../config/history";
 
-function LoginBorrower(){
+const LoginBorrower = () => {
     const dispatch = useDispatch();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const handleSubmit = (e) => {
+        e.preventDefault();
+
         dispatch(
             loginBorrowerAction(
                 email,
                 password,
-                () => history.push('/')
+                () => history.push('/'),
+                () => dispatch(
+                    showSnackbarAction('Invalid username/password', 'error')
+                )
             )
         );
 

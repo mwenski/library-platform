@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
-import Popup from "reactjs-popup";
-import { BsPencilSquare } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { createCopyAction, updateCopyAction } from "../../redux/actions/copyAction";
+import { showSnackbarAction } from "../../redux/actions/globalNotificationAction";
+import Popup from "reactjs-popup";
+import { BsPencilSquare } from "react-icons/bs";
 
-function CreateUpdateCopy({ copyId, bookId }){
+const CreateUpdateCopy = ({ copyId, bookId }) => {
     const dispatch = useDispatch();
     const { copiesData } = useSelector(state => state.copy);
-    const copy = copiesData.find(copy => copy.copyId == copyId);
+    const copy = copiesData.find(copy => copy.copyId === parseInt(copyId));
 
     const [signature, setSignature] = useState("");
     const [placeSymbol, setPlaceSymbol] = useState("");
@@ -18,18 +19,26 @@ function CreateUpdateCopy({ copyId, bookId }){
         }
     }, [copy]);
 
-    function addCopy(){
+    function createCopy(){
         const newCopy = {
             bookId: bookId,
             signature: signature
         }
 
         dispatch(
-            createCopyAction(newCopy)
+            createCopyAction(
+                newCopy,
+                () => dispatch(
+                    showSnackbarAction('Copy added', 'success')
+                ),
+                () => dispatch(
+                    showSnackbarAction('Cannot add copy', 'error')
+                )
+            )
         );
     }
 
-    function updCopy(){
+    function updateCopy(){
         const updatedCopy = {
             copyId: copy.copyId,
             bookId: copy.bookId,
@@ -37,15 +46,25 @@ function CreateUpdateCopy({ copyId, bookId }){
         }
 
         dispatch(
-            updateCopyAction(updatedCopy)
+            updateCopyAction(
+                updatedCopy,
+                () => dispatch(
+                    showSnackbarAction('Copy updated', 'success')
+                ),
+                () => dispatch(
+                    showSnackbarAction('Cannot update the copy', 'error')
+                )
+            )
         );
     }
 
     let handleSubmit = (e) => {
+        e.preventDefault();
+
         if(bookId){
-            addCopy();
+            createCopy();
         }else{
-            updCopy();
+            updateCopy();
         }
     }
 

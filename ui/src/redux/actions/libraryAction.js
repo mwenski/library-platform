@@ -2,7 +2,7 @@ import axios from '../../config/backendConfig';
 import { library, copy, loan } from '../actionTypes';
 import { returnErrors } from './errorAction';
 
-export const borrowBookAction = (updatedCopy, newLoan) => (dispatch) => {
+export const borrowBookAction = (updatedCopy, newLoan, success, error) => (dispatch) => {
     axios.post('/library/borrow-book', {copy: updatedCopy, loan: newLoan})
     .then(res => {
         dispatch({
@@ -19,7 +19,8 @@ export const borrowBookAction = (updatedCopy, newLoan) => (dispatch) => {
         dispatch({
             type: loan.UPDATE_LOAN_SUCCESS,
             payload: res.data.data.loan
-        })
+        });
+        success();
     })
     .catch(err => {
         dispatch({
@@ -27,10 +28,11 @@ export const borrowBookAction = (updatedCopy, newLoan) => (dispatch) => {
             payload: err
         });
         dispatch(returnErrors(err));
+        error();
     })
 }
 
-export const returnBookAction = (updatedCopy, updatedLoan) => (dispatch) => {
+export const returnBookAction = (updatedCopy, updatedLoan, success, error) => (dispatch) => {
     axios.post('/library/return-book', {copy: updatedCopy, loan: updatedLoan})
     .then(res => {
         dispatch({
@@ -47,7 +49,8 @@ export const returnBookAction = (updatedCopy, updatedLoan) => (dispatch) => {
         dispatch({
             type: loan.UPDATE_LOAN_SUCCESS,
             payload: res.data.data.loan
-        })
+        });
+        success();
     })
     .catch(err => {
         dispatch({
@@ -55,5 +58,6 @@ export const returnBookAction = (updatedCopy, updatedLoan) => (dispatch) => {
             payload: err
         });
         dispatch(returnErrors(err));
+        error();
     })
 }

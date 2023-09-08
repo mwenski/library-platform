@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { getBorrowersAction, searchBorrowersAction } from "../../redux/actions/borrowerAction";
+import { showSnackbarAction } from "../../redux/actions/globalNotificationAction";
 import SearchBorrower from "../../components/global/SearchBar";
 import PaginationNav from "../../components/global/PaginationNav";
-
-import { useDispatch, useSelector } from "react-redux";
-import { getBorrowersAction, searchBorrowersAction } from "../../redux/actions/borrowerAction";
 import BorrowerRow from "../../components/borrowers/BorrowerRow";
 
-function BorrowerListSite(){
+const BorrowerListSite = () => {
     const dispatch = useDispatch();
     const { borrowersData, searchQuery } = useSelector(state => state.borrower);
     const [query, setQuery] = useState(searchQuery)
@@ -16,12 +16,19 @@ function BorrowerListSite(){
         if(query !== ""){
             dispatch(
                 searchBorrowersAction(
-                    query
+                    query,
+                    () => dispatch(
+                        showSnackbarAction('Cannot find these borrowers', 'error')
+                    )
                 )
             );
         }else{
             dispatch(
-                getBorrowersAction()
+                getBorrowersAction(
+                    () => dispatch(
+                        showSnackbarAction('Cannot find any borrower', 'error')
+                    )
+                )
             );
         }
     }, [dispatch, query]);

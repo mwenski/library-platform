@@ -1,8 +1,7 @@
-import { returnBook } from "../../services/LibraryService";
-import LoanRow from "./LoanRow";
 import { useSelector } from "react-redux";
+import LoanRow from "./LoanRow";
 
-const LoanList = ({ borrowerId ,status }) => {
+const LoanList = ({ borrowerId, status }) => {
     const { loansData } = useSelector(state => state.loan);
     const loans = loansData.filter(loan => loan.borrowerId === parseInt(borrowerId))
                     .filter(loan => loan.status === status);

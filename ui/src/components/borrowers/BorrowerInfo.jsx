@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getBorrowerAction } from "../../redux/actions/borrowerAction";
+import { showSnackbarAction } from "../../redux/actions/globalNotificationAction";
 
-function BorrowerInfo({ borrowerId }){
+const BorrowerInfo = ({ borrowerId }) => {
     const dispatch = useDispatch();
     const { borrowersData } = useSelector(state => state.borrower);
     const borrower = borrowersData.find(borrower => borrower.borrowerId === borrowerId);
@@ -11,7 +12,10 @@ function BorrowerInfo({ borrowerId }){
         if(!borrower){
             dispatch(
                 getBorrowerAction(
-                    borrowerId
+                    borrowerId,
+                    () => dispatch(
+                        showSnackbarAction('Cannot find this borrower', 'error')
+                    )
                 )
             )
         }
@@ -20,7 +24,7 @@ function BorrowerInfo({ borrowerId }){
     if(!borrower){
         return(
             <div className="no-data">
-                <h1>We can't find this borrower</h1>
+                <h1>Borrower not found</h1>
             </div>
         )
     }

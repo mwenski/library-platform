@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import { getLoansAction } from "../../redux/actions/loanAction";
+import { showSnackbarAction } from "../../redux/actions/globalNotificationAction";
 import BorrowerInfo from "../../components/borrowers/BorrowerInfo";
 import LoanList from "../../components/loans/LoanList";
 
-import { useDispatch } from "react-redux";
-import { getLoansAction } from "../../redux/actions/loanAction";
-
-function BorrowerInfoSite(){
+const BorrowerInfoSite = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(
-            getLoansAction(id)
+            getLoansAction(
+                id,
+                () => dispatch(
+                    showSnackbarAction('Cannot find loans', 'error')
+                )
+            )
         )
     }, [dispatch, id]);
-
-    const [loanStatus, setLoanStatus] = useState({});
-    function handleLoanStatus(res){
-        setLoanStatus(res)
-    }
 
     return (
         <div>

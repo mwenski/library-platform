@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getBookAction } from "../../redux/actions/bookAction";
+import { showSnackbarAction } from "../../redux/actions/globalNotificationAction";
 
-function BookInfo({ bookId }){
+const BookInfo = ({ bookId }) => {
     const dispatch = useDispatch();
     const { booksData } = useSelector(state => state.book);
     const book = booksData.find(book => book.bookId === parseInt(bookId));
@@ -11,7 +12,10 @@ function BookInfo({ bookId }){
         if(!book){
             dispatch(
                 getBookAction(
-                    bookId
+                    bookId,
+                    () => dispatch(
+                        showSnackbarAction('Cannot find this book', 'error')
+                    )
                 )
             )
         }
@@ -20,7 +24,7 @@ function BookInfo({ bookId }){
     if(!book){
         return (
             <div className="no-data">
-                <h1>We can't find this book!</h1>
+                <h1>Book not found</h1>
             </div>
         )
     }

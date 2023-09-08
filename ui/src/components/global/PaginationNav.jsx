@@ -1,4 +1,4 @@
-function PaginationNav({ postsPerPage, totalPosts, currentPage, setCurrentPage }){
+const PaginationNav = ({ postsPerPage, totalPosts, currentPage, setCurrentPage }) => {
     const pageNumbers = [];
 
     for(let i=1; i<=Math.ceil(totalPosts / postsPerPage); i++){
@@ -41,7 +41,6 @@ function PaginationNav({ postsPerPage, totalPosts, currentPage, setCurrentPage }
             </ul>
         </div>
     )
-
 }
 
 export default PaginationNav;

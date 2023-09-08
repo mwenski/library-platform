@@ -2,13 +2,27 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { getBookAction, createBookAction, updateBookAction } from "../../redux/actions/bookAction";
+import { showSnackbarAction } from "../../redux/actions/globalNotificationAction";
 import { history } from "../../config/history";
 
-function CreateUpdateBook(){
+const CreateUpdateBook = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
     const { booksData } = useSelector(state => state.book);
-    const book = booksData.find(book => book.bookId == id);
+    const book = booksData.find(book => book.bookId === parseInt(id));
+
+    useEffect(() => {
+        if(!book){
+            dispatch(
+                getBookAction(
+                    id,
+                    () => dispatch(
+                        showSnackbarAction('Cannot find this book', 'error')
+                    )
+                )
+            )    
+        }
+    }, [dispatch, book, id])
 
     const [title, setTitle] = useState("");
     const [author, setAuthor] = useState("");
@@ -34,7 +48,7 @@ function CreateUpdateBook(){
     }, [book]);
 
 
-    function addBook(){
+    function createBook(){
         const newBook = {
             title: title,
             author: author,
@@ -48,7 +62,14 @@ function CreateUpdateBook(){
 
         dispatch(
             createBookAction(
-                newBook
+                newBook,
+                () => {
+                    dispatch(showSnackbarAction('Book added', 'success'));
+                    history.push('/');
+                },
+                () => dispatch(
+                    showSnackbarAction('Cannot add book', 'error')
+                ) 
             )
         )
     }
@@ -68,16 +89,25 @@ function CreateUpdateBook(){
 
         dispatch(
             updateBookAction(
-                updatedBook
+                updatedBook,
+                () => {
+                    dispatch(showSnackbarAction('Book updated', 'success'));
+                    history.push('/');
+                },
+                () => dispatch(
+                    showSnackbarAction('Cannot update the book', 'error')
+                ) 
             )
         )
     }
     
     let handleSubmit = (e) => {
-        if(id){
+        e.preventDefault();
+
+        if(book){
             updateBook();
         }else{
-            addBook();
+            createBook();
         }
     };
 
@@ -107,7 +137,7 @@ function CreateUpdateBook(){
 
     return(
         <div className="create-update-book">
-            <h2>{id ? 'Update a book!' : 'Add a book'}</h2>
+            <h2>{book ? 'Update a book!' : 'Add a book'}</h2>
             <form onSubmit={handleSubmit}>
                 <div className="row">
                     <div className="column">
@@ -185,7 +215,7 @@ function CreateUpdateBook(){
                 <div className="row">
                     <button className="button-library" 
                     type="submit">
-                        {id ? 'Update' : 'Create'}
+                        {book ? 'Update' : 'Create'}
                     </button>
                 </div> 
             </form>
