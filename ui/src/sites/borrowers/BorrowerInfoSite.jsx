@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import "../../styles/BorrowerInfoSite.css";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getLoansAction } from "../../redux/actions/loanAction";

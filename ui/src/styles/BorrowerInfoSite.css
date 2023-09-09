@@ -1,0 +1,76 @@
+/* Borrower Info */
+.borrower-info .column{
+    width: 80%;
+}
+  
+.borrower-info td{
+    background-color: #FFFEFC;
+ }
+  
+/* Loan list */
+.loan-list td:last-child{
+    width: 320px;
+    text-align: right;
+}
+
+@media screen and (max-width: 800px) {
+  .borrower-info .column{
+    width: 100%;
+  }
+
+  /* Tables */
+  .loan-list,
+  .loan-list thead,
+  .loan-list tbody,
+  .loan-list tr,
+  .loan-list td{
+    display: block;
+  }
+
+  .loan-list thead tr{
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  .loan-list tr:nth-child(odd){
+    background-color: #DCDCDC;
+  }
+
+  .loan-list tr:nth-child(even){
+    background-color: #FFFEFC;
+  }
+
+  .loan-list td{
+    position: relative;
+    padding-left: 50%;
+    height: 20px;
+  }
+
+  .loan-list:first-child td:last-child{
+    height: 45px;
+    width: auto;
+    display: flex;
+    text-align: right;
+  }
+
+  .loan-list button:first-child{
+    margin-left: auto;
+  }
+
+  .loan-list td::before{
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+
+  .loan-list td:nth-child(1)::before{content: "Title";}
+  .loan-list td:nth-child(2)::before{content: "Author";}
+  .loan-list td:nth-child(3)::before{content: "Signature";}
+  .loan-list td:nth-child(4)::before{content: "Date borrowed";}
+  .loan-list:first-child td:nth-child(4)::before{content: "Due date";}
+  .loan-list:last-child td:nth-child(4)::before{content: "Date returned";}
+}

@@ -1,0 +1,60 @@
+/* Borrower List */
+.borrower-list td:last-child{
+    text-align: right;
+}
+
+@media screen and (max-width: 800px) {
+  /* Tables */
+  .borrower-list,
+  .borrower-list thead,
+  .borrower-list tbody,
+  .borrower-list tr,
+  .borrower-list td{
+    display: block;
+  }
+
+  .borrower-list thead tr{
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  .borrower-list tr:nth-child(odd){
+    background-color: #DCDCDC;
+  }
+
+  .borrower-list tr:nth-child(even){
+    background-color: #FFFEFC;
+  }
+
+  .borrower-list td{
+    position: relative;
+    padding-left: 50%;
+    height: 20px;
+  }
+
+  .borrower-list td:last-child{
+    height: 45px;
+    width: auto;
+    display: flex;
+    text-align: right;
+  }
+
+  .borrower-list button:first-child{
+    margin-left: auto;
+  }
+
+  .borrower-list td::before{
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+
+  .borrower-list td:nth-child(1)::before{content: "Borrower ID";}
+  .borrower-list td:nth-child(2)::before{content: "First Name";}
+  .borrower-list td:nth-child(3)::before{content: "Last Name";}
+  .borrower-list td:nth-child(4)::before{content: "Phone number";}
+}

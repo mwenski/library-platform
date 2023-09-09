@@ -1,0 +1,49 @@
+/* Book Row */
+.book-row{
+    margin: 7px 0;
+    height: 200px;
+    width: 80%;
+    display: flex;
+}
+  
+.book-row img{
+    width: 128px;
+    height: 180px;
+}
+  
+.book-row .column:last-child{
+    width: 100%;
+}
+  
+.book-row .row{
+    display: flex;
+    width: 100%;
+    padding: 2px;
+}
+  
+.book-row .row:last-child{
+    padding-top: 60px;
+}
+  
+.book-row .row a:first-child{
+    margin-left: auto;
+}
+  
+@media screen and (max-width: 800px) {
+  .book-row{
+    width: 100%;
+  }
+
+  .book-row h1, .book-row h2, .book-row h4{
+    margin-left: 10px;
+  }
+
+  .book-row .row:first-child{
+    display: block;
+  }
+
+  .book-row .row:last-child{
+    padding-top: 35px;
+  }
+
+}

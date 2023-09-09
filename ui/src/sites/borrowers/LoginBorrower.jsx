@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../../styles/LoginRegister.css";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginBorrowerAction } from "../../redux/actions/authAction";

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "../../styles/BookListSite.css";
 import { Link } from "react-router-dom";
 import SearchBook from "../../components/global/SearchBar";
 import PaginationNav from "../../components/global/PaginationNav";
@@ -42,8 +43,7 @@ const BookListSite = () => {
 
     return (
         <div>
-            <SearchBook query={query}
-            setQuery={setQuery} /> 
+            <SearchBook searchFunction={setQuery} /> 
             
             {
                 booksData.slice(indexOfFirstBook, indexOfLastBook).map(book => 

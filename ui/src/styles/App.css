@@ -89,6 +89,7 @@ img{
   border: 0.1px solid #A9A9A9;
 }
 
+/* Buttons */
 button{
   margin: 2px;
   cursor: pointer;
@@ -161,6 +162,7 @@ button{
   color: #DC143C;
 }
 
+/* Pagination */
 .pagination-nav{
   text-align: center;
 }
@@ -181,6 +183,7 @@ button{
   text-decoration: underline;
 }
 
+/* No data */
 .no-data{
   width: 100%;
   height: 100px;
@@ -350,8 +353,6 @@ footer .column p{
   border: 2px solid #DCDCDC;
 }
 
-
-
 .search-bar button{
   border: 2px solid #DCDCDC;
   background-color: #DCDCDC;
@@ -365,218 +366,6 @@ footer .column p{
 .search-bar button:hover{
   background-color: #DC143C;
   border-color: #DC143C;
-}
-
-/* Login & Register form */
-.login-register-form{
-  height: 100%;
-}
-
-.login-register-form h2{
-  text-align: center;
-}
-
-.login-register-form div{
-  width: 300px;
-  margin: 7px auto;
-}
-
-.login-register-form input{
-  width: 294px;
-}
-
-.login-register-form button{
-  width: 100%;
-  height: 50px;
-  background-color: #DC143C;
-  border: none;
-  color: #FFFEFC;
-  text-align: center;
-  font-size: 16px;
-  margin: 7px auto;
-}
-
-.login-register-form button:hover{
-  background-color: #FFFEFC;
-  color: #DC143C;
-}
-
-.login-register-form div:last-child{
-  text-align: center;
-}
-
-.login-register-form a{
-  color: #DC143C;
-  text-decoration: none;
-}
-
-.login-register-form a:hover{
-  text-decoration: underline;
-}
-
-/* Book Row */
-.book-row{
-  margin: 7px 0;
-  height: 200px;
-  width: 80%;
-  display: flex;
-}
-
-.book-row img{
-  width: 128px;
-  height: 180px;
-}
-
-.book-row .column:last-child{
-  width: 100%;
-}
-
-.book-row .row{
-  display: flex;
-  width: 100%;
-  padding: 2px;
-}
-
-.book-row .row:last-child{
-  padding-top: 60px;
-}
-
-.book-row .row a:first-child{
-  margin-left: auto;
-}
-
-
-/* Create Update Book */
-.create-update-book h2{
-  text-align: center;
-}
-
-.create-update-book .column{
-  width: 50%;
-  padding: 0 5px;
-}
-
-.create-update-book form .row{
-  width: 100%;
-  margin: 7px;
-}
-
-.create-update-book img{
-  width: 330px;
-  height: 450px;
-  margin: 0 auto;
-}
-
-
-.create-update-book input, .create-update-book textarea{
-  width: 95%;
-}
-
-.create-update-book select{
-  width: 96.5%;
-}
-
-.create-update-book #description{
-  width: 100%;
-  height: 200px;
-}
-
-.create-update-book textarea{
-  height: 170px;
-}
-
-.create-update-book button{
-  margin: 0 auto;
-  width: 50%;
-  height: 50px;
-  font-size: 20px;
-}
-
-/* Book Info*/
-.book-info{
-  padding: 10px;
-  display: flex;
-}
-
-.book-info img{
-  width: 221px;
-  height: 312px;
-}
-
-.book-info .row, .book-info p{
-  margin: 12px;
-}
-
-.book-info .row h1, .book-info .row p{
-  margin-left: 16px;
-}
-
-.book-info table{
-  width: 80%;
-}
-
-.book-info td{
-  height: 30px;
-  background-color: #FFFEFC;
-}
-
-/* Copy List */
-.copy-list td:last-child{
-  width: 320px;
-  text-align: right;
-}
-
-/* Create Update Copy */
-.popup{
-  z-index: 1;
-  border: 2px solid #DC143C;
-  background-color: #FFFEFC;
-  width: 500px;
-  padding: 15px;
-}
-
-.popup form{
-  margin-top: 12px;
-}
-
-.popup form div:last-child{
-  text-align: center;
-}
-
-.popup input{
-  line-height: 46px;
-  font-size: 28px;
-  width: 98%;
-}
-
-#close-button{
-  margin-bottom: 6px;
-  background-color: #0C0908;
-  border: none;
-  color: #FFFEFC;
-  text-align: center;
-  font-size: 16px;
-  float: right;
-}
-
-/* Borrower List */
-.borrower-list td:last-child{
-  text-align: right;
-}
-
-/* Borrower Info */
-.borrower-info .column{
-  width: 80%;
-}
-
-.borrower-info td{
-  background-color: #FFFEFC;
-}
-
-/* Loan list */
-.loan-list td:last-child{
-  width: 320px;
-  text-align: right;
 }
 
 @media screen and (max-width: 800px) {
@@ -657,128 +446,4 @@ footer .column p{
   table{
     width: 100%;
   }
-
-  .copy-list{
-    margin: 0;
-  }
-
-  .book-info{
-    display: block;
-    width: 100%;
-    padding-left: 12px;
-  }
-
-  .book-info .column:first-child{
-    padding-left: 30px;
-  }
-
-  .book-info .row:first-child{
-    display: block;
-  }
-
-  .book-info h2{
-    margin-left: 16px;
-  }
-
-  .popup{
-    width: 300px;
-  }
-
-  .book-row{
-    width: 100%;
-  }
-
-  .book-row h1, .book-row h2, .book-row h4{
-    margin-left: 10px;
-  }
-
-  .book-row .row:first-child{
-    display: block;
-  }
-
-  .book-row .row:last-child{
-    padding-top: 35px;
-  }
-
-  .create-update-book .column{
-    width: 100%;
-  }
-
-  .create-update-book form .row:first-child{
-    display: block;
-  }
-
-  .borrower-info .column{
-    width: 100%;
-  }
-
-
-  /* Tables */
-  .copy-list, .borrower-list, .loan-list,
-  .copy-list thead, .borrower-list thead, .loan-list thead,
-  .copy-list tbody, .borrower-list tbody, .loan-list tbody,
-  .copy-list tr, .borrower-list tr, .loan-list tr,
-  .copy-list td, .borrower-list td, .loan-list td{
-    display: block;
-  }
-
-  .copy-list thead tr, .borrower-list thead tr, .loan-list thead tr{
-    position: absolute;
-    top: -9999px;
-    left: -9999px;
-  }
-
-  .copy-list tr:nth-child(odd), .borrower-list tr:nth-child(odd), .loan-list tr:nth-child(odd){
-    background-color: #DCDCDC;
-  }
-
-  .copy-list tr:nth-child(even), .borrower-list tr:nth-child(even), .loan-list tr:nth-child(even){
-    background-color: #FFFEFC;
-  }
-
-  .copy-list td, .borrower-list td, .loan-list td{
-    position: relative;
-    padding-left: 50%;
-    height: 20px;
-  }
-
-  .copy-list td:last-child, .borrower-list td:last-child, .loan-list:first-child td:last-child{
-    height: 45px;
-    width: auto;
-    display: flex;
-    text-align: right;
-  }
-
-  .copy-list button:first-child, .borrower-list button:first-child, .loan-list button:first-child{
-    margin-left: auto;
-  }
-
-  .copy-list td::before, .borrower-list td::before, .loan-list td::before{
-    position: absolute;
-    top: 6px;
-    left: 6px;
-    width: 45%;
-    padding-right: 10px;
-    white-space: nowrap;
-  }
-
-  .copy-list td::before{
-    font-weight: bold;
-  }
-
-  .copy-list td:nth-child(1)::before{content: "Signature";}
-  .copy-list td:nth-child(2)::before{content: "Place symbol";}
-  .copy-list td:nth-child(3)::before{content: "Status";}
-
-  .borrower-list td:nth-child(1)::before{content: "Borrower ID";}
-  .borrower-list td:nth-child(2)::before{content: "First Name";}
-  .borrower-list td:nth-child(3)::before{content: "Last Name";}
-  .borrower-list td:nth-child(4)::before{content: "Phone number";}
-
-  .loan-list td:nth-child(1)::before{content: "Title";}
-  .loan-list td:nth-child(2)::before{content: "Author";}
-  .loan-list td:nth-child(3)::before{content: "Signature";}
-  .loan-list td:nth-child(4)::before{content: "Date borrowed";}
-  .loan-list:first-child td:nth-child(4)::before{content: "Due date";}
-  .loan-list:last-child td:nth-child(4)::before{content: "Date returned";}
 }

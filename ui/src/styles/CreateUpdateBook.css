@@ -1,0 +1,55 @@
+/* Create Update Book */
+.create-update-book h2{
+    text-align: center;
+}
+  
+.create-update-book .column{
+    width: 50%;
+    padding: 0 5px;
+}
+  
+.create-update-book form .row{
+    width: 100%;
+    margin: 7px;
+}
+  
+.create-update-book img{
+    width: 330px;
+    height: 450px;
+    margin: 0 auto;
+}
+  
+  
+.create-update-book input, .create-update-book textarea{
+    width: 95%;
+}
+  
+.create-update-book select{
+    width: 96.5%;
+}
+  
+.create-update-book #description{
+    width: 100%;
+    height: 200px;
+}
+  
+.create-update-book textarea{
+    height: 170px;
+}
+  
+.create-update-book button{
+    margin: 0 auto;
+    width: 50%;
+    height: 50px;
+    font-size: 20px;
+}
+
+@media screen and (max-width: 800px) {
+  .create-update-book .column{
+    width: 100%;
+  }
+
+  .create-update-book form .row:first-child{
+    display: block;
+  }
+}

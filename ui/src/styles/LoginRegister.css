@@ -1,0 +1,46 @@
+/* Login & Register form */
+.login-register-form{
+    height: 100%;
+}
+  
+.login-register-form h2{
+    text-align: center;
+}
+  
+.login-register-form div{
+    width: 300px;
+    margin: 7px auto;
+}
+  
+.login-register-form input{
+    width: 294px;
+}
+  
+.login-register-form button{
+    width: 100%;
+    height: 50px;
+    background-color: #DC143C;
+    border: none;
+    color: #FFFEFC;
+    text-align: center;
+    font-size: 16px;
+    margin: 7px auto;
+}
+  
+.login-register-form button:hover{
+    background-color: #FFFEFC;
+    color: #DC143C;
+}
+  
+.login-register-form div:last-child{
+    text-align: center;
+}
+  
+.login-register-form a{
+    color: #DC143C;
+    text-decoration: none;
+}
+  
+.login-register-form a:hover{
+    text-decoration: underline;
+}

@@ -1,0 +1,147 @@
+/* Book Info*/
+.book-info{
+    padding: 10px;
+    display: flex;
+}
+  
+.book-info img{
+    width: 221px;
+    height: 312px;
+}
+  
+.book-info .row, .book-info p{
+    margin: 12px;
+}
+  
+.book-info .row h1, .book-info .row p{
+    margin-left: 16px;
+}
+  
+.book-info table{
+    width: 80%;
+}
+  
+.book-info td{
+    height: 30px;
+    background-color: #FFFEFC;
+}
+  
+/* Copy List */
+.copy-list td:last-child{
+    width: 320px;
+    text-align: right;
+}
+  
+/* Create Update Copy */
+.popup{
+    z-index: 1;
+    border: 2px solid #DC143C;
+    background-color: #FFFEFC;
+    width: 500px;
+    padding: 15px;
+}
+  
+.popup form{
+    margin-top: 12px;
+}
+  
+.popup form div:last-child{
+    text-align: center;
+}
+  
+.popup input{
+    line-height: 46px;
+    font-size: 28px;
+    width: 98%;
+}
+  
+#close-button{
+    margin-bottom: 6px;
+    background-color: #0C0908;
+    border: none;
+    color: #FFFEFC;
+    text-align: center;
+    font-size: 16px;
+    float: right;
+}
+
+@media screen and (max-width: 800px) {
+  .copy-list{
+    margin: 0;
+  }
+
+  .book-info{
+    display: block;
+    width: 100%;
+    padding-left: 12px;
+  }
+
+  .book-info .column:first-child{
+    padding-left: 30px;
+  }
+
+  .book-info .row:first-child{
+    display: block;
+  }
+
+  .book-info h2{
+    margin-left: 16px;
+  }
+
+  .popup{
+    width: 300px;
+  }
+
+    /* Tables */
+  .copy-list,
+  .copy-list thead,
+  .copy-list tbody,
+  .copy-list tr,
+  .copy-list td{
+    display: block;
+  }
+
+  .copy-list thead tr{
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  .copy-list tr:nth-child(odd){
+    background-color: #DCDCDC;
+  }
+
+  .copy-list tr:nth-child(even){
+    background-color: #FFFEFC;
+  }
+
+  .copy-list td{
+    position: relative;
+    padding-left: 50%;
+    height: 20px;
+  }
+
+  .copy-list td:last-child{
+    height: 45px;
+    width: auto;
+    display: flex;
+    text-align: right;
+  }
+
+  .copy-list button:first-child{
+    margin-left: auto;
+  }
+
+  .copy-list td::before{
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+
+  .copy-list td::before{
+    font-weight: bold;
+  }
+}
