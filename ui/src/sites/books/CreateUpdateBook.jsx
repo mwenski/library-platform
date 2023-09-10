@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "../../styles/CreateUpdateBook.css";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { getBookAction, createBookAction, updateBookAction } from "../../redux/actions/bookAction";
 import { showSnackbarAction } from "../../redux/actions/globalNotificationAction";
-import { history } from "../../config/history";
 
 const CreateUpdateBook = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const { booksData } = useSelector(state => state.book);
     const book = booksData.find(book => book.bookId === parseInt(id));
@@ -66,7 +67,7 @@ const CreateUpdateBook = () => {
                 newBook,
                 () => {
                     dispatch(showSnackbarAction('Book added', 'success'));
-                    history.push('/');
+                    navigate('/');
                 },
                 () => dispatch(
                     showSnackbarAction('Cannot add book', 'error')
@@ -93,7 +94,7 @@ const CreateUpdateBook = () => {
                 updatedBook,
                 () => {
                     dispatch(showSnackbarAction('Book updated', 'success'));
-                    history.push('/');
+                    navigate('/');
                 },
                 () => dispatch(
                     showSnackbarAction('Cannot update the book', 'error')
@@ -207,10 +208,11 @@ const CreateUpdateBook = () => {
                 </div>
                 <div className="row">
                     <div id="description">
-                        <label>Description</label>
+                        <label>Description {description.length}/255</label>
                         <textarea value={description || ""} 
                         placeholder="Description" 
-                        onChange={(e) => setDescription(e.target.value)}/>
+                        onChange={(e) => setDescription(e.target.value)}
+                        maxLength="255"/>
                     </div>
                 </div>
                 <div className="row">

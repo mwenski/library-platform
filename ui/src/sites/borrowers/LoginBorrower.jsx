@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import "../../styles/LoginRegister.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginBorrowerAction } from "../../redux/actions/authAction";
 import { showSnackbarAction } from "../../redux/actions/globalNotificationAction";
-import { history } from "../../config/history";
 
 const LoginBorrower = () => {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -18,7 +18,7 @@ const LoginBorrower = () => {
             loginBorrowerAction(
                 email,
                 password,
-                () => history.push('/'),
+                () => navigate('/'),
                 () => dispatch(
                     showSnackbarAction('Invalid username/password', 'error')
                 )

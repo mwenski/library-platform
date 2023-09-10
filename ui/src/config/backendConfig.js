@@ -1,14 +1,19 @@
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import store from '../redux/store';
 import { auth } from "../redux/actionTypes";
-import { history } from "./history";
+
+const NavigationFunction = () => {
+    const navigate = useNavigate();
+    navigate('/login');
+}
 
 const refreshTokenAction = (error) => {
     const originalRequest = error.config;
     const { dispatch } = store;
 
     if(error.response.status === 401 && originalRequest.url === 'http://localhost:9000/auth/refresh-token'){
-        history.push('/login');
+        NavigationFunction();
         return Promise.reject(error);
     }
 

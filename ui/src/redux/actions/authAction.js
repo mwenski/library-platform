@@ -1,6 +1,6 @@
+import { useNavigate } from 'react-router-dom';
 import axios from '../../config/backendConfig';
 import { auth } from "../actionTypes";
-import { history } from '../../config/history';
 import { returnErrors } from './errorAction';
 
 export const registerBorrowerAction = (borrower, success, error) => (dispatch) => {
@@ -42,8 +42,11 @@ export const loginBorrowerAction = (email, password, success, error) => (dispatc
 }
 
 export const logoutBorrowerAction = () => (dispatch) => {
+    const navigate = useNavigate();
+
     dispatch({
         type: auth.LOGOUT_SUCCESS
     });
-    history.push('/');
+    
+    navigate('/');
 }

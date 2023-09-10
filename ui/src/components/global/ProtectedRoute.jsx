@@ -1,21 +1,13 @@
-import React, { Component } from "react";
-import { Route, Navigate } from "react-router-dom";
+import React from "react";
+import { Navigate, Outlet } from "react-router-dom";
 
-const ProtectedRoute = (props) => {
-    const { Component, ...rest } = props;
+const ProtectedRoute = () => {
+    const login = localStorage.getItem('accessToken');
+    const data = localStorage.getItem('borrowerData');
 
-    return(
-        <Route
-            {...rest}
-            render = {props => 
-                localStorage.getItem('accessToken') ? (
-                    <Component {...props} />
-                ):(
-                    <Navigate
-                        to={{ pathname: '/login', state: { from: props.location } }}
-                    />
-                )
-            }
-        />
-    )
+    const page = (data.role === 'admin') ? <Outlet /> : <Navigate to={{ pathname: `/borrower/${data.borrowerId}` }} />
+
+    return login ? { page } : <Navigate to='/login' />;
 }
+
+export default ProtectedRoute;

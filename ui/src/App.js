@@ -1,6 +1,5 @@
 import './styles/App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { history } from './config/history';
 import store from './redux/store';
 import { Provider } from 'react-redux';
 
@@ -14,11 +13,12 @@ import LoginBorrower from './sites/borrowers/LoginBorrower';
 import Header from './components/global/Header';
 import Footer from './components/global/Footer';
 import SnackBar from './components/global/SnackBar';
+import ProtectedRoute from './components/global/ProtectedRoute';
 
 function App() {
   return (
     <Provider store={store}>
-      <Router history={history}>
+      <Router>
         <Header />
         <div className='content'>
           <Routes>
@@ -28,8 +28,12 @@ function App() {
             <Route path='/book/:id' Component={BookInfoSite} />
             <Route exact path='/create-book' Component={CreateUpdateBook} />
             <Route path='/update-book/:id' Component={CreateUpdateBook} />
-            <Route exact path='/borrowers' Component={BorrowerListSite} />
+            {/* <Route exact path='/borrowers' Component={BorrowerListSite} /> */}
+            <Route exact path='/borrowers' Component={ProtectedRoute}>
+              <Route exact path='/borrowers' Component={BorrowerListSite} />
+            </Route>
             <Route path='/borrower/:id' Component={BorrowerInfoSite} />
+            
           </Routes>
           <SnackBar />
         </div>

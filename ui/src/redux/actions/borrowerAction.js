@@ -1,6 +1,5 @@
 import axios from '../../config/backendConfig';
 import { borrower } from '../actionTypes';
-import { history } from '../../config/history';
 import { returnErrors } from './errorAction';
 
 export const getBorrowersAction = (error) => (dispatch) => {
@@ -61,7 +60,6 @@ export const getBorrowerAction = (borrowerId, error) => (dispatch) => {
         dispatch(returnErrors(err));
         error();
     })
-
 }
 
 export const deleteBorrowerAction = (borrowerId, success, error) => (dispatch) => {

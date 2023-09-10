@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/BorrowerListSite.css";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { getBorrowersAction, searchBorrowersAction } from "../../redux/actions/borrowerAction";
 import { showSnackbarAction } from "../../redux/actions/globalNotificationAction";
 import SearchBorrower from "../../components/global/SearchBar";
 import PaginationNav from "../../components/global/PaginationNav";
 import BorrowerRow from "../../components/borrowers/BorrowerRow";
+import { AddBorrowerButton } from "../../components/global/CreateButtons";
 
 const BorrowerListSite = () => {
     const dispatch = useDispatch();
@@ -40,6 +40,18 @@ const BorrowerListSite = () => {
     const indexOfLastBorrower = currentPage * borrowersPerPage;
     const indexOfFirstBorrower = indexOfLastBorrower - borrowersPerPage;
 
+    if(borrowersData.length === 0){
+        return(
+            <div>
+                <SearchBorrower searchFunction={setQuery} />
+
+                <div className="no-data">
+                    <h1>Borrowers not found</h1>
+                </div>
+            </div>
+        )
+    }
+
     return (
         <div>
             <SearchBorrower searchFunction={setQuery} />
@@ -69,12 +81,7 @@ const BorrowerListSite = () => {
             currentPage={currentPage}
             setCurrentPage={setCurrentPage} />
 
-            <Link to="/register">
-                <button className="button-create" 
-                title="Register new borrower">
-                    +
-                </button>
-            </Link>
+            <AddBorrowerButton />
         </div>
     );
 }

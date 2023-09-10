@@ -12,7 +12,7 @@ const SnackBar = () => {
                 dispatch(
                     hideSnackBar()
                 )
-            }, 5000)
+            }, 4950)
         }
     }, [show, dispatch])
 

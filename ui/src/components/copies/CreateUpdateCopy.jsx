@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createCopyAction, updateCopyAction } from "../../redux/actions/copyAction";
 import { showSnackbarAction } from "../../redux/actions/globalNotificationAction";
@@ -6,6 +7,7 @@ import Popup from "reactjs-popup";
 import { BsPencilSquare } from "react-icons/bs";
 
 const CreateUpdateCopy = ({ copyId, bookId }) => {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const { copiesData } = useSelector(state => state.copy);
     const copy = copiesData.find(copy => copy.copyId === parseInt(copyId));
@@ -28,9 +30,10 @@ const CreateUpdateCopy = ({ copyId, bookId }) => {
         dispatch(
             createCopyAction(
                 newCopy,
-                () => dispatch(
-                    showSnackbarAction('Copy added', 'success')
-                ),
+                () => {
+                    dispatch(showSnackbarAction('Copy added', 'success'));
+                    navigate(`/book/${bookId}`);
+                },
                 () => dispatch(
                     showSnackbarAction('Cannot add copy', 'error')
                 )
@@ -48,9 +51,10 @@ const CreateUpdateCopy = ({ copyId, bookId }) => {
         dispatch(
             updateCopyAction(
                 updatedCopy,
-                () => dispatch(
-                    showSnackbarAction('Copy updated', 'success')
-                ),
+                () => {
+                    dispatch(showSnackbarAction('Copy updated', 'success'));
+                    navigate(`/book/${copy.bookId}`);
+                },
                 () => dispatch(
                     showSnackbarAction('Cannot update the copy', 'error')
                 )
@@ -66,6 +70,7 @@ const CreateUpdateCopy = ({ copyId, bookId }) => {
         }else{
             updateCopy();
         }
+        window.location.reload();
     }
 
     let buttonClass = bookId? "button-create" : "button-edit";
