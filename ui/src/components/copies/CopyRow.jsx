@@ -23,24 +23,20 @@ const CopyRow = ({ copy }) => {
     }
 
     const borrowBook = () => {
-        let updatedCopy = {
-            copyId: copy.copyId,
-            loanStatus: "borrowed"
-        };
-    
         let newLoan = {
-            bookId: copy.bookId,
             copyId: copy.copyId,
             borrowerId: 1,
-            dateBorrowed: new Date(),
-            dueDate: new Date(new Date().setDate(new Date().getDate() + 30)),
-            status: "borrowed"
         };
 
         dispatch(
             borrowBookAction(
-                updatedCopy,
-                newLoan
+                newLoan,
+                () => dispatch(
+                    showSnackbarAction('Book borrowed', 'success')
+                ),
+                () => dispatch(
+                    showSnackbarAction('Cannot borrow the book', 'error')
+                )
             )
         );
     }

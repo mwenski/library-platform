@@ -8,18 +8,12 @@ const LoanRow = ({ loan }) => {
     const returnBook = () => {
         const updatedLoan = {
             loanId: loan.loanId,
-            dateReturned: new Date(),
-            status: "returned"
-        }
-    
-        const updatedCopy = {
             copyId: loan.copyId,
-            loanStatus: "available"
+            borrowerId: 1
         }
 
         dispatch(
             returnBookAction(
-                updatedCopy,
                 updatedLoan,
                 () => dispatch(
                     showSnackbarAction('Book returned successfully', 'success')

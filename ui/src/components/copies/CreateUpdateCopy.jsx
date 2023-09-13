@@ -17,14 +17,16 @@ const CreateUpdateCopy = ({ copyId, bookId }) => {
 
     useEffect(() => {
         if(copy){
-           setSignature(copy.signature); 
+           setSignature(copy.signature);
+           setPlaceSymbol(copy.placeSymbol); 
         }
     }, [copy]);
 
     function createCopy(){
         const newCopy = {
             bookId: bookId,
-            signature: signature
+            signature: signature,
+            placeSymbol: placeSymbol
         }
 
         dispatch(
@@ -44,8 +46,8 @@ const CreateUpdateCopy = ({ copyId, bookId }) => {
     function updateCopy(){
         const updatedCopy = {
             copyId: copy.copyId,
-            bookId: copy.bookId,
-            signature: signature
+            signature: signature,
+            placeSymbol: placeSymbol
         }
 
         dispatch(
@@ -97,14 +99,14 @@ const CreateUpdateCopy = ({ copyId, bookId }) => {
                                 <div>
                                     <label>Signature</label>
                                     <input type="text" 
-                                    value={signature} 
+                                    value={signature || ""} 
                                     placeholder="Signature" 
                                     onChange={(e) => setSignature(e.target.value)} />
                                 </div>
                                 <div>
                                     <label>Place symbol</label>
                                     <input type="text" 
-                                    value={placeSymbol} 
+                                    value={placeSymbol || ""} 
                                     placeholder="Signature" 
                                     onChange={(e) => setPlaceSymbol(e.target.value)} />
                                 </div>

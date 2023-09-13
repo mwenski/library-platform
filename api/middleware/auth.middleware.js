@@ -8,7 +8,7 @@ class AuthMiddleware{
         if(!token){
             return res.status(401).json({
                 data: null,
-                message: "No token provided. Authorisation denied"
+                message: "No token provided. Authorization denied"
             });
         }
 
@@ -34,7 +34,7 @@ class AuthMiddleware{
             }else{
                 return res.status(401).json({
                     data: null,
-                    message: "Authorisation denied"
+                    message: "Authorization denied"
                 });
             }
 
@@ -55,7 +55,7 @@ class AuthMiddleware{
             }else{
                 return res.status(401).json({
                     data: null,
-                    message: "Authorisation denied"
+                    message: "Authorization denied"
                 });
             }
 

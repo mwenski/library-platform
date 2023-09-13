@@ -40,6 +40,7 @@ const CreateUpdateBook = () => {
         if(book){
             setTitle(book.title);
             setAuthor(book.author);
+            setCategory(book.category);
             setCoverUrl(book.coverUrl);
             setDescription(book.description);
             setPublisher(book.publisher);
@@ -54,6 +55,7 @@ const CreateUpdateBook = () => {
         const newBook = {
             title: title,
             author: author,
+            category: category,
             coverUrl: coverUrl,
             description: description,
             publisher: publisher,
@@ -81,6 +83,7 @@ const CreateUpdateBook = () => {
             bookId: id,
             title: title,
             author: author,
+            category: category,
             coverUrl: coverUrl,
             description: description,
             publisher: publisher,

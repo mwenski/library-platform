@@ -19,6 +19,10 @@ module.exports = (sequelize, DataTypes, Model) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+        placeSymbol: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         loanStatus: {
             type: DataTypes.ENUM('available', 'borrowed'),
             allowNull: false,

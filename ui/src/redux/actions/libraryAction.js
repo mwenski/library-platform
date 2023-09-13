@@ -2,8 +2,8 @@ import axios from '../../config/backendConfig';
 import { library, copy, loan } from '../actionTypes';
 import { returnErrors } from './errorAction';
 
-export const borrowBookAction = (updatedCopy, newLoan, success, error) => (dispatch) => {
-    axios.post('/library/borrow-book', {copy: updatedCopy, loan: newLoan})
+export const borrowBookAction = (newLoan, success, error) => (dispatch) => {
+    axios.post('/library/borrow-book', {loan: newLoan})
     .then(res => {
         dispatch({
             type: library.BORROW_BOOK_SUCCESS,
@@ -32,8 +32,8 @@ export const borrowBookAction = (updatedCopy, newLoan, success, error) => (dispa
     })
 }
 
-export const returnBookAction = (updatedCopy, updatedLoan, success, error) => (dispatch) => {
-    axios.post('/library/return-book', {copy: updatedCopy, loan: updatedLoan})
+export const returnBookAction = (updatedLoan, success, error) => (dispatch) => {
+    axios.post('/library/return-book', {loan: updatedLoan})
     .then(res => {
         dispatch({
             type: library.RETURN_BOOK_SUCCESS,

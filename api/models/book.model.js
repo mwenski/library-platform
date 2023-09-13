@@ -15,6 +15,10 @@ module.exports = (sequelize, DataTypes, Model) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+        category: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         coverUrl: {
             type: DataTypes.STRING
         },
