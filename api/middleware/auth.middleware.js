@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const borrowerService = require('../services/borrower.service');
+const loanService = require('../services/loan.service');
 
 class AuthMiddleware{
     checkAuthenticated = (req, res, next) => {
@@ -46,11 +47,36 @@ class AuthMiddleware{
         }
     }
 
-    checkIfAllowed = async (req, res, next) => {
+    checkIfAllowedForBorrowerAction = async (req, res, next) => {
+        try{
+            const user = await borrowerService.getBorrower(req.body.tokenData);
+            const borrowerId = req.params.id ?? req.body.borrower.borrowerId;
+
+            if(user.role === 'admin' || user.borrowerId === borrowerId){
+                next();
+            }else{
+                return res.status(401).json({
+                    data: null,
+                    message: "Authorization denied"
+                });
+            }
+
+        }catch(err){
+            return res.status(401).json({
+                data: null,
+                message: "Error occurred"
+            });
+        }        
+    }
+
+    checkIfAllowedForLoanAction = async (req, res, next) => {
         try{
             const user = await borrowerService.getBorrower(req.body.tokenData);
 
-            if(user.role === 'admin' || user.borrowerId === req.body.data.borrowerId){
+            const loanId = req.params.id ?? req.body.loan.borrowerId;
+            const loan = await loanService.getLoanById(loanId);
+
+            if(user.role === 'admin' || user.borrowerId === loan.borrowerId){
                 next();
             }else{
                 return res.status(401).json({

@@ -4,7 +4,10 @@ const copyService = require('../services/copy.service');
 class LibraryController{
 
     async borrowBook(req, res){
-        const checkCopy = await copyService.getCopyById(req.body.loan.copyId);
+        const { loan } = req.body;
+        let updatedCopy;
+
+        const checkCopy = await copyService.getCopyById(loan.copyId);
         if(checkCopy.loanStatus === "borrowed"){
             return res.status(403).json({
                 message: "Book already borrowed",
@@ -13,24 +16,26 @@ class LibraryController{
         }
 
         try{
-            const newLoan = req.body.loan;
-            newLoan.bookId = checkCopy.bookId;
-            newLoan.dateBorrowed = new Date();
-            newLoan.dueDate = new Date(new Date().setDate(new Date().getDate() + 30));
-            newLoan.status = "borrowed";
+            loan.bookId = checkCopy.bookId;
+            loan.dateBorrowed = new Date();
+            loan.dueDate = new Date(new Date().setDate(new Date().getDate() + 30));
+            loan.status = "borrowed";
 
-            const updatedCopy = {
-                copyId: req.body.loan.copyId,
+            const copy = {
+                copyId: loan.copyId,
                 loanStatus: "borrowed"
             };
 
-            const loan = await loanService.createLoan(newLoan);
-            const copy = await copyService.updateCopy(updatedCopy);
+            const newLoan = await loanService.createLoan(loan)
+            .then(
+                updatedCopy = await copyService.updateCopy(copy)
+            );
+            
             res.status(200).json({
                 message: "You've borrowed the book!",
                 data: {
-                    loan: loan,
-                    copy: copy
+                    loan: newLoan,
+                    copy: updatedCopy
                 }
             });
         }catch(err){
@@ -42,23 +47,28 @@ class LibraryController{
     }
 
     async returnBook(req, res){
-        try{
-            const updatedLoan = req.body.loan;
-            updatedLoan.dateReturned = new Date();
-            updatedLoan.status = "returned";
+        const { loan } = req.body;
+        let updatedCopy;
 
-            const updatedCopy = {
-                copyId: req.body.loan.copyId,
+        try{
+            loan.dateReturned = new Date();
+            loan.status = "returned";
+
+            const copy = {
+                copyId: loan.copyId,
                 loanStatus: "available"
             }
 
-            const loan = await loanService.updateLoan(updatedLoan);
-            const copy = await copyService.updateCopy(updatedCopy);
+            const updatedLoan = await loanService.updateLoan(loan)
+            .then(
+                updatedCopy = await copyService.updateCopy(copy)
+            );
+            
             res.status(200).json({
                 message: "You've returned the book!",
                 data: {
-                    loan: loan,
-                    copy: copy
+                    loan: updatedLoan,
+                    copy: updatedCopy
                 }
             });
         }catch(err){
