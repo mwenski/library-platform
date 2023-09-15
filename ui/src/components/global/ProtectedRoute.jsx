@@ -3,11 +3,11 @@ import { Navigate, Outlet } from "react-router-dom";
 
 const ProtectedRoute = () => {
     const login = localStorage.getItem('accessToken');
-    const data = localStorage.getItem('borrowerData');
+    // const data = localStorage.getItem('borrowerData');
 
-    const page = (data.role === 'admin') ? <Outlet /> : <Navigate to={{ pathname: `/borrower/${data.borrowerId}` }} />
+    // const page = (data.role === 'admin') ? <Outlet /> : <Navigate to={{ pathname: `/borrower/${data.borrowerId}` }} />
 
-    return login ? { page } : <Navigate to='/login' />;
+    return login ? <Outlet /> : <Navigate to='/login' />;
 }
 
 export default ProtectedRoute;

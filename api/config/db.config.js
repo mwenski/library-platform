@@ -36,7 +36,7 @@ const connect = () => {
 }
 
 db = connect();
-db.sequelize.sync().then(() => {
+db.sequelize.sync({force: true}).then(() => {
     console.log('Everything is fine with DB!');
 });
 

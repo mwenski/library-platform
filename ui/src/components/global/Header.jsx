@@ -1,12 +1,10 @@
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { logoutBorrowerAction } from "../../redux/actions/authAction";
 import { LuLibrary } from "react-icons/lu";
 import { BiMenu } from "react-icons/bi";
 
 const Header = () => {
-    const dispatch = useDispatch();
     const [ulExpanded, setUlExpanded] = useState(false);
     const { userData } = useSelector(state => state.auth);
     let role, id;
@@ -28,7 +26,7 @@ const Header = () => {
     const loggedMenu = userData ? (
         {roleMenu}
         (<li>
-            <Link to="/" onClick={dispatch(logoutBorrowerAction)}>Sign out</Link>
+            <Link to="/sign-out" >Sign out</Link>
         </li>)
     ):(
         <>

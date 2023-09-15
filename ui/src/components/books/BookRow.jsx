@@ -21,6 +21,32 @@ const BookRow = ({ book }) => {
         );
     }
 
+    const buttons = localStorage.getItem('borrowerData') ?
+    (
+        <div className="row">
+            <Link to={{ pathname: `/book/${book.bookId}`}}>
+                <button title="Read more about the book" 
+                className="button-library">
+                    More
+                </button>
+            </Link>
+            <Link to={{ pathname: `/update-book/${book.bookId}`}}>
+                <button title="Edit the book" 
+                className="button-edit">
+                    <BsPencilSquare />
+                </button>
+            </Link>
+            <button type="button" 
+            title="Delete the book" 
+            className="button-delete" 
+            onClick={(e) => deleteBook()}>
+                <BsTrash />
+            </button>
+        </div>
+    ):(
+        <div className="row" />
+    );
+
     const handleImgError = (e) => {
         e.target.onError = null;
         e.target.src = 'no-cover.jpg';
@@ -43,26 +69,7 @@ const BookRow = ({ book }) => {
                     <h4>{book.publisher}</h4>
                     <h4>{book.publicationYear}</h4>
                 </div>
-                <div className="row">
-                    <Link to={{ pathname: `/book/${book.bookId}`}}>
-                        <button title="Read more about the book" 
-                        className="button-library">
-                            More
-                        </button>
-                    </Link>
-                    <Link to={{ pathname: `/update-book/${book.bookId}`}}>
-                        <button title="Edit the book" 
-                        className="button-edit">
-                            <BsPencilSquare />
-                        </button>
-                    </Link>
-                    <button type="button" 
-                    title="Delete the book" 
-                    className="button-delete" 
-                    onClick={(e) => deleteBook()}>
-                        <BsTrash />
-                    </button>
-                </div>
+                { buttons }
             </div>
         </div>
     )

@@ -48,6 +48,8 @@ const BorrowerListSite = () => {
                 <div className="no-data">
                     <h1>Borrowers not found</h1>
                 </div>
+
+                <AddBorrowerButton />
             </div>
         )
     }

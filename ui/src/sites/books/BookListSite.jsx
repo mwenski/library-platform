@@ -48,6 +48,8 @@ const BookListSite = () => {
                 <div className="no-data">
                     <h1>Books not found</h1>
                 </div>
+
+                <AddBookButton />
             </div>
         )
     }
